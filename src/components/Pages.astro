@@ -2,8 +2,10 @@
 // One component renders every page, in either language.
 // The page files in src/pages/ only pick which page and language.
 import ArtworkCard from './ArtworkCard.astro';
+import ProductCard from './ProductCard.astro';
 import { t, routes, type Lang, type PageKey } from '../i18n/ui';
 import artworks from '../data/artworks.json';
+import products from '../data/products.json';
 import site from '../data/site.json';
 
 interface Props { lang: Lang; page: PageKey }
@@ -38,6 +40,7 @@ const withPrints = sorted.filter((a) => a.printLink);
 {page === 'shop' && (
   <section>
     <h1>{tr('shop.title')}</h1>
+
     <h2>{tr('shop.originals')}</h2>
     <p class="lede">{tr('shop.originalsIntro')}</p>
     {forSale.length ? (
@@ -49,9 +52,8 @@ const withPrints = sorted.filter((a) => a.printLink);
     <h2>{tr('shop.prints')}</h2>
     <p class="lede">{tr('shop.printsIntro')}</p>
     <div class="grid">
-      {withPrints.map((art) => <ArtworkCard lang={lang} art={{ ...art, paymentLink: null, status: 'print' }} showBuy />)}
+      {products.map((product) => <ProductCard lang={lang} product={product} />)}
     </div>
-    <a class="button quiet" href={site.colab55Store} target="_blank" rel="noopener">{tr('shop.printsLink')}</a>
   </section>
 )}
 
@@ -59,6 +61,13 @@ const withPrints = sorted.filter((a) => a.printLink);
   <section class="prose">
     <h1>{tr('about.title')}</h1>
     {site.about[lang].map((para) => <p>{para}</p>)}
+  </section>
+)}
+
+{page === 'bio' && (
+  <section class="prose">
+    <h1>{tr('bio.title')}</h1>
+    {site.bio[lang].map((para) => <p>{para}</p>)}
   </section>
 )}
 

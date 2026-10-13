@@ -1,0 +1,54 @@
+[
+  {
+    "slug": "calendario-2027",
+    "title": { "pt": "Calendário 2027", "en": "2027 Calendar" },
+    "description": {
+      "pt": "Calendário de parede 2027 com obras selecionadas. 12 meses, impressão de alta qualidade.",
+      "en": "2027 wall calendar featuring selected works. 12 months, high-quality printing."
+    },
+    "price": 45,
+    "image": "/images/products/calendario-2027-placeholder.jpg",
+    "status": "available",
+    "paymentLink": "https://mpago.la/SEU_LINK_CALENDARIO",
+    "category": "calendar"
+  },
+  {
+    "slug": "print-exemplo-1",
+    "title": { "pt": "Print Exemplo 1", "en": "Print Example 1" },
+    "description": {
+      "pt": "Reprodução em alta qualidade, impressa sob demanda.",
+      "en": "High-quality reproduction, printed on demand."
+    },
+    "price": 80,
+    "image": "/images/products/print-placeholder.jpg",
+    "status": "available",
+    "paymentLink": "https://www.colab55.com/@SEU_USUARIO",
+    "category": "print"
+  },
+  {
+    "slug": "adesivos-pack",
+    "title": { "pt": "Pack de Adesivos", "en": "Sticker Pack" },
+    "description": {
+      "pt": "Conjunto de 5 adesivos com ilustrações selecionadas.",
+      "en": "Set of 5 stickers with selected illustrations."
+    },
+    "price": 15,
+    "image": "/images/products/stickers-placeholder.jpg",
+    "status": "coming_soon",
+    "paymentLink": null,
+    "category": "sticker"
+  },
+  {
+    "slug": "zine-exemplo",
+    "title": { "pt": "Zine Exemplo", "en": "Example Zine" },
+    "description": {
+      "pt": "Zine artesanal com obras e textos.",
+      "en": "Handmade zine with works and texts."
+    },
+    "price": 25,
+    "image": "/images/products/zine-placeholder.jpg",
+    "status": "coming_soon",
+    "paymentLink": null,
+    "category": "zine"
+  }
+]

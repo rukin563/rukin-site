@@ -2,25 +2,27 @@
 // To change a word on the site, change it here — never inside the page files.
 
 export type Lang = 'pt' | 'en';
-export type PageKey = 'home' | 'gallery' | 'shop' | 'about' | 'contact';
+export type PageKey = 'home' | 'gallery' | 'shop' | 'about' | 'bio' | 'contact';
 
 // Each page has one URL per language. The PT/EN switch uses this map
 // to know which page to jump to, so keep both columns in sync.
 export const routes: Record<PageKey, Record<Lang, string>> = {
   home: { pt: '/', en: '/en' },
-  gallery: { pt: '/galeria', en: '/en/gallery' },
+  gallery: { pt: '/obras', en: '/en/works' },
   shop: { pt: '/loja', en: '/en/shop' },
   about: { pt: '/sobre', en: '/en/about' },
+  bio: { pt: '/bio', en: '/en/bio' },
   contact: { pt: '/contato', en: '/en/contact' },
 };
 
 export const ui = {
   pt: {
     'site.description': 'Rukin — artista visual de São Paulo. Obras originais e prints.',
-    'nav.home': 'Início',
+    'nav.home': 'Capa',
     'nav.gallery': 'Obras',
     'nav.shop': 'Loja',
     'nav.about': 'Sobre',
+    'nav.bio': 'Bio',
     'nav.contact': 'Contato',
     'lang.switch': 'Ver em inglês',
 
@@ -40,13 +42,15 @@ export const ui = {
     'shop.title': 'Loja',
     'shop.originals': 'Originais',
     'shop.originalsIntro': 'Peças únicas. Pagamento por Pix, cartão ou boleto via Mercado Pago. Envio segurado para todo o Brasil.',
-    'shop.prints': 'Prints',
-    'shop.printsIntro': 'Reproduções impressas sob demanda na Colab55, que produz e entrega para você.',
+    'shop.prints': 'Produtos',
+    'shop.printsIntro': 'Calendários, prints, adesivos e zines.',
     'shop.printsLink': 'Ver todos os prints na Colab55',
     'shop.empty': 'Nenhum original disponível agora. Assine a newsletter para saber quando sair a próxima peça.',
     'shop.policy': 'Trocas e devoluções',
 
     'about.title': 'Sobre',
+
+    'bio.title': 'Bio',
 
     'contact.title': 'Contato',
     'contact.intro': 'Encomendas, exposições, parcerias ou só um oi.',
@@ -68,6 +72,7 @@ export const ui = {
     'nav.gallery': 'Works',
     'nav.shop': 'Shop',
     'nav.about': 'About',
+    'nav.bio': 'Bio',
     'nav.contact': 'Contact',
     'lang.switch': 'Ver em português',
 
@@ -87,13 +92,15 @@ export const ui = {
     'shop.title': 'Shop',
     'shop.originals': 'Originals',
     'shop.originalsIntro': 'One-of-a-kind pieces. Pay by card through Mercado Pago. Insured shipping; international orders by request.',
-    'shop.prints': 'Prints',
-    'shop.printsIntro': 'Print-on-demand reproductions made and shipped by Colab55 (Brazil only).',
+    'shop.prints': 'Products',
+    'shop.printsIntro': 'Calendars, prints, stickers, and zines.',
     'shop.printsLink': 'See all prints on Colab55',
     'shop.empty': 'No originals available right now. Join the newsletter to hear when the next piece is out.',
     'shop.policy': 'Returns and exchanges',
 
     'about.title': 'About',
+
+    'bio.title': 'Bio',
 
     'contact.title': 'Contact',
     'contact.intro': 'Commissions, exhibitions, collaborations, or just to say hi.',

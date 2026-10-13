@@ -14,7 +14,7 @@ const other: Lang = lang === 'pt' ? 'en' : 'pt';
 const pageTitle = title ? `${title} — ${site.artistName}` : site.artistName;
 const canonical = new URL(routes[page][lang], Astro.site);
 const alternate = new URL(routes[page][other], Astro.site);
-const nav: PageKey[] = ['gallery', 'shop', 'about', 'contact'];
+const nav: PageKey[] = ['gallery', 'shop', 'about', 'bio', 'contact'];
 const year = new Date().getFullYear();
 ---
 

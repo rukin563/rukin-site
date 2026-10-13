@@ -7,16 +7,28 @@
   "newsletterAction": "https://SEU_PROVEDOR_DE_NEWSLETTER/subscribe",
   "about": {
     "pt": [
-      "Trabalho com o que é descartado — objetos e pessoas.",
-      "Rukin é artista visual independente de São Paulo. Sua obra comenta os padrões de consumo e a forma como a sociedade empurra para fora de vista as coisas, e as pessoas, que deixam de interessar.",
-      "Formado em Design Gráfico pela FAAP em 1993, carrega do design a disciplina formal, e da pop art, do cubismo, do dadaísmo e do construtivismo a vontade de quebrá-la com erros deliberados. Pinta com spray e acrílica sobre muros, portas, tapumes e assemblages em madeira.",
-      "Entre 2004 e 2018 viveu e trabalhou em fábricas no Japão, onde expôs regularmente em feiras de arte em Tóquio."
+      "Minha prática é aberta ao erro, ao desvio e ao inesperado. As imagens carregam um rigor formal que vem dos meus anos como designer gráfico — rigor que foi se soltando com o tempo, devagar e por escolha, até o erro virar material de trabalho, e não algo a corrigir.",
+      "Meu trabalho parte do descarte — não só o de objetos, mas o gesto mais amplo de decidir o que conta e o que pode desaparecer de vista. O consumo produz montanhas de coisas que deixamos de enxergar; a mesma lógica opera quando uma sociedade empurra para a margem as pessoas que não cabem no que ela considera padrão. Não me interessa entregar um veredito, mas desacelerar esse desaparecimento o bastante para dar tempo de olhar."
     ],
     "en": [
+      "My practice is open to error, deviation, and the unexpected. The images carry a formal rigor from my years as a graphic designer — rigor that loosened over time, slowly and by choice, until error became working material rather than something to correct.",
+      "My work starts with discard — not just of objects, but the broader gesture of deciding what counts and what can disappear from view. Consumption produces mountains of things we stop seeing; the same logic operates when a society pushes to the margins people who don't fit what it considers standard. I'm not interested in delivering a verdict, but in slowing that disappearance down long enough to look."
+    ]
+  },
+  "bio": {
+    "pt": [
+      "Rukin vive e trabalha em São Paulo. Seu processo criativo parte do descarte — de objetos e de pessoas.",
+      "Trabalho com o que se joga fora — objetos e pessoas.",
+      "Em 2024, apresentou a exposição individual Multiplicidades na Passagem Literária da Consolação em São Paulo, que posteriormente se expandiu para a exposição coletiva Sociedade do Descarte, programada de setembro de 2025 a março de 2026 no mesmo local. A primeira exposição individual, Voodoo é pra jacú, aconteceu em 2019.",
+      "O artista passou treze anos no Japão (2004-2018), onde continuou desenhando e pintando ao lado do trabalho em fábricas, com participação em feiras de arte em Tóquio.",
+      "Formou-se pela FAAP em 1993 em Programação Visual."
+    ],
+    "en": [
+      "Rukin lives and works in São Paulo. His creative process starts with discard — of objects and people.",
       "I work with what gets thrown away — objects and people alike.",
-      "Rukin is an independent visual artist from São Paulo. His work comments on consumption and on how society pushes the things, and the people, it no longer values out of sight.",
-      "He graduated in Graphic Design from FAAP in 1993. From design he takes formal rigor; from pop art, cubism, dadaism and constructivism, the urge to break it with deliberate errors. He works in spray paint and acrylic on walls, doors, fences and wooden assemblages.",
-      "From 2004 to 2018 he lived and worked in factories in Japan, exhibiting regularly at art fairs in Tokyo."
+      "In 2024, he presented the solo exhibition Multiplicidades at Passagem Literária da Consolação in São Paulo, which later expanded into a group show called Sociedade do Descarte scheduled for September 2025 through March 2026 at the same venue. His first solo exhibition, Voodoo é pra jacú, occurred in 2019.",
+      "The artist spent thirteen years in Japan (2004-2018), where drawing and painting continued alongside factory work, with participation in Tokyo art fairs.",
+      "He graduated from FAAP in 1993 in Visual Programming (Graphic Design)."
     ]
   }
 }

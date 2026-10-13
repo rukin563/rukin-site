@@ -1,0 +1,49 @@
+---
+import { t, formatBRL, type Lang } from '../i18n/ui';
+
+interface Props {
+  lang: Lang;
+  product: {
+    slug: string;
+    title: { pt: string; en: string };
+    description: { pt: string; en: string };
+    price: number;
+    image: string;
+    status: string;
+    paymentLink: string | null;
+    category: string;
+  };
+}
+
+const { lang, product } = Astro.props;
+const tr = t(lang);
+const statusLabel = product.status === 'available' ? 'Disponível' : 'Em breve';
+---
+
+<figure class="product" id={product.slug}>
+  <img src={product.image} alt={product.title[lang]} loading="lazy" decoding="async" />
+  <figcaption>
+    <span class="title">{product.title[lang]}</span>
+    <span class="description">{product.description[lang]}</span>
+    <span class="price">{formatBRL(product.price)}</span>
+    {product.status === 'available' && product.paymentLink && (
+      <a class="button" href={product.paymentLink} target="_blank" rel="noopener">
+        {lang === 'pt' ? 'Comprar' : 'Buy'}
+      </a>
+    )}
+    {product.status === 'coming_soon' && (
+      <span class="coming-soon">{lang === 'pt' ? 'Em breve' : 'Coming soon'}</span>
+    )}
+  </figcaption>
+</figure>
+
+<style>
+  .product { margin: 0 0 2.5rem; break-inside: avoid; }
+  img { width: 100%; box-shadow: 0 1px 0 var(--line); aspect-ratio: 4 / 3; object-fit: cover; background: var(--paper); }
+  figcaption { display: grid; gap: 0.35rem; padding-top: 0.75rem; }
+  .title { font-weight: 600; font-size: 1.05rem; }
+  .description { color: var(--muted); font-size: 0.9rem; line-height: 1.4; }
+  .price { font-weight: 700; color: var(--cobalt); font-size: 1.1rem; margin-top: 0.25rem; }
+  .button { justify-self: start; margin-top: 0.5rem; }
+  .coming-soon { color: var(--muted); font-size: 0.875rem; font-style: italic; margin-top: 0.5rem; }
+</style>
