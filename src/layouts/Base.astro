@@ -6,16 +6,22 @@ interface Props {
   lang: Lang;
   page: PageKey;
   title?: string;
+  // Only for pages that aren't in the routes map (like each shop item): their URL in both languages.
+  paths?: Record<Lang, string>;
+  description?: string;
+  image?: string; // preview picture when the link is shared on WhatsApp, Instagram, etc.
 }
 
-const { lang, page, title } = Astro.props;
+const { lang, page, title, paths = routes[page], description, image } = Astro.props;
 const tr = t(lang);
 const other: Lang = lang === 'pt' ? 'en' : 'pt';
 const pageTitle = title ? `${title} — ${site.artistName}` : site.artistName;
-const canonical = new URL(routes[page][lang], Astro.site);
-const alternate = new URL(routes[page][other], Astro.site);
-const nav: PageKey[] = ['gallery', 'shop', 'about', 'bio', 'contact'];
+const metaDescription = description ?? tr('site.description');
+const canonical = new URL(paths[lang], Astro.site);
+const alternate = new URL(paths[other], Astro.site);
+const nav: PageKey[] = ['home', 'gallery', 'about', 'bio', 'shop', 'contact'];
 const year = new Date().getFullYear();
+const banner = page === 'home' ? site.bannerImage : null;
 ---
 
 <!doctype html>
@@ -24,14 +30,15 @@ const year = new Date().getFullYear();
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{pageTitle}</title>
-    <meta name="description" content={tr('site.description')} />
+    <meta name="description" content={metaDescription} />
     <link rel="canonical" href={canonical} />
     <!-- Tells Google both language versions exist, so each one gets indexed. -->
     <link rel="alternate" hreflang={lang === 'pt' ? 'pt-BR' : 'en'} href={canonical} />
     <link rel="alternate" hreflang={other === 'pt' ? 'pt-BR' : 'en'} href={alternate} />
-    <link rel="alternate" hreflang="x-default" href={new URL(routes[page].pt, Astro.site)} />
+    <link rel="alternate" hreflang="x-default" href={new URL(paths.pt, Astro.site)} />
     <meta property="og:title" content={pageTitle} />
-    <meta property="og:description" content={tr('site.description')} />
+    <meta property="og:description" content={metaDescription} />
+    {image && <meta property="og:image" content={new URL(image, Astro.site)} />}
     <meta property="og:locale" content={lang === 'pt' ? 'pt_BR' : 'en_US'} />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -43,7 +50,12 @@ const year = new Date().getFullYear();
   </head>
   <body>
     <div id="app" data-page={page}>
-      <header class="masthead">
+      <!-- The banner photo is set in site.json ("bannerImage") and shows on the cover only.
+           Set it to null to go back to plain grey. -->
+      <header
+        class:list={['masthead', { 'has-banner': banner }]}
+        style={banner ? `--banner: url('${banner}')` : undefined}
+      >
         <a class="name" href={routes.home[lang]}>{site.artistName}</a>
         <nav aria-label="Principal">
           {
@@ -58,7 +70,7 @@ const year = new Date().getFullYear();
              The script below turns it into an instant swap without a page reload. -->
         <a
           class="lang"
-          href={routes[page][other]}
+          href={paths[other]}
           hreflang={other}
           data-lang-toggle
           aria-label={tr('lang.switch')}
@@ -157,6 +169,7 @@ const year = new Date().getFullYear();
 
   *, *::before, *::after { box-sizing: border-box; }
   html { -webkit-text-size-adjust: 100%; }
+  @media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
   body {
     margin: 0;
     background: var(--wall);
@@ -218,6 +231,18 @@ const year = new Date().getFullYear();
   }
   .lang span { padding: 0.3rem 0.7rem; border-radius: 999px; color: var(--ink); }
   .lang span.on { background: var(--ink); color: var(--wall); }
+
+  /* Banner: a photo behind the name and menu. The dark layer on top keeps the white text
+     readable whatever the photo looks like; raise 0.45 if a bright photo makes it hard to read. */
+  .masthead.has-banner {
+    --ink: #fff;
+    --wall: #17191c;
+    background: linear-gradient(rgb(0 0 0 / 0.45), rgb(0 0 0 / 0.45)), var(--banner) center / cover no-repeat, #3a3d40;
+    border-bottom: 0;
+    padding-top: clamp(4rem, 12vw, 9rem);
+  }
+  .masthead.has-banner nav a:hover,
+  .masthead.has-banner nav a[aria-current='page'] { color: #fff; text-decoration: underline; text-decoration-thickness: 2px; }
 
   main { flex: 1; padding: clamp(2rem, 5vw, 4rem) var(--gutter); }
 

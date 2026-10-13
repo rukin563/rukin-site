@@ -26,8 +26,8 @@ export const ui = {
     'nav.contact': 'Contato',
     'lang.switch': 'Ver em inglês',
 
+    'home.statement': 'Trabalho com o que se joga fora — objetos e pessoas.',
     'home.intro': 'Artista visual vivendo e trabalhando em São Paulo.',
-    'home.recent': 'Obras recentes',
     'home.seeAll': 'Ver todas as obras',
 
     'gallery.title': 'Obras',
@@ -47,6 +47,11 @@ export const ui = {
     'shop.printsLink': 'Ver todos os prints na Colab55',
     'shop.empty': 'Nenhum original disponível agora. Assine a newsletter para saber quando sair a próxima peça.',
     'shop.policy': 'Trocas e devoluções',
+    'shop.back': '← Voltar à loja',
+    'shop.specs': 'Ficha técnica',
+    'shop.buy': 'Comprar',
+    'shop.comingSoon': 'Em breve',
+    'shop.photo': 'Foto',
 
     'about.title': 'Sobre',
 
@@ -76,8 +81,8 @@ export const ui = {
     'nav.contact': 'Contact',
     'lang.switch': 'Ver em português',
 
+    'home.statement': 'I work with what gets thrown away — objects and people alike.',
     'home.intro': 'Visual artist living and working in São Paulo.',
-    'home.recent': 'Recent works',
     'home.seeAll': 'See all works',
 
     'gallery.title': 'Works',
@@ -97,6 +102,11 @@ export const ui = {
     'shop.printsLink': 'See all prints on Colab55',
     'shop.empty': 'No originals available right now. Join the newsletter to hear when the next piece is out.',
     'shop.policy': 'Returns and exchanges',
+    'shop.back': '← Back to shop',
+    'shop.specs': 'Details',
+    'shop.buy': 'Buy',
+    'shop.comingSoon': 'Coming soon',
+    'shop.photo': 'Photo',
 
     'about.title': 'About',
 

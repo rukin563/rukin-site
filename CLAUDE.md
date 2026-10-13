@@ -13,8 +13,8 @@ Rebuild of rukin563.com (artist portfolio, currently on Google Sites) as an Astr
 ## Still to do
 1. Replace placeholders (search for `SEU_`) with real links and IDs.
 2. Add real artworks, photos and bio (PT and EN).
-3. Fill `public/_redirects` with the old Google Sites paths.
-4. Push to GitHub, connect Cloudflare Pages, then move the domain.
+3. ~~Fill `public/_redirects`~~ Done: only `/capa` needed one. When moving the domain, also redirect `www.rukin563.com/*` to `rukin563.com/*` in Cloudflare (Google indexed the www version).
+4. ~~Push to GitHub~~ Done (github.com/rukin563/rukin-site). Next: connect Cloudflare Pages, then move the domain.
 5. Later: marketing plan (email list first, Instagram/TikTok process content, Pinterest, São Paulo art fairs), digital products, legal pages (privacy policy under LGPD, returns policy), and an accountant consultation about MEI and invoices.
 
 ## How the user wants advice

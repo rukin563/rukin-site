@@ -1,0 +1,22 @@
+---
+// One page per shop item, built from artworks.json and products.json.
+import Base from '../../../layouts/Base.astro';
+import ShopItem from '../../../components/ShopItem.astro';
+import { shopItems, itemPaths } from '../../../data/shop';
+
+export function getStaticPaths() {
+  return shopItems.map((item) => ({ params: { slug: item.slug }, props: { item } }));
+}
+
+const { item } = Astro.props;
+---
+<Base
+  lang="en"
+  page="shop"
+  title={item.title.en}
+  paths={itemPaths(item.slug)}
+  description={item.description.en}
+  image={item.photos[0]}
+>
+  <ShopItem lang="en" item={item} />
+</Base>

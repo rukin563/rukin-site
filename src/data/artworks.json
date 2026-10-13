@@ -1,11 +1,27 @@
 [
   {
     "slug": "descarte-01",
-    "title": { "pt": "Descarte 01", "en": "Discard 01" },
+    "featured": true,
+    "title": {
+      "pt": "Descarte 01",
+      "en": "Discard 01"
+    },
+    "description": {
+      "pt": "SEU_TEXTO: sobre a obra, de onde veio o material, o que ela comenta.",
+      "en": "SEU_TEXTO: about the work, where the material came from, what it comments on."
+    },
     "year": 2026,
-    "medium": { "pt": "Acrílica e spray sobre tela", "en": "Acrylic and spray paint on canvas" },
+    "medium": {
+      "pt": "Acrílica e spray sobre tela",
+      "en": "Acrylic and spray paint on canvas"
+    },
     "size": "80 × 60 cm",
     "image": "/images/placeholder-1.svg",
+    "photos": [
+      "/images/placeholder-2.svg",
+      "/images/placeholder-3.svg",
+      "/images/placeholder-4.svg"
+    ],
     "status": "available",
     "price": 2400,
     "paymentLink": "https://mpago.la/SEU_LINK",
@@ -13,11 +29,27 @@
   },
   {
     "slug": "descarte-02",
-    "title": { "pt": "Descarte 02", "en": "Discard 02" },
+    "featured": true,
+    "title": {
+      "pt": "Descarte 02",
+      "en": "Discard 02"
+    },
+    "description": {
+      "pt": "SEU_TEXTO: sobre a obra, de onde veio o material, o que ela comenta.",
+      "en": "SEU_TEXTO: about the work, where the material came from, what it comments on."
+    },
     "year": 2026,
-    "medium": { "pt": "Spray e acrílica sobre madeira", "en": "Spray and acrylic on wood" },
+    "medium": {
+      "pt": "Spray e acrílica sobre madeira",
+      "en": "Spray and acrylic on wood"
+    },
     "size": "100 × 80 cm",
     "image": "/images/placeholder-2.svg",
+    "photos": [
+      "/images/placeholder-3.svg",
+      "/images/placeholder-4.svg",
+      "/images/placeholder-1.svg"
+    ],
     "status": "available",
     "price": 3200,
     "paymentLink": "https://mpago.la/SEU_LINK",
@@ -25,11 +57,27 @@
   },
   {
     "slug": "assemblage-01",
-    "title": { "pt": "Assemblage 01", "en": "Assemblage 01" },
+    "featured": true,
+    "title": {
+      "pt": "Assemblage 01",
+      "en": "Assemblage 01"
+    },
+    "description": {
+      "pt": "SEU_TEXTO: sobre a obra, de onde veio o material, o que ela comenta.",
+      "en": "SEU_TEXTO: about the work, where the material came from, what it comments on."
+    },
     "year": 2025,
-    "medium": { "pt": "Técnica mista sobre madeira", "en": "Mixed media on wood" },
+    "medium": {
+      "pt": "Técnica mista sobre madeira",
+      "en": "Mixed media on wood"
+    },
     "size": "90 × 70 cm",
     "image": "/images/placeholder-3.svg",
+    "photos": [
+      "/images/placeholder-4.svg",
+      "/images/placeholder-1.svg",
+      "/images/placeholder-2.svg"
+    ],
     "status": "available",
     "price": 2800,
     "paymentLink": "https://mpago.la/SEU_LINK",
@@ -37,11 +85,27 @@
   },
   {
     "slug": "erro-material-01",
-    "title": { "pt": "Erro como Material 01", "en": "Error as Material 01" },
+    "featured": true,
+    "title": {
+      "pt": "Erro como Material 01",
+      "en": "Error as Material 01"
+    },
+    "description": {
+      "pt": "SEU_TEXTO: sobre a obra, de onde veio o material, o que ela comenta.",
+      "en": "SEU_TEXTO: about the work, where the material came from, what it comments on."
+    },
     "year": 2025,
-    "medium": { "pt": "Acrílica sobre tela", "en": "Acrylic on canvas" },
+    "medium": {
+      "pt": "Acrílica sobre tela",
+      "en": "Acrylic on canvas"
+    },
     "size": "70 × 50 cm",
     "image": "/images/placeholder-4.svg",
+    "photos": [
+      "/images/placeholder-1.svg",
+      "/images/placeholder-2.svg",
+      "/images/placeholder-3.svg"
+    ],
     "status": "available",
     "price": 1800,
     "paymentLink": "https://mpago.la/SEU_LINK",
@@ -49,11 +113,26 @@
   },
   {
     "slug": "margem-01",
-    "title": { "pt": "À Margem 01", "en": "At the Margin 01" },
+    "title": {
+      "pt": "À Margem 01",
+      "en": "At the Margin 01"
+    },
+    "description": {
+      "pt": "SEU_TEXTO: sobre a obra, de onde veio o material, o que ela comenta.",
+      "en": "SEU_TEXTO: about the work, where the material came from, what it comments on."
+    },
     "year": 2025,
-    "medium": { "pt": "Spray sobre compensado", "en": "Spray paint on plywood" },
+    "medium": {
+      "pt": "Spray sobre compensado",
+      "en": "Spray paint on plywood"
+    },
     "size": "120 × 90 cm",
     "image": "/images/placeholder-1.svg",
+    "photos": [
+      "/images/placeholder-2.svg",
+      "/images/placeholder-3.svg",
+      "/images/placeholder-4.svg"
+    ],
     "status": "available",
     "price": 4200,
     "paymentLink": "https://mpago.la/SEU_LINK",
@@ -61,11 +140,26 @@
   },
   {
     "slug": "consumo-01",
-    "title": { "pt": "Consumo 01", "en": "Consumption 01" },
+    "title": {
+      "pt": "Consumo 01",
+      "en": "Consumption 01"
+    },
+    "description": {
+      "pt": "SEU_TEXTO: sobre a obra, de onde veio o material, o que ela comenta.",
+      "en": "SEU_TEXTO: about the work, where the material came from, what it comments on."
+    },
     "year": 2024,
-    "medium": { "pt": "Acrílica e spray sobre tela", "en": "Acrylic and spray on canvas" },
+    "medium": {
+      "pt": "Acrílica e spray sobre tela",
+      "en": "Acrylic and spray on canvas"
+    },
     "size": "60 × 60 cm",
     "image": "/images/placeholder-2.svg",
+    "photos": [
+      "/images/placeholder-3.svg",
+      "/images/placeholder-4.svg",
+      "/images/placeholder-1.svg"
+    ],
     "status": "available",
     "price": 2000,
     "paymentLink": "https://mpago.la/SEU_LINK",
@@ -73,11 +167,26 @@
   },
   {
     "slug": "desvio-01",
-    "title": { "pt": "Desvio 01", "en": "Deviation 01" },
+    "title": {
+      "pt": "Desvio 01",
+      "en": "Deviation 01"
+    },
+    "description": {
+      "pt": "SEU_TEXTO: sobre a obra, de onde veio o material, o que ela comenta.",
+      "en": "SEU_TEXTO: about the work, where the material came from, what it comments on."
+    },
     "year": 2024,
-    "medium": { "pt": "Técnica mista sobre madeira", "en": "Mixed media on wood" },
+    "medium": {
+      "pt": "Técnica mista sobre madeira",
+      "en": "Mixed media on wood"
+    },
     "size": "85 × 65 cm",
     "image": "/images/placeholder-3.svg",
+    "photos": [
+      "/images/placeholder-4.svg",
+      "/images/placeholder-1.svg",
+      "/images/placeholder-2.svg"
+    ],
     "status": "available",
     "price": 2600,
     "paymentLink": "https://mpago.la/SEU_LINK",
@@ -85,11 +194,26 @@
   },
   {
     "slug": "multiplicidades-01",
-    "title": { "pt": "Multiplicidades 01", "en": "Multiplicities 01" },
+    "title": {
+      "pt": "Multiplicidades 01",
+      "en": "Multiplicities 01"
+    },
+    "description": {
+      "pt": "SEU_TEXTO: sobre a obra, de onde veio o material, o que ela comenta.",
+      "en": "SEU_TEXTO: about the work, where the material came from, what it comments on."
+    },
     "year": 2024,
-    "medium": { "pt": "Acrílica sobre tela", "en": "Acrylic on canvas" },
+    "medium": {
+      "pt": "Acrílica sobre tela",
+      "en": "Acrylic on canvas"
+    },
     "size": "100 × 100 cm",
     "image": "/images/placeholder-4.svg",
+    "photos": [
+      "/images/placeholder-1.svg",
+      "/images/placeholder-2.svg",
+      "/images/placeholder-3.svg"
+    ],
     "status": "available",
     "price": 4800,
     "paymentLink": "https://mpago.la/SEU_LINK",

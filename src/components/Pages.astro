@@ -7,6 +7,7 @@ import { t, routes, type Lang, type PageKey } from '../i18n/ui';
 import artworks from '../data/artworks.json';
 import products from '../data/products.json';
 import site from '../data/site.json';
+import { itemPaths, hasItemPage } from '../data/shop';
 
 interface Props { lang: Lang; page: PageKey }
 const { lang, page } = Astro.props;
@@ -14,16 +15,25 @@ const tr = t(lang);
 const sorted = [...artworks].sort((a, b) => b.year - a.year);
 const forSale = sorted.filter((a) => a.status === 'available' && a.paymentLink);
 const withPrints = sorted.filter((a) => a.printLink);
+// Section ids for the "Originais / Produtos" jump links at the top of the shop.
+const anchors = lang === 'pt' ? { originals: 'originais', products: 'produtos' } : { originals: 'originals', products: 'products' };
+// The cover shows the works marked "featured": true in artworks.json, in file order:
+// the first two on the left, the next two on the right.
+const featured = artworks.filter((a) => a.featured).slice(0, 4);
 ---
 
 {page === 'home' && (
-  <section>
-    <p class="lede">{tr('home.intro')}</p>
-    <h2>{tr('home.recent')}</h2>
-    <div class="grid">
-      {sorted.slice(0, 6).map((art) => <ArtworkCard lang={lang} art={art} />)}
+  <section class="cover">
+    {featured.map((art, i) => (
+      <a class={`feature f${i + 1}`} href={`${routes.gallery[lang]}#${art.slug}`}>
+        <img src={art.image} alt={`${art.title[lang]}, ${art.year}`} decoding="async" />
+      </a>
+    ))}
+    <div class="statement">
+      <h1>{tr('home.statement')}</h1>
+      <p class="lede">{tr('home.intro')}</p>
+      <a class="button quiet" href={routes.gallery[lang]}>{tr('home.seeAll')}</a>
     </div>
-    <a class="button quiet" href={routes.gallery[lang]}>{tr('home.seeAll')}</a>
   </section>
 )}
 
@@ -32,7 +42,9 @@ const withPrints = sorted.filter((a) => a.printLink);
     <h1>{tr('gallery.title')}</h1>
     <p class="lede">{tr('gallery.intro')}</p>
     <div class="grid">
-      {sorted.map((art) => <ArtworkCard lang={lang} art={art} showBuy />)}
+      {sorted.map((art) => (
+        <ArtworkCard lang={lang} art={art} href={hasItemPage(art.slug) ? itemPaths(art.slug)[lang] : undefined} />
+      ))}
     </div>
   </section>
 )}
@@ -40,19 +52,27 @@ const withPrints = sorted.filter((a) => a.printLink);
 {page === 'shop' && (
   <section>
     <h1>{tr('shop.title')}</h1>
+    <nav class="jump" aria-label={tr('shop.title')}>
+      <a class="button quiet" href={`#${anchors.originals}`}>{tr('shop.originals')}</a>
+      <a class="button quiet" href={`#${anchors.products}`}>{tr('shop.prints')}</a>
+    </nav>
 
-    <h2>{tr('shop.originals')}</h2>
+    <h2 id={anchors.originals}>{tr('shop.originals')}</h2>
     <p class="lede">{tr('shop.originalsIntro')}</p>
     {forSale.length ? (
-      <div class="grid">{forSale.map((art) => <ArtworkCard lang={lang} art={art} showBuy />)}</div>
+      <div class="grid">
+        {forSale.map((art) => <ArtworkCard lang={lang} art={art} href={itemPaths(art.slug)[lang]} />)}
+      </div>
     ) : (
       <p>{tr('shop.empty')}</p>
     )}
 
-    <h2>{tr('shop.prints')}</h2>
+    <h2 id={anchors.products}>{tr('shop.prints')}</h2>
     <p class="lede">{tr('shop.printsIntro')}</p>
     <div class="grid">
-      {products.map((product) => <ProductCard lang={lang} product={product} />)}
+      {products.map((product) => (
+        <ProductCard lang={lang} product={product} href={itemPaths(product.slug)[lang]} />
+      ))}
     </div>
   </section>
 )}
@@ -93,4 +113,31 @@ const withPrints = sorted.filter((a) => a.printLink);
   .contact { display: grid; gap: 1rem; }
   .contact label { display: grid; gap: 0.35rem; font-weight: 500; }
   .contact button { justify-self: start; }
+  .jump { display: flex; flex-wrap: wrap; gap: 0.75rem; margin: 0.5rem 0 1rem; }
+  h2[id] { scroll-margin-top: 1.5rem; }
+
+  /* Cover: two works side by side, the statement across the full width, two more works. */
+  .cover {
+    display: grid;
+    gap: clamp(1.5rem, 3vw, 3rem);
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: 'f1 f2' 'text text' 'f3 f4';
+    align-items: center;
+  }
+  .f1 { grid-area: f1; } .f2 { grid-area: f2; } .f3 { grid-area: f3; } .f4 { grid-area: f4; }
+  .statement { grid-area: text; padding: 1rem 0; }
+  .statement h1 {
+    font-size: clamp(2.25rem, 4.6vw, 4.25rem);
+    font-weight: 800;
+    font-variation-settings: 'wdth' 75;
+    font-stretch: 75%;
+    line-height: 0.95;
+    letter-spacing: -0.01em;
+    margin-bottom: 1.25rem;
+  }
+  .statement .lede { margin-bottom: 1.5rem; }
+  .feature { display: block; }
+  /* All four cropped to the same shape. Change 1 / 1 to 4 / 3 for landscape or 4 / 5 for portrait. */
+  .feature img { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; box-shadow: 0 1px 0 var(--line); transition: filter 0.15s; }
+  .feature:hover img { filter: brightness(1.08); }
 </style>

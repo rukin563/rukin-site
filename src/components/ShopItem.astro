@@ -1,0 +1,120 @@
+---
+// One shop item: big photo with thumbnails on its left, and below it
+// title, description, technical details, price and the buy button.
+import { t, formatBRL, routes, type Lang } from '../i18n/ui';
+import type { ShopItem } from '../data/shop';
+
+interface Props { lang: Lang; item: ShopItem }
+const { lang, item } = Astro.props;
+const tr = t(lang);
+const title = item.title[lang];
+const specs = item.specs[lang];
+const canBuy = item.status === 'available' && item.buyLink;
+const statusLabel =
+  item.status === 'sold' ? tr('art.sold') : item.status === 'coming_soon' ? tr('shop.comingSoon') : null;
+---
+
+<article class="item">
+  <a class="back" href={routes.shop[lang]}>{tr('shop.back')}</a>
+
+  <div class="gallery">
+    <img class="main" src={item.photos[0]} alt={title} decoding="async" data-main />
+    {item.photos.length > 1 && (
+      <div class="thumbs">
+        {item.photos.slice(0, 4).map((src, i) => (
+          <button
+            type="button"
+            data-thumb={src}
+            aria-label={`${tr('shop.photo')} ${i + 1}`}
+            aria-pressed={i === 0 ? 'true' : 'false'}
+          >
+            <img src={src} alt="" loading="lazy" />
+          </button>
+        ))}
+      </div>
+    )}
+  </div>
+
+  <div class="info">
+    <h1>{title}</h1>
+    <p class="description">{item.description[lang]}</p>
+    {specs.length > 0 && (
+      <>
+        <h2>{tr('shop.specs')}</h2>
+        <ul class="specs">{specs.map((line) => <li>{line}</li>)}</ul>
+      </>
+    )}
+    {item.price !== null && <p class="price">{formatBRL(item.price)}</p>}
+    {canBuy && (
+      <a class="button buy" href={item.buyLink} target="_blank" rel="noopener">
+        {item.kind === 'original' ? tr('art.buy') : tr('shop.buy')}
+      </a>
+    )}
+    {statusLabel && <p class:list={['status', item.status]}>{statusLabel}</p>}
+  </div>
+</article>
+
+<script>
+  // Clicking a thumbnail shows that photo in the big frame.
+  // Listens on the whole document so it keeps working after the PT/EN switch swaps the page.
+  document.addEventListener('click', (e) => {
+    const thumb = (e.target as Element).closest<HTMLButtonElement>('[data-thumb]');
+    if (!thumb) return;
+    const main = document.querySelector<HTMLImageElement>('[data-main]');
+    if (!main) return;
+    main.src = thumb.dataset.thumb!;
+    thumb.parentElement!.querySelectorAll('[data-thumb]').forEach((b) => b.setAttribute('aria-pressed', 'false'));
+    thumb.setAttribute('aria-pressed', 'true');
+  });
+</script>
+
+<style>
+  .item { max-width: 52rem; }
+  .back { display: inline-block; margin-bottom: 1.5rem; font-weight: 500; text-decoration: none; }
+  .back:hover { text-decoration: underline; }
+
+  /* Thumbnails in a column on the left of the photo; on phones they move below it. */
+  .gallery {
+    display: grid;
+    grid-template-columns: 5.5rem 1fr;
+    grid-template-areas: 'thumbs main';
+    gap: 1rem;
+    align-items: start;
+  }
+  .main {
+    grid-area: main;
+    width: 100%;
+    max-height: 80vh;
+    object-fit: contain;
+    background: var(--paper);
+    box-shadow: 0 1px 0 var(--line);
+  }
+  .thumbs { grid-area: thumbs; display: grid; gap: 0.75rem; }
+  .thumbs button {
+    padding: 0;
+    border: 2px solid transparent;
+    border-radius: 0;
+    background: none;
+    opacity: 0.65;
+    transition: opacity 0.15s;
+  }
+  .thumbs button:hover { opacity: 1; filter: none; }
+  .thumbs button[aria-pressed='true'] { opacity: 1; border-color: var(--cobalt); }
+  .thumbs img { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; }
+  @media (max-width: 40rem) {
+    .gallery { grid-template-columns: 1fr; grid-template-areas: 'main' 'thumbs'; }
+    .thumbs { grid-template-columns: repeat(4, 1fr); }
+  }
+
+  /* Text lines up under the photo, not under the thumbnails. */
+  .info { margin: 2rem 0 0 6.5rem; max-width: 36rem; }
+  @media (max-width: 40rem) { .info { margin-left: 0; } }
+  .description { margin: 0 0 1.75rem; }
+  h2 { font-size: 0.875rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); margin: 0 0 0.5rem; }
+  .specs { list-style: none; padding: 0; margin: 0 0 1.75rem; }
+  .specs li { padding: 0.4rem 0; border-bottom: 1px solid var(--line); }
+  .price { font-size: 1.6rem; font-weight: 700; margin: 0 0 1rem; }
+  .buy { font-size: 1.05rem; padding: 0.8rem 1.6rem; }
+  .status { font-weight: 600; color: var(--muted); }
+  .status.sold { color: var(--sold); }
+</style>

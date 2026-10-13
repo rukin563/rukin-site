@@ -1,5 +1,5 @@
 # Cloudflare Pages redirects: old Google Sites address -> new page.
-# Confirmed from Google's index:
-/en/bio    /en/about  301
-# Add the rest of the old paths (Portuguese pages, gallery, etc.) before launch.
+# Checked against the live Google Sites menu (Oct 2026). Every other old page
+# (/obras, /sobre, /bio, /en, /en/works, /en/about, /en/bio) has the same address here.
+/capa    /    301
 # Format: /old-path  /new-path  301
