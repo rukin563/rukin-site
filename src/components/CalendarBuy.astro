@@ -1,0 +1,64 @@
+---
+// The calendar's buy options, one row per option in calendar.json, then the
+// "4 or more, get in touch" line. Each row jumps to the order form (CalendarOrder)
+// with that quantity selected; payment happens after the form.
+import { t, formatBRL, routes, type Lang } from '../i18n/ui';
+import calendar from '../data/calendar.json';
+
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const tr = t(lang);
+---
+
+<div class="buybox">
+  <p class="choose">{tr('cal.choose')}</p>
+  <ul>
+    {calendar.options.map((opt, i) => {
+      const saving = opt.qty * calendar.unitPrice - opt.price;
+      return (
+        <li>
+          <a class:list={['option', { first: i === 0 }]} href="#pedido" data-pick={opt.qty}>
+            <span class="label">
+              {opt.qty === 1 ? tr('cal.buyOne') : tr('cal.kit').replace('{n}', String(opt.qty))}
+              {opt.qty > 1 && (
+                <small>
+                  {formatBRL(opt.price / opt.qty)} {tr('cal.each')}
+                  {saving > 0 && <> · {tr('cal.save')} {formatBRL(saving)}</>}
+                </small>
+              )}
+            </span>
+            <span class="price">{formatBRL(opt.price)}</span>
+          </a>
+        </li>
+      );
+    })}
+  </ul>
+  <p class="note">{tr('cal.shipping')}</p>
+  <p class="note">{tr('cal.bulk')} <a href={routes.contact[lang]}>{tr('cal.bulkLink')}</a></p>
+</div>
+
+<style>
+  .buybox { max-width: 30rem; }
+  .choose { font-size: 0.875rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); margin: 0 0 0.5rem; }
+  ul { list-style: none; padding: 0; margin: 0 0 1rem; display: grid; gap: 0.6rem; }
+  .option {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.9rem 1.1rem;
+    border: 1.5px solid var(--cobalt);
+    border-radius: 6px;
+    color: var(--cobalt);
+    text-decoration: none;
+    font-weight: 600;
+  }
+  .option:hover { background: var(--paper); }
+  .option.first { background: var(--cobalt); color: #fff; }
+  .option.first:hover { filter: brightness(1.1); }
+  @media (prefers-color-scheme: dark) { .option.first { color: #10132e; } }
+  .label { display: grid; gap: 0.1rem; }
+  small { font-weight: 400; font-size: 0.85rem; color: var(--muted); }
+  .price { font-size: 1.15rem; white-space: nowrap; }
+  .note { margin: 0.25rem 0; font-size: 0.95rem; color: var(--muted); }
+</style>

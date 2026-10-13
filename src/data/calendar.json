@@ -1,0 +1,42 @@
+{
+  "slug": "calendario-2027",
+  "paths": { "pt": "/calendario-2027", "en": "/en/calendar-2027" },
+  "unitPrice": 65,
+  "orderFormAction": "https://formspree.io/f/mdeawppz",
+  "photos": [
+    "/images/placeholder-1.svg",
+    "/images/placeholder-2.svg",
+    "/images/placeholder-3.svg",
+    "/images/placeholder-4.svg"
+  ],
+  "options": [
+    { "qty": 1, "price": 65, "link": "https://mpago.la/SEU_LINK_CALENDARIO_1" },
+    { "qty": 3, "price": 175.5, "link": "https://mpago.la/SEU_LINK_CALENDARIO_3" }
+  ],
+  "pt": {
+    "title": "Calendário 2027",
+    "subtitle": "O Ano da Cabra",
+    "pitch": "Um ano inteiro em uma folha só, com uma obra original de Rukin. Impresso em pequena tiragem.",
+    "specs": ["Formato: SEU_FORMATO", "Papel: SEU_PAPEL", "Envio a partir de SEU_DATA"],
+    "goatTitle": "2027, o Ano da Cabra",
+    "goat": [
+      "No zodíaco chinês, 2027 é o Ano da Cabra de Fogo. Ele começa em 6 de fevereiro de 2027, com o Ano Novo Lunar.",
+      "A Cabra é o signo da calma, da gentileza e da criatividade: prefere construir com as mãos a disputar espaço. O fogo traz energia e coragem, uma cabra que não fica parada.",
+      "No Japão, onde vivi de 2004 a 2018, o mesmo signo é a ovelha, hitsuji. Lá é tradição começar o ano com cartões e calendários do animal do ano.",
+      "SEU_TEXTO: por que a cabra neste calendário, e como ela se liga ao seu trabalho com o descarte."
+    ]
+  },
+  "en": {
+    "title": "2027 Calendar",
+    "subtitle": "The Year of the Goat",
+    "pitch": "A whole year on a single sheet, with an original work by Rukin. Printed in a small run.",
+    "specs": ["Size: SEU_FORMATO", "Paper: SEU_PAPEL", "Ships from SEU_DATA"],
+    "goatTitle": "2027, the Year of the Goat",
+    "goat": [
+      "In the Chinese zodiac, 2027 is the Year of the Fire Goat. It begins on 6 February 2027, with the Lunar New Year.",
+      "The Goat is the sign of calm, kindness and creativity: it would rather build with its hands than fight for space. Fire adds energy and courage, a goat that doesn't stand still.",
+      "In Japan, where I lived from 2004 to 2018, the same sign is the sheep, hitsuji. There, the year traditionally starts with cards and calendars of the year's animal.",
+      "SEU_TEXTO: why the goat for this calendar, and how it connects to your work with discard."
+    ]
+  }
+}

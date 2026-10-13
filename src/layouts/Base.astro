@@ -10,9 +10,10 @@ interface Props {
   paths?: Record<Lang, string>;
   description?: string;
   image?: string; // preview picture when the link is shared on WhatsApp, Instagram, etc.
+  minimal?: boolean; // landing pages: no menu, small name, so nothing distracts from the offer
 }
 
-const { lang, page, title, paths = routes[page], description, image } = Astro.props;
+const { lang, page, title, paths = routes[page], description, image, minimal = false } = Astro.props;
 const tr = t(lang);
 const other: Lang = lang === 'pt' ? 'en' : 'pt';
 const pageTitle = title ? `${title} — ${site.artistName}` : site.artistName;
@@ -53,19 +54,19 @@ const banner = page === 'home' ? site.bannerImage : null;
       <!-- The banner photo is set in site.json ("bannerImage") and shows on the cover only.
            Set it to null to go back to plain grey. -->
       <header
-        class:list={['masthead', { 'has-banner': banner }]}
+        class:list={['masthead', { 'has-banner': banner, minimal }]}
         style={banner ? `--banner: url('${banner}')` : undefined}
       >
         <a class="name" href={routes.home[lang]}>{site.artistName}</a>
-        <nav aria-label="Principal">
-          {
-            nav.map((key) => (
+        {!minimal && (
+          <nav aria-label="Principal">
+            {nav.map((key) => (
               <a href={routes[key][lang]} aria-current={key === page ? 'page' : undefined}>
                 {tr(`nav.${key}`)}
               </a>
-            ))
-          }
-        </nav>
+            ))}
+          </nav>
+        )}
         <!-- A real link, so it works even with JavaScript off and Google can follow it.
              The script below turns it into an instant swap without a page reload. -->
         <a
@@ -234,6 +235,9 @@ const banner = page === 'home' ? site.bannerImage : null;
 
   /* Banner: a photo behind the name and menu. The dark layer on top keeps the white text
      readable whatever the photo looks like; raise 0.45 if a bright photo makes it hard to read. */
+  .masthead.minimal { grid-template-areas: 'name lang'; align-items: center; padding-bottom: var(--gutter); }
+  .masthead.minimal .name { font-size: clamp(2.25rem, 7vw, 3.5rem); }
+
   .masthead.has-banner {
     --ink: #fff;
     --wall: #17191c;

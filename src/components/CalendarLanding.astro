@@ -1,0 +1,50 @@
+---
+// Calendar landing page: one product, one goal. No site menu (see Base "minimal").
+// Content, prices and payment links all come from src/data/calendar.json.
+import { t, type Lang } from '../i18n/ui';
+import calendar from '../data/calendar.json';
+import ProductGallery from './ProductGallery.astro';
+import CalendarBuy from './CalendarBuy.astro';
+import CalendarOrder from './CalendarOrder.astro';
+
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const tr = t(lang);
+const text = calendar[lang];
+---
+
+<article class="landing">
+  <ProductGallery lang={lang} photos={calendar.photos} alt={text.title} />
+
+  <div class="info">
+    <p class="kicker">{text.subtitle}</p>
+    <h1>{text.title}</h1>
+    <p class="pitch">{text.pitch}</p>
+    <h2 class="small">{tr('shop.specs')}</h2>
+    <ul class="specs">{text.specs.map((line) => <li>{line}</li>)}</ul>
+    <CalendarBuy lang={lang} />
+  </div>
+
+  <section class="goat">
+    <h2>{text.goatTitle}</h2>
+    {text.goat.map((para) => <p>{para}</p>)}
+  </section>
+
+  <section class="again">
+    <CalendarOrder lang={lang} />
+  </section>
+</article>
+
+<style>
+  .landing { max-width: 52rem; }
+  /* Text lines up under the photo, not under the thumbnails (same as shop item pages). */
+  .info, .goat, .again { margin-left: 6.5rem; max-width: 36rem; }
+  @media (max-width: 40rem) { .info, .goat, .again { margin-left: 0; } }
+  .info { margin-top: 2rem; }
+  .kicker { margin: 0 0 0.25rem; color: var(--cobalt); font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; font-size: 0.875rem; }
+  .pitch { font-size: 1.15rem; margin: 0 0 1.75rem; }
+  .small { font-size: 0.875rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); margin: 0 0 0.5rem; }
+  .specs { list-style: none; padding: 0; margin: 0 0 2rem; }
+  .specs li { padding: 0.4rem 0; border-bottom: 1px solid var(--line); }
+  .goat, .again { margin-top: 4rem; padding-top: 2.5rem; border-top: 1px solid var(--line); }
+</style>

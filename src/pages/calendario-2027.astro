@@ -1,0 +1,17 @@
+---
+import Base from '../layouts/Base.astro';
+import CalendarLanding from '../components/CalendarLanding.astro';
+import calendar from '../data/calendar.json';
+const text = calendar.pt;
+---
+<Base
+  lang="pt"
+  page="shop"
+  minimal
+  title={`${text.title}: ${text.subtitle}`}
+  paths={calendar.paths}
+  description={text.pitch}
+  image={calendar.photos[0]}
+>
+  <CalendarLanding lang="pt" />
+</Base>

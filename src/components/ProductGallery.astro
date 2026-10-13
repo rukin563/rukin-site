@@ -1,0 +1,75 @@
+---
+// Big photo with up to 4 thumbnails on its left (below it on phones).
+// Used by the shop item pages and the calendar landing page.
+import { t, type Lang } from '../i18n/ui';
+
+interface Props { lang: Lang; photos: string[]; alt: string }
+const { lang, photos, alt } = Astro.props;
+const tr = t(lang);
+---
+
+<div class="gallery">
+  <img class="main" src={photos[0]} alt={alt} decoding="async" data-main />
+  {photos.length > 1 && (
+    <div class="thumbs">
+      {photos.slice(0, 4).map((src, i) => (
+        <button
+          type="button"
+          data-thumb={src}
+          aria-label={`${tr('shop.photo')} ${i + 1}`}
+          aria-pressed={i === 0 ? 'true' : 'false'}
+        >
+          <img src={src} alt="" loading="lazy" />
+        </button>
+      ))}
+    </div>
+  )}
+</div>
+
+<script>
+  // Clicking a thumbnail shows that photo in the big frame.
+  // Listens on the whole document so it keeps working after the PT/EN switch swaps the page.
+  document.addEventListener('click', (e) => {
+    const thumb = (e.target as Element).closest<HTMLButtonElement>('[data-thumb]');
+    if (!thumb) return;
+    const main = document.querySelector<HTMLImageElement>('[data-main]');
+    if (!main) return;
+    main.src = thumb.dataset.thumb!;
+    thumb.parentElement!.querySelectorAll('[data-thumb]').forEach((b) => b.setAttribute('aria-pressed', 'false'));
+    thumb.setAttribute('aria-pressed', 'true');
+  });
+</script>
+
+<style>
+  .gallery {
+    display: grid;
+    grid-template-columns: 5.5rem 1fr;
+    grid-template-areas: 'thumbs main';
+    gap: 1rem;
+    align-items: start;
+  }
+  .main {
+    grid-area: main;
+    width: 100%;
+    max-height: 80vh;
+    object-fit: contain;
+    background: var(--paper);
+    box-shadow: 0 1px 0 var(--line);
+  }
+  .thumbs { grid-area: thumbs; display: grid; gap: 0.75rem; }
+  .thumbs button {
+    padding: 0;
+    border: 2px solid transparent;
+    border-radius: 0;
+    background: none;
+    opacity: 0.65;
+    transition: opacity 0.15s;
+  }
+  .thumbs button:hover { opacity: 1; filter: none; }
+  .thumbs button[aria-pressed='true'] { opacity: 1; border-color: var(--cobalt); }
+  .thumbs img { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; }
+  @media (max-width: 40rem) {
+    .gallery { grid-template-columns: 1fr; grid-template-areas: 'main' 'thumbs'; }
+    .thumbs { grid-template-columns: repeat(4, 1fr); }
+  }
+</style>

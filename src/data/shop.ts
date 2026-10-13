@@ -3,6 +3,7 @@
 // To change an item, edit artworks.json or products.json, not this file.
 import artworks from './artworks.json';
 import products from './products.json';
+import calendar from './calendar.json';
 import { routes, type Lang } from '../i18n/ui';
 
 type Text = { pt: string; en: string };
@@ -39,17 +40,22 @@ const originals: ShopItem[] = artworks
     buyLink: a.paymentLink,
   }));
 
-const goods: ShopItem[] = products.map((p) => ({
-  kind: 'product',
-  slug: p.slug,
-  title: p.title,
-  description: p.description,
-  photos: [p.image, ...(p.photos ?? [])],
-  specs: p.specs ?? { pt: [], en: [] },
-  price: p.price,
-  status: p.status,
-  buyLink: p.paymentLink,
-}));
+// Products with their own landing page link there instead of getting a shop item page.
+const landingPages: Record<string, Record<Lang, string>> = { [calendar.slug]: calendar.paths };
+
+const goods: ShopItem[] = products
+  .filter((p) => !landingPages[p.slug])
+  .map((p) => ({
+    kind: 'product',
+    slug: p.slug,
+    title: p.title,
+    description: p.description,
+    photos: [p.image, ...(p.photos ?? [])],
+    specs: p.specs ?? { pt: [], en: [] },
+    price: p.price,
+    status: p.status,
+    buyLink: p.paymentLink,
+  }));
 
 export const shopItems = [...originals, ...goods];
 
@@ -61,9 +67,10 @@ for (const item of shopItems) {
 }
 
 export function hasItemPage(slug: string) {
-  return seen.has(slug);
+  return seen.has(slug) || slug in landingPages;
 }
 
 export function itemPaths(slug: string): Record<Lang, string> {
+  if (landingPages[slug]) return landingPages[slug];
   return { pt: `${routes.shop.pt}/${slug}`, en: `${routes.shop.en}/${slug}` };
 }
