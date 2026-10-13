@@ -19,3 +19,13 @@ Rebuild of rukin563.com (artist portfolio, currently on Google Sites) as an Astr
 
 ## How the user wants advice
 Direct and challenging, not agreeable. Lead with the uncomfortable truth, tag claims [Certain]/[Likely]/[Guessing], and hold positions unless given new information.
+
+## About the artist (from Google's index of the current site, to be confirmed by Rukin)
+- Independent visual artist, São Paulo. Instagram @rukin563.
+- Theme: discard. "I work with what gets thrown away — objects and people alike." Commentary on consumption and on what society pushes out of view.
+- Style: graphic design, pop art, cubism, dadaism, constructivism; formal rigor broken by deliberate errors. Spray paint and acrylic on walls, doors, fences; assemblages on wood.
+- Graphic Design, FAAP, 1993. Lived and worked in factories in Japan 2004–2018, exhibited at Tokyo art fairs.
+- Old site has English pages at /en/bio and /en/about (and is indexed by Google, so redirects matter).
+
+## Open design question
+The current clean concrete-grey/cobalt design was made before knowing the work. It is probably too polite for street materials, spray paint and constructivist/pop references. Revisit once real artwork photos are in: options are (a) keep the frame neutral so the work carries all the energy, or (b) give the frame a constructivist/poster voice (hard color blocks, stencil or condensed type, deliberate misalignment).

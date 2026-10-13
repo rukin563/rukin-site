@@ -1,6 +1,5 @@
 # Cloudflare Pages redirects: old Google Sites address -> new page.
-# Fill in the real old paths from rukin563.com before launch, one per line.
+# Confirmed from Google's index:
+/en/bio    /en/about  301
+# Add the rest of the old paths (Portuguese pages, gallery, etc.) before launch.
 # Format: /old-path  /new-path  301
-# /home        /          301
-# /portfolio   /galeria   301
-# /about       /sobre     301
