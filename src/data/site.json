@@ -1,0 +1,18 @@
+{
+  "artistName": "Rukin",
+  "email": "contato@rukin563.com",
+  "instagram": "https://instagram.com/SEU_USUARIO",
+  "colab55Store": "https://www.colab55.com/@SEU_USUARIO",
+  "contactFormAction": "https://formspree.io/f/SEU_ID_FORMSPREE",
+  "newsletterAction": "https://SEU_PROVEDOR_DE_NEWSLETTER/subscribe",
+  "about": {
+    "pt": [
+      "Escreva aqui sua biografia em português. Dois ou três parágrafos curtos: de onde você vem, com o que trabalha, o que te interessa.",
+      "Inclua exposições, prêmios ou coleções relevantes no fim."
+    ],
+    "en": [
+      "Write your biography in English here. Two or three short paragraphs: where you come from, what you work with, what interests you.",
+      "Add relevant exhibitions, awards or collections at the end."
+    ]
+  }
+}

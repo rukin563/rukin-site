@@ -1,0 +1,9 @@
+---
+import Base from '../layouts/Base.astro';
+import Pages from '../components/Pages.astro';
+import { t } from '../i18n/ui';
+const tr = t('pt');
+---
+<Base lang="pt" page="shop" title={tr('nav.shop')}>
+  <Pages lang="pt" page="shop" />
+</Base>

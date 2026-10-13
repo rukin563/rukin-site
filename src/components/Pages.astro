@@ -1,0 +1,87 @@
+---
+// One component renders every page, in either language.
+// The page files in src/pages/ only pick which page and language.
+import ArtworkCard from './ArtworkCard.astro';
+import { t, routes, type Lang, type PageKey } from '../i18n/ui';
+import artworks from '../data/artworks.json';
+import site from '../data/site.json';
+
+interface Props { lang: Lang; page: PageKey }
+const { lang, page } = Astro.props;
+const tr = t(lang);
+const sorted = [...artworks].sort((a, b) => b.year - a.year);
+const forSale = sorted.filter((a) => a.status === 'available' && a.paymentLink);
+const withPrints = sorted.filter((a) => a.printLink);
+---
+
+{page === 'home' && (
+  <section>
+    <p class="lede">{tr('home.intro')}</p>
+    <h2>{tr('home.recent')}</h2>
+    <div class="grid">
+      {sorted.slice(0, 6).map((art) => <ArtworkCard lang={lang} art={art} />)}
+    </div>
+    <a class="button quiet" href={routes.gallery[lang]}>{tr('home.seeAll')}</a>
+  </section>
+)}
+
+{page === 'gallery' && (
+  <section>
+    <h1>{tr('gallery.title')}</h1>
+    <p class="lede">{tr('gallery.intro')}</p>
+    <div class="grid">
+      {sorted.map((art) => <ArtworkCard lang={lang} art={art} showBuy />)}
+    </div>
+  </section>
+)}
+
+{page === 'shop' && (
+  <section>
+    <h1>{tr('shop.title')}</h1>
+    <h2>{tr('shop.originals')}</h2>
+    <p class="lede">{tr('shop.originalsIntro')}</p>
+    {forSale.length ? (
+      <div class="grid">{forSale.map((art) => <ArtworkCard lang={lang} art={art} showBuy />)}</div>
+    ) : (
+      <p>{tr('shop.empty')}</p>
+    )}
+
+    <h2>{tr('shop.prints')}</h2>
+    <p class="lede">{tr('shop.printsIntro')}</p>
+    <div class="grid">
+      {withPrints.map((art) => <ArtworkCard lang={lang} art={{ ...art, paymentLink: null, status: 'print' }} showBuy />)}
+    </div>
+    <a class="button quiet" href={site.colab55Store} target="_blank" rel="noopener">{tr('shop.printsLink')}</a>
+  </section>
+)}
+
+{page === 'about' && (
+  <section class="prose">
+    <h1>{tr('about.title')}</h1>
+    {site.about[lang].map((para) => <p>{para}</p>)}
+  </section>
+)}
+
+{page === 'contact' && (
+  <section class="prose">
+    <h1>{tr('contact.title')}</h1>
+    <p class="lede">{tr('contact.intro')}</p>
+    <form class="contact" action={site.contactFormAction} method="post">
+      <label>{tr('contact.name')}<input name="name" required autocomplete="name" /></label>
+      <label>{tr('contact.email')}<input name="email" type="email" required autocomplete="email" /></label>
+      <label>{tr('contact.message')}<textarea name="message" rows="6" required></textarea></label>
+      <input type="hidden" name="_language" value={lang} />
+      <button type="submit">{tr('contact.send')}</button>
+    </form>
+  </section>
+)}
+
+<style>
+  .lede { color: var(--muted); font-size: 1.15rem; margin: 0 0 2rem; }
+  h2 { margin-top: 2.5rem; }
+  .grid { columns: 3 18rem; column-gap: 2rem; margin-bottom: 1.5rem; }
+  .prose { max-width: 40rem; }
+  .contact { display: grid; gap: 1rem; }
+  .contact label { display: grid; gap: 0.35rem; font-weight: 500; }
+  .contact button { justify-self: start; }
+</style>

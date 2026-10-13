@@ -1,0 +1,66 @@
+---
+import { t, formatBRL, type Lang } from '../i18n/ui';
+
+interface Props {
+  lang: Lang;
+  art: {
+    slug: string;
+    title: { pt: string; en: string };
+    year: number;
+    medium: { pt: string; en: string };
+    size: string;
+    image: string;
+    status: string;
+    price: number | null;
+    paymentLink: string | null;
+    printLink: string | null;
+  };
+  showBuy?: boolean;
+}
+
+const { lang, art, showBuy = false } = Astro.props;
+const tr = t(lang);
+const statusLabel =
+  art.status === 'available' ? tr('art.available') : art.status === 'sold' ? tr('art.sold') : tr('art.private');
+---
+
+<figure class="art" id={art.slug}>
+  <img src={art.image} alt={art.title[lang]} loading="lazy" decoding="async" />
+  <figcaption>
+    <span class="title">{art.title[lang]}, {art.year}</span>
+    <span class="meta">{art.medium[lang]}. {art.size}</span>
+    {art.status !== 'print' && (
+      <span class:list={['status', art.status]}>
+        {statusLabel}{art.status === 'available' && art.price ? `, ${formatBRL(art.price)}` : ''}
+      </span>
+    )}
+    {
+      showBuy && (art.paymentLink || art.printLink) && (
+        <span class="actions">
+          {art.status === 'available' && art.paymentLink && (
+            <a class="button" href={art.paymentLink} target="_blank" rel="noopener">
+              {tr('art.buy')}
+            </a>
+          )}
+          {art.printLink && (
+            <a class="button quiet" href={art.printLink} target="_blank" rel="noopener">
+              {tr('art.prints')}
+            </a>
+          )}
+        </span>
+      )
+    }
+  </figcaption>
+</figure>
+
+<style>
+  .art { margin: 0 0 2.5rem; break-inside: avoid; }
+  img { width: 100%; box-shadow: 0 1px 0 var(--line); }
+  figcaption { display: grid; gap: 0.1rem; padding-top: 0.75rem; font-size: 0.95rem; }
+  .title { font-weight: 600; }
+  .meta { color: var(--muted); }
+  .status { font-size: 0.875rem; color: var(--muted); }
+  .status.available { color: var(--cobalt); font-weight: 600; }
+  .status.sold { color: var(--sold); }
+  .actions { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.75rem; }
+</style>

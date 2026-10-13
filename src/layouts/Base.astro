@@ -1,0 +1,243 @@
+---
+import { routes, t, type Lang, type PageKey } from '../i18n/ui';
+import site from '../data/site.json';
+
+interface Props {
+  lang: Lang;
+  page: PageKey;
+  title?: string;
+}
+
+const { lang, page, title } = Astro.props;
+const tr = t(lang);
+const other: Lang = lang === 'pt' ? 'en' : 'pt';
+const pageTitle = title ? `${title} — ${site.artistName}` : site.artistName;
+const canonical = new URL(routes[page][lang], Astro.site);
+const alternate = new URL(routes[page][other], Astro.site);
+const nav: PageKey[] = ['gallery', 'shop', 'about', 'contact'];
+const year = new Date().getFullYear();
+---
+
+<!doctype html>
+<html lang={lang === 'pt' ? 'pt-BR' : 'en'}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{pageTitle}</title>
+    <meta name="description" content={tr('site.description')} />
+    <link rel="canonical" href={canonical} />
+    <!-- Tells Google both language versions exist, so each one gets indexed. -->
+    <link rel="alternate" hreflang={lang === 'pt' ? 'pt-BR' : 'en'} href={canonical} />
+    <link rel="alternate" hreflang={other === 'pt' ? 'pt-BR' : 'en'} href={alternate} />
+    <link rel="alternate" hreflang="x-default" href={new URL(routes[page].pt, Astro.site)} />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={tr('site.description')} />
+    <meta property="og:locale" content={lang === 'pt' ? 'pt_BR' : 'en_US'} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div id="app" data-page={page}>
+      <header class="masthead">
+        <a class="name" href={routes.home[lang]}>{site.artistName}</a>
+        <nav aria-label="Principal">
+          {
+            nav.map((key) => (
+              <a href={routes[key][lang]} aria-current={key === page ? 'page' : undefined}>
+                {tr(`nav.${key}`)}
+              </a>
+            ))
+          }
+        </nav>
+        <!-- A real link, so it works even with JavaScript off and Google can follow it.
+             The script below turns it into an instant swap without a page reload. -->
+        <a
+          class="lang"
+          href={routes[page][other]}
+          hreflang={other}
+          data-lang-toggle
+          aria-label={tr('lang.switch')}
+        >
+          <span class:list={{ on: lang === 'pt' }}>PT</span>
+          <span class:list={{ on: lang === 'en' }}>EN</span>
+        </a>
+      </header>
+
+      <main>
+        <slot />
+      </main>
+
+      <footer>
+        <form class="newsletter" action={site.newsletterAction} method="post">
+          <h2>{tr('news.title')}</h2>
+          <p>{tr('news.text')}</p>
+          <div class="row">
+            <label class="sr-only" for="news-email">{tr('contact.email')}</label>
+            <input id="news-email" type="email" name="email" required placeholder={tr('news.placeholder')} />
+            <button type="submit">{tr('news.button')}</button>
+          </div>
+        </form>
+        <div class="fine">
+          <span>© {year} {site.artistName}. {tr('footer.rights')}</span>
+          <a href={site.instagram} rel="me">Instagram</a>
+          <a href={`mailto:${site.email}`}>{site.email}</a>
+        </div>
+      </footer>
+    </div>
+
+    <script>
+      // Language switch without a full page reload.
+      // Fetches the other language's page, swaps the content in place,
+      // and updates the address bar so the URL is still shareable.
+      const app = () => document.getElementById('app')!;
+
+      async function swapTo(url: string, push: boolean) {
+        app().classList.add('swapping');
+        try {
+          const res = await fetch(url);
+          if (!res.ok) throw new Error(String(res.status));
+          const doc = new DOMParser().parseFromString(await res.text(), 'text/html');
+          const next = doc.getElementById('app');
+          if (!next) throw new Error('no #app');
+          app().replaceWith(next);
+          document.title = doc.title;
+          document.documentElement.lang = doc.documentElement.lang;
+          // Keep SEO tags in sync with the visible language.
+          document.head.querySelectorAll('link[rel="canonical"], link[rel="alternate"], meta[name="description"]').forEach((el) => el.remove());
+          doc.head.querySelectorAll('link[rel="canonical"], link[rel="alternate"], meta[name="description"]').forEach((el) => document.head.append(el));
+          if (push) history.pushState({}, '', url);
+          try {
+            localStorage.setItem('lang', doc.documentElement.lang);
+          } catch {}
+        } catch {
+          location.href = url; // fall back to a normal page load
+        }
+      }
+
+      document.addEventListener('click', (e) => {
+        const link = (e.target as Element).closest<HTMLAnchorElement>('[data-lang-toggle]');
+        if (!link || e.metaKey || e.ctrlKey || e.shiftKey) return;
+        e.preventDefault();
+        swapTo(link.href, true);
+      });
+
+      window.addEventListener('popstate', () => swapTo(location.href, false));
+    </script>
+  </body>
+</html>
+
+<style is:global>
+  :root {
+    --wall: #e4e5e1;      /* concrete grey, the "gallery wall" */
+    --paper: #f3f3f0;     /* raised surfaces: forms, cards */
+    --ink: #17191c;
+    --muted: #5e636b;
+    --line: #c4c6c1;
+    --cobalt: #2338c9;    /* the one accent: links, active state, buttons */
+    --sold: #9a3b2e;
+    --gutter: clamp(16px, 4vw, 48px);
+    --font: 'Archivo', system-ui, sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --wall: #1d1f22;
+      --paper: #26292d;
+      --ink: #ecece8;
+      --muted: #a2a6ad;
+      --line: #3a3e44;
+      --cobalt: #8d9cff;
+      --sold: #e58a7b;
+    }
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--wall);
+    color: var(--ink);
+    font-family: var(--font);
+    font-variation-settings: 'wdth' 100;
+    font-size: 1.0625rem;
+    line-height: 1.55;
+  }
+  img { max-width: 100%; height: auto; display: block; }
+  a { color: var(--cobalt); text-underline-offset: 0.2em; }
+  :focus-visible { outline: 3px solid var(--cobalt); outline-offset: 3px; }
+  h1, h2, h3 { line-height: 1.1; margin: 0 0 0.5em; font-weight: 700; }
+  h1 { font-size: clamp(2rem, 5vw, 3.25rem); font-variation-settings: 'wdth' 118; font-stretch: 118%; letter-spacing: -0.01em; }
+  h2 { font-size: 1.5rem; font-variation-settings: 'wdth' 110; }
+  p { max-width: 62ch; }
+  .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+  #app { min-height: 100vh; display: flex; flex-direction: column; transition: opacity 0.15s; }
+  #app.swapping { opacity: 0.4; }
+  @media (prefers-reduced-motion: reduce) { #app { transition: none; } }
+
+  /* Masthead: the artist's name set huge and compressed is the page's one bold gesture. */
+  .masthead {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-template-areas: 'name lang' 'nav nav';
+    align-items: end;
+    gap: 0.75rem 1rem;
+    padding: var(--gutter) var(--gutter) 1.25rem;
+    border-bottom: 1px solid var(--line);
+  }
+  .name {
+    grid-area: name;
+    color: var(--ink);
+    text-decoration: none;
+    font-weight: 800;
+    font-variation-settings: 'wdth' 62;
+    font-stretch: 62%;
+    font-size: clamp(3.5rem, 14vw, 9rem);
+    line-height: 0.82;
+    letter-spacing: -0.02em;
+  }
+  .masthead nav { grid-area: nav; display: flex; flex-wrap: wrap; gap: 0.25rem 1.5rem; }
+  .masthead nav a { color: var(--ink); text-decoration: none; font-weight: 500; padding: 0.25rem 0; }
+  .masthead nav a:hover { color: var(--cobalt); }
+  .masthead nav a[aria-current='page'] { color: var(--cobalt); text-decoration: underline; text-decoration-thickness: 2px; }
+
+  .lang {
+    grid-area: lang;
+    align-self: start;
+    display: inline-flex;
+    border: 1.5px solid var(--ink);
+    border-radius: 999px;
+    padding: 3px;
+    text-decoration: none;
+    font-size: 0.875rem;
+    font-weight: 600;
+  }
+  .lang span { padding: 0.3rem 0.7rem; border-radius: 999px; color: var(--ink); }
+  .lang span.on { background: var(--ink); color: var(--wall); }
+
+  main { flex: 1; padding: clamp(2rem, 5vw, 4rem) var(--gutter); }
+
+  footer { border-top: 1px solid var(--line); padding: 2.5rem var(--gutter); display: grid; gap: 2rem; }
+  .newsletter h2 { margin-bottom: 0.25rem; }
+  .newsletter p { color: var(--muted); margin: 0 0 1rem; }
+  .row { display: flex; gap: 0.5rem; flex-wrap: wrap; max-width: 30rem; }
+  input, textarea {
+    font: inherit; color: var(--ink); background: var(--paper);
+    border: 1.5px solid var(--line); border-radius: 6px; padding: 0.65rem 0.8rem; width: 100%;
+  }
+  .row input { flex: 1 1 14rem; width: auto; }
+  button, .button {
+    font: inherit; font-weight: 600; cursor: pointer;
+    background: var(--cobalt); color: #fff; border: 0; border-radius: 6px;
+    padding: 0.65rem 1.1rem; text-decoration: none; display: inline-block;
+  }
+  @media (prefers-color-scheme: dark) { button, .button { color: #10132e; } }
+  button:hover, .button:hover { filter: brightness(1.1); }
+  .button.quiet { background: transparent; color: var(--cobalt); border: 1.5px solid currentColor; }
+  .fine { display: flex; flex-wrap: wrap; gap: 0.5rem 1.5rem; font-size: 0.875rem; color: var(--muted); }
+  .fine a { color: var(--muted); }
+</style>
