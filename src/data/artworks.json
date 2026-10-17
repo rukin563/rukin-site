@@ -1,7 +1,6 @@
 [
   {
     "slug": "descarte-01",
-    "featured": true,
     "title": {
       "pt": "Descarte 01",
       "en": "Discard 01"
@@ -29,7 +28,6 @@
   },
   {
     "slug": "descarte-02",
-    "featured": true,
     "title": {
       "pt": "Descarte 02",
       "en": "Discard 02"
@@ -57,7 +55,6 @@
   },
   {
     "slug": "assemblage-01",
-    "featured": true,
     "title": {
       "pt": "Assemblage 01",
       "en": "Assemblage 01"
@@ -85,7 +82,6 @@
   },
   {
     "slug": "erro-material-01",
-    "featured": true,
     "title": {
       "pt": "Erro como Material 01",
       "en": "Error as Material 01"

@@ -17,16 +17,18 @@ const forSale = sorted.filter((a) => a.status === 'available' && a.paymentLink);
 const withPrints = sorted.filter((a) => a.printLink);
 // Section ids for the "Originais / Produtos" jump links at the top of the shop.
 const anchors = lang === 'pt' ? { originals: 'originais', products: 'produtos' } : { originals: 'originals', products: 'products' };
-// The cover shows the works marked "featured": true in artworks.json, in file order:
-// the first two on the left, the next two on the right.
-const featured = artworks.filter((a) => a.featured).slice(0, 4);
+// The cover's four picture buttons come from "coverTiles" in site.json:
+// the first two above the statement, the next two below. Labels are the menu
+// words in ui.ts, so they switch language with the page.
+const tiles = site.coverTiles as { page: PageKey; image: string }[];
 ---
 
 {page === 'home' && (
   <section class="cover">
-    {featured.map((art, i) => (
-      <a class={`feature f${i + 1}`} href={`${routes.gallery[lang]}#${art.slug}`}>
-        <img src={art.image} alt={`${art.title[lang]}, ${art.year}`} decoding="async" />
+    {tiles.map((tile, i) => (
+      <a class={`tile f${i + 1}`} href={routes[tile.page][lang]}>
+        <img src={tile.image} alt="" decoding="async" />
+        <span>{tr(`nav.${tile.page}`)}</span>
       </a>
     ))}
     <div class="statement">
@@ -136,8 +138,27 @@ const featured = artworks.filter((a) => a.featured).slice(0, 4);
     margin-bottom: 1.25rem;
   }
   .statement .lede { margin-bottom: 1.5rem; }
-  .feature { display: block; }
-  /* All four cropped to the same shape. Change 1 / 1 to 4 / 3 for landscape or 4 / 5 for portrait. */
-  .feature img { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; box-shadow: 0 1px 0 var(--line); transition: filter 0.15s; }
-  .feature:hover img { filter: brightness(1.08); }
+  /* Picture buttons: square photo with the section name on a white band across the middle. */
+  .tile { position: relative; display: block; text-decoration: none; }
+  .tile img { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; box-shadow: 0 1px 0 var(--line); }
+  .tile span {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 0.55em 0;
+    background: rgb(255 255 255 / 0.78);
+    color: #17191c;
+    text-align: center;
+    font-size: clamp(1rem, 2.6vw, 1.75rem);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.25em;
+    text-indent: 0.25em; /* balances the letter-spacing so the word stays centred */
+    transition: background 0.15s, color 0.15s;
+  }
+  /* Hover: see-through medium grey band, white text. Lower 0.8 for more see-through,
+     but below about 0.7 the white text gets hard to read over bright pictures. */
+  .tile:hover span, .tile:focus-visible span { background: rgb(138 141 145 / 0.8); color: #fff; }
 </style>

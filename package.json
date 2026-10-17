@@ -4,11 +4,15 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
-    "preview": "astro preview"
+    "preview": "astro preview",
+    "images": "node scripts/compress-images.mjs"
   },
   "dependencies": {
     "astro": "^7.3.8"
   },
   "type": "module",
-  "private": true
+  "private": true,
+  "devDependencies": {
+    "sharp": "0.35.5"
+  }
 }
