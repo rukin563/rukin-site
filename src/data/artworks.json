@@ -1,218 +1,470 @@
 [
   {
-    "slug": "descarte-01",
+    "slug": "ponte-de-chinvat",
     "title": {
-      "pt": "Descarte 01",
-      "en": "Discard 01"
+      "pt": "Ponte de Chinvat",
+      "en": "Ponte de Chinvat"
     },
     "description": {
-      "pt": "SEU_TEXTO: sobre a obra, de onde veio o material, o que ela comenta.",
-      "en": "SEU_TEXTO: about the work, where the material came from, what it comments on."
+      "pt": "",
+      "en": ""
     },
-    "year": 2026,
+    "year": "2024",
     "medium": {
-      "pt": "Acrílica e spray sobre tela",
-      "en": "Acrylic and spray paint on canvas"
+      "pt": "Tinta para tecido e acrílica sobre canvas",
+      "en": "Fabric paint and acrylic on canvas"
     },
-    "size": "80 × 60 cm",
-    "image": "/images/placeholder-1.svg",
-    "photos": [
-      "/images/placeholder-2.svg",
-      "/images/placeholder-3.svg",
-      "/images/placeholder-4.svg"
-    ],
-    "status": "available",
-    "price": 2400,
-    "paymentLink": "https://mpago.la/SEU_LINK",
+    "size": {
+      "pt": "2,40 × 1,60 m [cada] / 2,40 × 3,20 m [total]",
+      "en": "2.40 × 1.60 m [each] / 2.40 × 3.20 m [total]"
+    },
+    "image": "/images/obras_chinvat.jpg",
+    "photos": [],
+    "status": "none",
+    "price": null,
+    "paymentLink": null,
     "printLink": null
   },
   {
-    "slug": "descarte-02",
+    "slug": "forever-iii",
     "title": {
-      "pt": "Descarte 02",
-      "en": "Discard 02"
+      "pt": "Forever III",
+      "en": "Forever III"
     },
     "description": {
-      "pt": "SEU_TEXTO: sobre a obra, de onde veio o material, o que ela comenta.",
-      "en": "SEU_TEXTO: about the work, where the material came from, what it comments on."
+      "pt": "",
+      "en": ""
     },
-    "year": 2026,
+    "year": "2025",
     "medium": {
-      "pt": "Spray e acrílica sobre madeira",
-      "en": "Spray and acrylic on wood"
+      "pt": "Acrílica e assemblagem de embalagens e diversos materiais de descarte em caixa de madeira com tampa de acrílico",
+      "en": "Acrylic and assemblage of packaging and various discarded materials in a wooden box with an acrylic lid"
     },
-    "size": "100 × 80 cm",
-    "image": "/images/placeholder-2.svg",
-    "photos": [
-      "/images/placeholder-3.svg",
-      "/images/placeholder-4.svg",
-      "/images/placeholder-1.svg"
-    ],
-    "status": "available",
-    "price": 3200,
-    "paymentLink": "https://mpago.la/SEU_LINK",
+    "size": {
+      "pt": "58 × 36,5 × 4 cm",
+      "en": "58 × 36.5 × 4 cm"
+    },
+    "image": "/images/obras_Forever_III.jpg",
+    "photos": [],
+    "status": "none",
+    "price": null,
+    "paymentLink": null,
     "printLink": null
   },
   {
-    "slug": "assemblage-01",
+    "slug": "forever-i",
     "title": {
-      "pt": "Assemblage 01",
-      "en": "Assemblage 01"
+      "pt": "Forever I",
+      "en": "Forever I"
     },
     "description": {
-      "pt": "SEU_TEXTO: sobre a obra, de onde veio o material, o que ela comenta.",
-      "en": "SEU_TEXTO: about the work, where the material came from, what it comments on."
+      "pt": "",
+      "en": ""
     },
-    "year": 2025,
+    "year": "2025",
     "medium": {
-      "pt": "Técnica mista sobre madeira",
-      "en": "Mixed media on wood"
+      "pt": "Acrílica e assemblagem de embalagens e diversos materiais de descarte em caixa de madeira com tampa de acrílico",
+      "en": "Acrylic and assemblage of packaging and various discarded materials in a wooden box with an acrylic lid"
     },
-    "size": "90 × 70 cm",
-    "image": "/images/placeholder-3.svg",
-    "photos": [
-      "/images/placeholder-4.svg",
-      "/images/placeholder-1.svg",
-      "/images/placeholder-2.svg"
-    ],
-    "status": "available",
-    "price": 2800,
-    "paymentLink": "https://mpago.la/SEU_LINK",
+    "size": {
+      "pt": "58 × 36,5 × 4 cm",
+      "en": "58 × 36.5 × 4 cm"
+    },
+    "image": "/images/obras_Forever_I.jpg",
+    "photos": [],
+    "status": "none",
+    "price": null,
+    "paymentLink": null,
     "printLink": null
   },
   {
-    "slug": "erro-material-01",
+    "slug": "a-new-cultural-virus",
     "title": {
-      "pt": "Erro como Material 01",
-      "en": "Error as Material 01"
+      "pt": "A New Cultural Virus",
+      "en": "A New Cultural Virus"
     },
     "description": {
-      "pt": "SEU_TEXTO: sobre a obra, de onde veio o material, o que ela comenta.",
-      "en": "SEU_TEXTO: about the work, where the material came from, what it comments on."
+      "pt": "",
+      "en": ""
     },
-    "year": 2025,
+    "year": "2026",
+    "medium": {
+      "pt": "Acrílica e assemblagem de itens variados sobre madeira",
+      "en": "Acrylic and assemblage on wood"
+    },
+    "size": {
+      "pt": "58 × 57 cm",
+      "en": "58 × 57 cm"
+    },
+    "image": "/images/obras_NewCulturalVirus.jpg",
+    "photos": [],
+    "status": "none",
+    "price": null,
+    "paymentLink": null,
+    "printLink": null
+  },
+  {
+    "slug": "time-capsule",
+    "title": {
+      "pt": "Time Capsule",
+      "en": "Time Capsule"
+    },
+    "description": {
+      "pt": "",
+      "en": ""
+    },
+    "year": "2025",
+    "medium": {
+      "pt": "Assemblagem de embalagens e diversos materiais de descarte em caixa de acrílico",
+      "en": "Assemblage of packaging and various discarded materials in an acrylic box"
+    },
+    "size": {
+      "pt": "44,5 × 34,5 × 4 cm",
+      "en": "44.5 × 34.5 × 4 cm"
+    },
+    "image": "/images/obras_TimeCapsule.jpg",
+    "photos": [],
+    "status": "none",
+    "price": null,
+    "paymentLink": null,
+    "printLink": null
+  },
+  {
+    "slug": "mural-2225",
+    "title": {
+      "pt": "Mural 2225",
+      "en": "Mural 2225"
+    },
+    "description": {
+      "pt": "",
+      "en": ""
+    },
+    "year": "2025",
+    "medium": {
+      "pt": "Acrílica e tinta spray sobre parede",
+      "en": "Acrylic and spray paint on wall"
+    },
+    "size": {
+      "pt": "2,40 × 3,05 (L1) × 1,54 (L2) × 2,55 (L3) m",
+      "en": "2.40 × 3.05 (W1) × 1.54 (W2) × 2.55 (W3) m"
+    },
+    "image": "/images/obras_muralKids02.jpg",
+    "photos": [],
+    "status": "none",
+    "price": null,
+    "paymentLink": null,
+    "printLink": null
+  },
+  {
+    "slug": "after-the-brain-storm",
+    "title": {
+      "pt": "After the Brain Storm",
+      "en": "After the Brain Storm"
+    },
+    "description": {
+      "pt": "",
+      "en": ""
+    },
+    "year": "2025",
+    "medium": {
+      "pt": "Acrílica e tinta spray sobre fibra de vidro",
+      "en": "Acrylic and spray paint on fiberglass"
+    },
+    "size": {
+      "pt": "1,60 × 1,20 m",
+      "en": "1.60 × 1.20 m"
+    },
+    "image": "/images/obras_Brain1.jpg",
+    "photos": [],
+    "status": "none",
+    "price": null,
+    "paymentLink": null,
+    "printLink": null
+  },
+  {
+    "slug": "cavalo-de-fogo",
+    "title": {
+      "pt": "Cavalo de Fogo",
+      "en": "Fire Horse"
+    },
+    "description": {
+      "pt": "",
+      "en": ""
+    },
+    "year": "2026",
+    "medium": {
+      "pt": "Impressão sobre papel",
+      "en": "Print on paper"
+    },
+    "size": {
+      "pt": "42 × 29,7 cm",
+      "en": "42 × 29.7 cm"
+    },
+    "image": "/images/obras_Calendario_Cavalo.jpg",
+    "photos": [],
+    "status": "none",
+    "price": null,
+    "paymentLink": null,
+    "printLink": null
+  },
+  {
+    "slug": "cobra-de-madeira",
+    "title": {
+      "pt": "Cobra de Madeira",
+      "en": "Wood Snake"
+    },
+    "description": {
+      "pt": "",
+      "en": ""
+    },
+    "year": "2025",
+    "medium": {
+      "pt": "Impressão sobre papel",
+      "en": "Print on paper"
+    },
+    "size": {
+      "pt": "42 × 29,7 cm",
+      "en": "42 × 29.7 cm"
+    },
+    "image": "/images/obras_Calendario_Cobra.jpg",
+    "photos": [],
+    "status": "none",
+    "price": null,
+    "paymentLink": null,
+    "printLink": null
+  },
+  {
+    "slug": "daruma",
+    "title": {
+      "pt": "Daruma",
+      "en": "Daruma"
+    },
+    "description": {
+      "pt": "",
+      "en": ""
+    },
+    "year": "2024/25",
+    "medium": {
+      "pt": "Tinta spray sobre mini refrigerador",
+      "en": "Spray paint on mini fridge"
+    },
+    "size": {
+      "pt": "51,9 × 42,5 × 48,2 cm",
+      "en": "51.9 × 42.5 × 48.2 cm"
+    },
+    "image": "/images/obras_Daruma01.jpg",
+    "photos": [],
+    "status": "none",
+    "price": null,
+    "paymentLink": null,
+    "printLink": null
+  },
+  {
+    "slug": "astro-jazz",
+    "title": {
+      "pt": "Astro Jazz",
+      "en": "Astro Jazz"
+    },
+    "description": {
+      "pt": "",
+      "en": ""
+    },
+    "year": "2021",
+    "medium": {
+      "pt": "Acrílica sobre madeira",
+      "en": "Acrylic on wood"
+    },
+    "size": {
+      "pt": "60,5 × 72,5 cm",
+      "en": "60.5 × 72.5 cm"
+    },
+    "image": "/images/obras_astroJazz.webp",
+    "photos": [],
+    "status": "none",
+    "price": null,
+    "paymentLink": null,
+    "printLink": null
+  },
+  {
+    "slug": "all-in-jazz",
+    "title": {
+      "pt": "All in Jazz",
+      "en": "All in Jazz"
+    },
+    "description": {
+      "pt": "",
+      "en": ""
+    },
+    "year": "2021",
     "medium": {
       "pt": "Acrílica sobre tela",
       "en": "Acrylic on canvas"
     },
-    "size": "70 × 50 cm",
-    "image": "/images/placeholder-4.svg",
-    "photos": [
-      "/images/placeholder-1.svg",
-      "/images/placeholder-2.svg",
-      "/images/placeholder-3.svg"
-    ],
-    "status": "available",
-    "price": 1800,
-    "paymentLink": "https://mpago.la/SEU_LINK",
+    "size": {
+      "pt": "40 × 50 cm",
+      "en": "40 × 50 cm"
+    },
+    "image": "/images/obras_allJazz.jpg",
+    "photos": [],
+    "status": "none",
+    "price": null,
+    "paymentLink": null,
     "printLink": null
   },
   {
-    "slug": "margem-01",
+    "slug": "oga-san",
     "title": {
-      "pt": "À Margem 01",
-      "en": "At the Margin 01"
+      "pt": "Oga-san",
+      "en": "Oga-san"
     },
     "description": {
-      "pt": "SEU_TEXTO: sobre a obra, de onde veio o material, o que ela comenta.",
-      "en": "SEU_TEXTO: about the work, where the material came from, what it comments on."
+      "pt": "",
+      "en": ""
     },
-    "year": 2025,
+    "year": "2013",
     "medium": {
-      "pt": "Spray sobre compensado",
-      "en": "Spray paint on plywood"
+      "pt": "Acrílica sobre madeira",
+      "en": "Acrylic on wood"
     },
-    "size": "120 × 90 cm",
-    "image": "/images/placeholder-1.svg",
-    "photos": [
-      "/images/placeholder-2.svg",
-      "/images/placeholder-3.svg",
-      "/images/placeholder-4.svg"
-    ],
-    "status": "available",
-    "price": 4200,
-    "paymentLink": "https://mpago.la/SEU_LINK",
+    "size": {
+      "pt": "80 × 65 cm",
+      "en": "80 × 65 cm"
+    },
+    "image": "/images/obras_Oga-san.jpg",
+    "photos": [],
+    "status": "none",
+    "price": null,
+    "paymentLink": null,
     "printLink": null
   },
   {
-    "slug": "consumo-01",
+    "slug": "hit-idea",
     "title": {
-      "pt": "Consumo 01",
-      "en": "Consumption 01"
+      "pt": "Hit Idea",
+      "en": "Hit Idea"
     },
     "description": {
-      "pt": "SEU_TEXTO: sobre a obra, de onde veio o material, o que ela comenta.",
-      "en": "SEU_TEXTO: about the work, where the material came from, what it comments on."
+      "pt": "",
+      "en": ""
     },
-    "year": 2024,
+    "year": "2013",
     "medium": {
-      "pt": "Acrílica e spray sobre tela",
-      "en": "Acrylic and spray on canvas"
+      "pt": "Acrílica sobre madeira",
+      "en": "Acrylic on wood"
     },
-    "size": "60 × 60 cm",
-    "image": "/images/placeholder-2.svg",
-    "photos": [
-      "/images/placeholder-3.svg",
-      "/images/placeholder-4.svg",
-      "/images/placeholder-1.svg"
-    ],
-    "status": "available",
-    "price": 2000,
-    "paymentLink": "https://mpago.la/SEU_LINK",
+    "size": {
+      "pt": "65 × 80 cm",
+      "en": "65 × 80 cm"
+    },
+    "image": "/images/obras_HitIdea.jpg",
+    "photos": [],
+    "status": "none",
+    "price": null,
+    "paymentLink": null,
     "printLink": null
   },
   {
-    "slug": "desvio-01",
+    "slug": "builder",
     "title": {
-      "pt": "Desvio 01",
-      "en": "Deviation 01"
+      "pt": "Builder",
+      "en": "Builder"
     },
     "description": {
-      "pt": "SEU_TEXTO: sobre a obra, de onde veio o material, o que ela comenta.",
-      "en": "SEU_TEXTO: about the work, where the material came from, what it comments on."
+      "pt": "",
+      "en": ""
     },
-    "year": 2024,
+    "year": "2011",
     "medium": {
-      "pt": "Técnica mista sobre madeira",
-      "en": "Mixed media on wood"
+      "pt": "Grafite e Posca sobre papel",
+      "en": "Graphite and Posca on paper"
     },
-    "size": "85 × 65 cm",
-    "image": "/images/placeholder-3.svg",
-    "photos": [
-      "/images/placeholder-4.svg",
-      "/images/placeholder-1.svg",
-      "/images/placeholder-2.svg"
-    ],
-    "status": "available",
-    "price": 2600,
-    "paymentLink": "https://mpago.la/SEU_LINK",
+    "size": {
+      "pt": "29 × 20 cm",
+      "en": "29 × 20 cm"
+    },
+    "image": "/images/obras_builder.webp",
+    "photos": [],
+    "status": "none",
+    "price": null,
+    "paymentLink": null,
     "printLink": null
   },
   {
-    "slug": "multiplicidades-01",
+    "slug": "arquitetura-do-abstrato",
     "title": {
-      "pt": "Multiplicidades 01",
-      "en": "Multiplicities 01"
+      "pt": "Arquitetura do Abstrato (díptico)",
+      "en": "Arquitetura do Abstrato (diptych)"
     },
     "description": {
-      "pt": "SEU_TEXTO: sobre a obra, de onde veio o material, o que ela comenta.",
-      "en": "SEU_TEXTO: about the work, where the material came from, what it comments on."
+      "pt": "",
+      "en": ""
     },
-    "year": 2024,
+    "year": "2023",
     "medium": {
       "pt": "Acrílica sobre tela",
       "en": "Acrylic on canvas"
     },
-    "size": "100 × 100 cm",
-    "image": "/images/placeholder-4.svg",
-    "photos": [
-      "/images/placeholder-1.svg",
-      "/images/placeholder-2.svg",
-      "/images/placeholder-3.svg"
-    ],
-    "status": "available",
-    "price": 4800,
-    "paymentLink": "https://mpago.la/SEU_LINK",
+    "size": {
+      "pt": "[cada] 50 × 40 cm",
+      "en": "50 × 40 cm [each]"
+    },
+    "image": "/images/obras_ArqAbstr.jpg",
+    "photos": [],
+    "status": "none",
+    "price": null,
+    "paymentLink": null,
+    "printLink": null
+  },
+  {
+    "slug": "abstracao-amarela",
+    "title": {
+      "pt": "Abstração Amarela",
+      "en": "Abstração Amarela"
+    },
+    "description": {
+      "pt": "",
+      "en": ""
+    },
+    "year": "2023",
+    "medium": {
+      "pt": "Acrílica sobre madeira",
+      "en": "Acrylic on wood"
+    },
+    "size": {
+      "pt": "72,5 × 91 cm",
+      "en": "72.5 × 91 cm"
+    },
+    "image": "/images/obras_astrAmarela.jpg",
+    "photos": [],
+    "status": "none",
+    "price": null,
+    "paymentLink": null,
+    "printLink": null
+  },
+  {
+    "slug": "pizza-pizza",
+    "title": {
+      "pt": "Pizza Pizza",
+      "en": "Pizza Pizza"
+    },
+    "description": {
+      "pt": "",
+      "en": ""
+    },
+    "year": "2014",
+    "medium": {
+      "pt": "Acrílica sobre drywall",
+      "en": "Acrylic on drywall"
+    },
+    "size": {
+      "pt": "2 × 4 m",
+      "en": "2 × 4 m"
+    },
+    "image": "/images/obras_MuralPizza.jpg",
+    "photos": [],
+    "status": "none",
+    "price": null,
+    "paymentLink": null,
     "printLink": null
   }
 ]

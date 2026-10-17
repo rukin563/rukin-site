@@ -32,8 +32,8 @@ const originals: ShopItem[] = artworks
     description: a.description,
     photos: [a.image, ...(a.photos ?? [])],
     specs: {
-      pt: [a.medium.pt, a.size, String(a.year)],
-      en: [a.medium.en, a.size, String(a.year)],
+      pt: [a.medium.pt, a.size.pt, a.year],
+      en: [a.medium.en, a.size.en, a.year],
     },
     price: a.price,
     status: a.status,

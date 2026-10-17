@@ -1,0 +1,227 @@
+{
+  "_note": "Order of the Obras page, top to bottom. Block types: section (big title), subheading, text, view (exhibition/context photo with caption), work (an artwork from artworks.json; optional image shows another photo of it).",
+  "blocks": [
+    {
+      "type": "section",
+      "text": {
+        "pt": "Multiplicidades e a Sociedade do Descarte",
+        "en": "Multiplicidades and Sociedade do Descarte"
+      }
+    },
+    {
+      "type": "view",
+      "image": "/images/obras_mult01.jpg",
+      "caption": {
+        "pt": "Multiplicidades, 2024 – Passagem Literária, São Paulo",
+        "en": "Multiplicidades, 2024 – Passagem Literária, São Paulo – Brazil"
+      }
+    },
+    {
+      "type": "text",
+      "text": {
+        "pt": "Em Multiplicidades (2024), as pinturas partem da variedade de corpos, origens e histórias que ocupam um mesmo território. Não construí um mundo ideal: construí um espaço onde a diferença não precisa se justificar para existir. É o inverso do que acontece fora da tela, onde populações inteiras são varridas de seus lugares e a estranheza vira motivo de conflito.",
+        "en": "In Multiplicidades [Multiplicities] (2024), the paintings begin with the range of bodies, origins, and histories that share a single territory. I did not build an ideal world; I built a space where difference does not have to justify itself in order to exist. It is the reverse of what happens off the canvas, where whole populations are swept out of their places and strangeness becomes grounds for conflict."
+      }
+    },
+    {
+      "type": "view",
+      "image": "/images/obras_mult02.jpg",
+      "caption": {
+        "pt": "Multiplicidades, 2024 – Passagem Literária, São Paulo",
+        "en": "Multiplicidades, 2024 – Passagem Literária, São Paulo – Brazil"
+      }
+    },
+    {
+      "type": "view",
+      "image": "/images/obras_mult03.jpg",
+      "caption": {
+        "pt": "Multiplicidades, 2024 – Passagem Literária, São Paulo",
+        "en": "Multiplicidades, 2024 – Passagem Literária, São Paulo – Brazil"
+      }
+    },
+    {
+      "type": "text",
+      "text": {
+        "pt": "A exposição fecha com Ponte de Chinvat (2024). No zoroastrismo, a ponte de Chinvat separa o mundo dos vivos do mundo dos mortos, e o que decide a travessia não é recompensa nem punição, mas a consequência natural das escolhas feitas em vida. Foi isso que me interessou: a ideia de que o destino de alguém é o resultado acumulado de decisões, não um veredito externo. Descartar é uma dessas decisões.",
+        "en": "The exhibition closes with Ponte de Chinvat [The Chinvat Bridge] (2024). In Zoroastrianism, the Chinvat Bridge separates the world of the living from the world of the dead, and what decides the crossing is neither reward nor punishment but the natural consequence of the choices a person made while alive. That is what drew me: the idea that a fate is the accumulated result of decisions rather than a verdict handed down. Discarding is one of those decisions."
+      }
+    },
+    {
+      "type": "work",
+      "slug": "ponte-de-chinvat"
+    },
+    {
+      "type": "view",
+      "image": "/images/obras_SdD01.jpg",
+      "caption": {
+        "pt": "Sociedade do Descarte, 2025/2026 – Passagem Literária, São Paulo",
+        "en": "The Throwaway Society, 2025/2026 – Passagem Literária, São Paulo – Brazil"
+      }
+    },
+    {
+      "type": "text",
+      "text": {
+        "pt": "Em Sociedade do Descarte (2025–26), a matéria-prima vem do lixo. São objetos que a cidade produz para não ver – e que chegam ao trabalho carregando o que já viveram: marcas de uso, avarias, restos de função. Um dado descartado não guarda nada. Um objeto descartado guarda tudo. É essa diferença que a exposição investiga: o que sobrevive ao apagamento quando alguma coisa é jogada fora.",
+        "en": "In Sociedade do Descarte [Throwaway Society] (2025–26), the raw material comes from the trash. These are objects the city produces in order not to see — and they arrive in the work carrying what they have already lived: wear, damage, the remains of a function. Discarded data holds nothing. A discarded object holds everything. That difference is what the exhibition examines: what survives erasure when something is thrown away."
+      }
+    },
+    {
+      "type": "view",
+      "image": "/images/obras_SdD02.jpg",
+      "caption": {
+        "pt": "Sociedade do Descarte, 2025/2026 – Passagem Literária, São Paulo",
+        "en": "The Throwaway Society, 2025/2026 – Passagem Literária, São Paulo – Brazil"
+      }
+    },
+    {
+      "type": "text",
+      "text": {
+        "pt": "Há um fio entre as duas exposições, e ele é o mesmo gesto operando em escalas diferentes. Byung-Chul Han descreve uma crise da narração: informação em excesso, memória de menos, o ócio substituído pelo scroll, e com isso a perda do véu que dava mistério às coisas. O que essa perda produz é um mundo sem história acumulada. Foi o que reconheci indo do primeiro trabalho ao segundo: pessoas empurradas para a margem e objetos empurrados para o lixo perdem a mesma coisa. A narrativa de onde vieram. A arte aqui não devolve essa narrativa — apenas segura o desaparecimento por tempo suficiente para que ele seja visto.",
+        "en": "There is a thread running between the two exhibitions, and it is the same gesture at different scales. Byung-Chul Han describes a crisis of narration: too much information, too little memory, idleness replaced by the scroll, and with it the loss of the veil that gave things their mystery. What that loss produces is a world with no accumulated history. It is what I recognized in moving from the first body of work to the second: people pushed to the margins and objects pushed into the trash lose the same thing. The account of where they came from. The work does not give that account back — it only holds the disappearance still long enough for it to be seen."
+      }
+    },
+    {
+      "type": "work",
+      "slug": "forever-iii"
+    },
+    {
+      "type": "work",
+      "slug": "forever-i"
+    },
+    {
+      "type": "work",
+      "slug": "a-new-cultural-virus"
+    },
+    {
+      "type": "work",
+      "slug": "time-capsule"
+    },
+    {
+      "type": "section",
+      "text": {
+        "pt": "Murais, encomendas e projetos (2019–2025)",
+        "en": "Murals, commissions and projects (2019–2025)"
+      }
+    },
+    {
+      "type": "view",
+      "image": "/images/obras_muralKids01.jpg",
+      "caption": {
+        "pt": "Mural 2225, 2025 – Condomínio residencial, São Paulo",
+        "en": "Mural 2225, 2025 – Residential building, São Paulo – Brazil"
+      }
+    },
+    {
+      "type": "work",
+      "slug": "mural-2225"
+    },
+    {
+      "type": "subheading",
+      "text": {
+        "pt": "Brain Parade",
+        "en": "Brain Parade"
+      }
+    },
+    {
+      "type": "work",
+      "slug": "after-the-brain-storm"
+    },
+    {
+      "type": "work",
+      "slug": "after-the-brain-storm",
+      "image": "/images/obras_Brain2.jpg"
+    },
+    {
+      "type": "subheading",
+      "text": {
+        "pt": "Calendários – Série Horóscopo Chinês",
+        "en": "Wall Calendar – Chinese Zodiac Series"
+      }
+    },
+    {
+      "type": "work",
+      "slug": "cavalo-de-fogo"
+    },
+    {
+      "type": "work",
+      "slug": "cobra-de-madeira"
+    },
+    {
+      "type": "subheading",
+      "text": {
+        "pt": "Customização – Mini Refrigerador Brastemp",
+        "en": "Customization of Mini Fridge for Whirlpool"
+      }
+    },
+    {
+      "type": "work",
+      "slug": "daruma"
+    },
+    {
+      "type": "work",
+      "slug": "daruma",
+      "image": "/images/obras_Daruma02.jpg"
+    },
+    {
+      "type": "section",
+      "text": {
+        "pt": "Trabalhos anteriores (2011–2023)",
+        "en": "Earlier work (2011–2023)"
+      }
+    },
+    {
+      "type": "view",
+      "image": "/images/obras_voodoo.jpg",
+      "caption": {
+        "pt": "Voodoo é pra Jacú, 2019 – Porão da Cerveja, São Paulo – Brasil",
+        "en": "Voodoo é pra Jacú, 2019 – Porão da Cerveja, São Paulo – Brazil"
+      }
+    },
+    {
+      "type": "text",
+      "text": {
+        "pt": "O que veio antes tem outra temperatura. Meu trabalho se organizava em torno do acúmulo e da cor: composições densas, paleta colorida, muitas camadas de história em cada superfície. O Japão trouxe repertório visual, a moda ensinou pesquisa contínua, e o design deu a base — rigor, disciplina e direção. Essas obras vieram desse período. Nada delas ficou para trás.",
+        "en": "What came before runs at a different temperature. The work was organised around accumulation and colour: dense compositions, a colorful palette, many layers of history in every surface. Japan brought visual vocabulary, fashion taught continuous research, and design gave the ground — rigor, discipline, direction. These works come from that period, and what I learned in them still runs through the work I make now."
+      }
+    },
+    {
+      "type": "work",
+      "slug": "astro-jazz"
+    },
+    {
+      "type": "work",
+      "slug": "all-in-jazz"
+    },
+    {
+      "type": "work",
+      "slug": "oga-san"
+    },
+    {
+      "type": "work",
+      "slug": "hit-idea"
+    },
+    {
+      "type": "work",
+      "slug": "builder"
+    },
+    {
+      "type": "work",
+      "slug": "arquitetura-do-abstrato"
+    },
+    {
+      "type": "work",
+      "slug": "abstracao-amarela"
+    },
+    {
+      "type": "subheading",
+      "text": {
+        "pt": "Mural DesignFesta – Tóquio – Japão",
+        "en": "DesignFesta Mural – Tokyo – Japan"
+      }
+    },
+    {
+      "type": "work",
+      "slug": "pizza-pizza"
+    }
+  ]
+}

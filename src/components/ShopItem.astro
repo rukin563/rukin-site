@@ -22,7 +22,7 @@ const statusLabel =
 
   <div class="info">
     <h1>{title}</h1>
-    <p class="description">{item.description[lang]}</p>
+    {item.description[lang] && <p class="description">{item.description[lang]}</p>}
     {specs.length > 0 && (
       <>
         <h2>{tr('shop.specs')}</h2>

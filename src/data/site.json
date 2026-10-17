@@ -2,10 +2,22 @@
   "artistName": "Rukin",
   "bannerImage": "/images/capa_banner.jpg",
   "coverTiles": [
-    { "page": "gallery", "image": "/images/capa_img01.jpg" },
-    { "page": "about", "image": "/images/capa_img02.jpg" },
-    { "page": "bio", "image": "/images/capa_img03.jpg" },
-    { "page": "shop", "image": "/images/capa_img04.jpg" }
+    {
+      "page": "gallery",
+      "image": "/images/capa_img01.jpg"
+    },
+    {
+      "page": "about",
+      "image": "/images/capa_img02.jpg"
+    },
+    {
+      "page": "bio",
+      "image": "/images/capa_img03.jpg"
+    },
+    {
+      "page": "shop",
+      "image": "/images/capa_img04.jpg"
+    }
   ],
   "email": "contato@rukin563.com",
   "instagram": "https://www.instagram.com/rukin563/",
@@ -18,24 +30,34 @@
       "Meu trabalho parte do descarte — não só o de objetos, mas o gesto mais amplo de decidir o que conta e o que pode desaparecer de vista. O consumo produz montanhas de coisas que deixamos de enxergar; a mesma lógica opera quando uma sociedade empurra para a margem as pessoas que não cabem no que ela considera padrão. Não me interessa entregar um veredito, mas desacelerar esse desaparecimento o bastante para dar tempo de olhar."
     ],
     "en": [
-      "My practice is open to error, deviation, and the unexpected. The images carry a formal rigor from my years as a graphic designer — rigor that loosened over time, slowly and by choice, until error became working material rather than something to correct.",
-      "My work starts with discard — not just of objects, but the broader gesture of deciding what counts and what can disappear from view. Consumption produces mountains of things we stop seeing; the same logic operates when a society pushes to the margins people who don't fit what it considers standard. I'm not interested in delivering a verdict, but in slowing that disappearance down long enough to look."
+      "My practice stays open to error, deviation, and the unexpected. The images carry a formal rigor inherited from my years as a graphic designer — a rigor that has loosened over time, slowly and deliberately, until error became something I work with rather than correct.",
+      "The work begins with what gets thrown away — not only objects, but the wider gesture of deciding what counts and what is allowed to disappear from view. Consumption leaves behind mountains of things we stop seeing; the same logic is at work when a society pushes to the margins the people who do not fit what it takes for granted. I am less interested in delivering a verdict than in slowing that disappearance down long enough to look."
     ]
   },
   "bio": {
     "pt": [
-      "Rukin vive e trabalha em São Paulo. Seu processo criativo parte do descarte — de objetos e de pessoas.",
+      "Rukin vive e trabalha em São Paulo. Seu processo criativo parte do descarte — de objetos e de pessoas — e se apoia num rigor formal que vem de trinta anos de design gráfico, rigor que foi se soltando até o erro virar material.",
       "Trabalho com o que se joga fora — objetos e pessoas.",
-      "Em 2024, apresentou a exposição individual Multiplicidades na Passagem Literária da Consolação em São Paulo, que posteriormente se expandiu para a exposição coletiva Sociedade do Descarte, programada de setembro de 2025 a março de 2026 no mesmo local. A primeira exposição individual, Voodoo é pra jacú, aconteceu em 2019.",
-      "O artista passou treze anos no Japão (2004-2018), onde continuou desenhando e pintando ao lado do trabalho em fábricas, com participação em feiras de arte em Tóquio.",
-      "Formou-se pela FAAP em 1993 em Programação Visual."
+      "Em 2024 apresentou a individual Multiplicidades na Passagem Literária da Consolação, São Paulo, investigação que se desdobrou na coletiva Sociedade do Descarte, no mesmo espaço (setembro de 2025 – março de 2026). Sua primeira individual, Voodoo é pra jacú, foi em 2019 (Porão da Cerveja, São Paulo).",
+      "Antes disso viveu treze anos no Japão (2004–2018), onde sustentou a prática do desenho e da pintura em paralelo ao trabalho em fábrica e participou de feiras de arte em Tóquio. Formou-se pela FAAP em 1993 em Programação Visual."
     ],
     "en": [
-      "Rukin lives and works in São Paulo. His creative process starts with discard — of objects and people.",
+      "Rukin lives and works in São Paulo. His creative process begins with what gets thrown away — objects and people alike — and carries a formal rigor drawn from thirty years in graphic design, a rigor that loosened over time until error became material.",
       "I work with what gets thrown away — objects and people alike.",
-      "In 2024, he presented the solo exhibition Multiplicidades at Passagem Literária da Consolação in São Paulo, which later expanded into a group show called Sociedade do Descarte scheduled for September 2025 through March 2026 at the same venue. His first solo exhibition, Voodoo é pra jacú, occurred in 2019.",
-      "The artist spent thirteen years in Japan (2004-2018), where drawing and painting continued alongside factory work, with participation in Tokyo art fairs.",
-      "He graduated from FAAP in 1993 in Visual Programming (Graphic Design)."
+      "In 2024 he presented the solo exhibition Multiplicidades at Passagem Literária da Consolação, São Paulo, Brazil — an inquiry that carried over into the group exhibition Sociedade do Descarte at the same venue (September 2025 – March 2026). His first solo show, Voodoo é pra jacú, opened in 2019 at Porão da Cerveja, São Paulo, Brazil.",
+      "He spent thirteen years in Japan (2004–2018), sustaining a practice in drawing and painting alongside factory work and exhibiting at art fairs in Tokyo. He graduated in Graphic Design from FAAP, São Paulo, Brazil in 1993."
     ]
+  },
+  "aboutPhoto": {
+    "image": "/images/sobre_rukinJazz.jpg",
+    "caption": {
+      "pt": "Projeto Live Painting com a banda Wednesday in Jazz, 2020 – Porão da Cerveja, São Paulo",
+      "en": "Live Painting Project with the band Wednesday in Jazz, 2020 – Porão da Cerveja, São Paulo – Brazil"
+    }
+  },
+  "bioPhoto": "/images/bio_move.jpg",
+  "cv": {
+    "pt": "https://drive.google.com/file/d/1QMSvFFuWKD6JV7lus79df6yDhxhrQrWJ/view?usp=sharing",
+    "en": "https://drive.google.com/file/d/1Oy4kKAj56koJphI0cHwKOSB8kChtegb4/view?usp=sharing"
   }
 }

@@ -7,14 +7,26 @@ import { t, routes, type Lang, type PageKey } from '../i18n/ui';
 import artworks from '../data/artworks.json';
 import products from '../data/products.json';
 import site from '../data/site.json';
+import obras from '../data/obras.json';
 import { itemPaths, hasItemPage } from '../data/shop';
 
 interface Props { lang: Lang; page: PageKey }
 const { lang, page } = Astro.props;
 const tr = t(lang);
-const sorted = [...artworks].sort((a, b) => b.year - a.year);
+// Newest first; "2024/25" counts as 2024.
+const sorted = [...artworks].sort((a, b) => parseInt(b.year) - parseInt(a.year));
 const forSale = sorted.filter((a) => a.status === 'available' && a.paymentLink);
-const withPrints = sorted.filter((a) => a.printLink);
+const artBySlug = Object.fromEntries(artworks.map((a) => [a.slug, a]));
+// The Obras page follows obras.json block by block. Works that follow each other
+// are grouped so they sit side by side in a grid.
+type Block = (typeof obras.blocks)[number];
+const obrasGroups: (Block | { type: 'works'; items: Block[] })[] = [];
+for (const block of obras.blocks) {
+  const last = obrasGroups.at(-1);
+  if (block.type === 'work' && last?.type === 'works') last.items.push(block);
+  else if (block.type === 'work') obrasGroups.push({ type: 'works', items: [block] });
+  else obrasGroups.push(block);
+}
 // Section ids for the "Originais / Produtos" jump links at the top of the shop.
 const anchors = lang === 'pt' ? { originals: 'originais', products: 'produtos' } : { originals: 'originals', products: 'products' };
 // The cover's four picture buttons come from "coverTiles" in site.json:
@@ -40,14 +52,36 @@ const tiles = site.coverTiles as { page: PageKey; image: string }[];
 )}
 
 {page === 'gallery' && (
-  <section>
+  <section class="obras">
     <h1>{tr('gallery.title')}</h1>
-    <p class="lede">{tr('gallery.intro')}</p>
-    <div class="grid">
-      {sorted.map((art) => (
-        <ArtworkCard lang={lang} art={art} href={hasItemPage(art.slug) ? itemPaths(art.slug)[lang] : undefined} />
-      ))}
-    </div>
+    {obrasGroups.map((group) => {
+      if (group.type === 'works') {
+        return (
+          <div class="grid">
+            {group.items.map((block) => {
+              const art = artBySlug[block.slug];
+              return (
+                <ArtworkCard
+                  lang={lang}
+                  art={art}
+                  image={block.image}
+                  href={hasItemPage(art.slug) ? itemPaths(art.slug)[lang] : undefined}
+                />
+              );
+            })}
+          </div>
+        );
+      }
+      if (group.type === 'section') return <h2 class="chapter">{group.text[lang]}</h2>;
+      if (group.type === 'subheading') return <h3>{group.text[lang]}</h3>;
+      if (group.type === 'text') return <p class="essay">{group.text[lang]}</p>;
+      return (
+        <figure class="view">
+          <img src={group.image} alt={group.caption[lang]} loading="lazy" decoding="async" />
+          <figcaption>{group.caption[lang]}</figcaption>
+        </figure>
+      );
+    })}
   </section>
 )}
 
@@ -82,6 +116,10 @@ const tiles = site.coverTiles as { page: PageKey; image: string }[];
 {page === 'about' && (
   <section class="prose">
     <h1>{tr('about.title')}</h1>
+    <figure class="view">
+      <img src={site.aboutPhoto.image} alt={site.aboutPhoto.caption[lang]} decoding="async" />
+      <figcaption>{site.aboutPhoto.caption[lang]}</figcaption>
+    </figure>
     {site.about[lang].map((para) => <p>{para}</p>)}
   </section>
 )}
@@ -89,7 +127,11 @@ const tiles = site.coverTiles as { page: PageKey; image: string }[];
 {page === 'bio' && (
   <section class="prose">
     <h1>{tr('bio.title')}</h1>
+    <figure class="view">
+      <img src={site.bioPhoto} alt={site.artistName} decoding="async" />
+    </figure>
     {site.bio[lang].map((para) => <p>{para}</p>)}
+    <p><a class="button quiet" href={site.cv[lang]} target="_blank" rel="noopener">{tr('bio.cv')}</a></p>
   </section>
 )}
 
@@ -112,6 +154,15 @@ const tiles = site.coverTiles as { page: PageKey; image: string }[];
   h2 { margin-top: 2.5rem; }
   .grid { columns: 3 18rem; column-gap: 2rem; margin-bottom: 1.5rem; }
   .prose { max-width: 40rem; }
+
+  /* Obras: chapters, essays, exhibition views and works, in the order of obras.json. */
+  .chapter { font-size: clamp(1.6rem, 3.5vw, 2.25rem); margin: 4rem 0 1.5rem; padding-top: 2rem; border-top: 1px solid var(--line); }
+  .obras h1 + .chapter { margin-top: 1rem; padding-top: 0; border-top: 0; }
+  .obras h3 { font-size: 1.15rem; margin: 2.5rem 0 1rem; }
+  .essay { margin: 0 0 2rem; }
+  .view { margin: 0 0 2rem; max-width: 56rem; }
+  .view img { width: 100%; box-shadow: 0 1px 0 var(--line); }
+  .view figcaption { padding-top: 0.6rem; font-size: 0.9rem; color: var(--muted); }
   .contact { display: grid; gap: 1rem; }
   .contact label { display: grid; gap: 0.35rem; font-weight: 500; }
   .contact button { justify-self: start; }
@@ -127,7 +178,8 @@ const tiles = site.coverTiles as { page: PageKey; image: string }[];
     align-items: center;
   }
   .f1 { grid-area: f1; } .f2 { grid-area: f2; } .f3 { grid-area: f3; } .f4 { grid-area: f4; }
-  .statement { grid-area: text; padding: 1rem 0; }
+  .statement { grid-area: text; padding: 1rem 0; text-align: center; }
+  .statement .lede { margin-left: auto; margin-right: auto; }
   .statement h1 {
     font-size: clamp(2.25rem, 4.6vw, 4.25rem);
     font-weight: 800;

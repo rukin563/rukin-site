@@ -31,7 +31,6 @@ export const ui = {
     'home.seeAll': 'Ver todas as obras',
 
     'gallery.title': 'Obras',
-    'gallery.intro': 'Trabalhos de todos os anos, do mais recente ao mais antigo.',
 
     'art.available': 'Disponível',
     'art.sold': 'Vendida',
@@ -85,6 +84,7 @@ export const ui = {
     'about.title': 'Sobre',
 
     'bio.title': 'Bio',
+    'bio.cv': 'Curriculum Vitae (download)',
 
     'contact.title': 'Contato',
     'contact.intro': 'Encomendas, exposições, parcerias ou só um oi.',
@@ -115,7 +115,6 @@ export const ui = {
     'home.seeAll': 'See all works',
 
     'gallery.title': 'Works',
-    'gallery.intro': 'Work from every year, newest first.',
 
     'art.available': 'Available',
     'art.sold': 'Sold',
@@ -169,6 +168,7 @@ export const ui = {
     'about.title': 'About',
 
     'bio.title': 'Bio',
+    'bio.cv': 'Curriculum Vitae (download)',
 
     'contact.title': 'Contact',
     'contact.intro': 'Commissions, exhibitions, collaborations, or just to say hi.',

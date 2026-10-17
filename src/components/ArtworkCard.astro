@@ -6,57 +6,46 @@ interface Props {
   art: {
     slug: string;
     title: { pt: string; en: string };
-    year: number;
+    year: string;
     medium: { pt: string; en: string };
-    size: string;
+    size: { pt: string; en: string };
     image: string;
-    status: string;
+    status: string; // available | sold | private | none (no label)
     price: number | null;
-    paymentLink: string | null;
-    printLink: string | null;
   };
-  showBuy?: boolean;
-  href?: string; // when set, the photo and title link to this page (used by the shop)
+  href?: string; // when set, the photo and title link to this page (the work's shop page)
+  image?: string; // show another photo of the same work instead of its main one
 }
 
-const { lang, art, showBuy = false, href } = Astro.props;
+const { lang, art, href, image } = Astro.props;
 const tr = t(lang);
-const statusLabel =
-  art.status === 'available' ? tr('art.available') : art.status === 'sold' ? tr('art.sold') : tr('art.private');
+const statusLabels: Record<string, string> = {
+  available: tr('art.available'),
+  sold: tr('art.sold'),
+  private: tr('art.private'),
+};
+const statusLabel = statusLabels[art.status];
+const heading = `${art.title[lang]}, ${art.year}`;
 ---
 
-<figure class="art" id={art.slug}>
+<!-- Only the main photo gets the id, so /obras#slug jumps to one place. -->
+<figure class="art" id={image ? undefined : art.slug}>
   {href ? (
     <a class="open" href={href} tabindex="-1" aria-hidden="true">
-      <img src={art.image} alt="" loading="lazy" decoding="async" />
+      <img src={image ?? art.image} alt="" loading="lazy" decoding="async" />
     </a>
   ) : (
-    <img src={art.image} alt={art.title[lang]} loading="lazy" decoding="async" />
+    <img src={image ?? art.image} alt={heading} loading="lazy" decoding="async" />
   )}
   <figcaption>
-    <span class="title">{href ? <a href={href}>{art.title[lang]}, {art.year}</a> : `${art.title[lang]}, ${art.year}`}</span>
-    <span class="meta">{art.medium[lang]}. {art.size}</span>
-    {art.status !== 'print' && (
+    <span class="title">{href ? <a href={href}>{heading}</a> : heading}</span>
+    <span class="meta">{art.medium[lang]}</span>
+    <span class="meta">{art.size[lang]}</span>
+    {statusLabel && (
       <span class:list={['status', art.status]}>
         {statusLabel}{art.status === 'available' && art.price ? `, ${formatBRL(art.price)}` : ''}
       </span>
     )}
-    {
-      showBuy && (art.paymentLink || art.printLink) && (
-        <span class="actions">
-          {art.status === 'available' && art.paymentLink && (
-            <a class="button" href={art.paymentLink} target="_blank" rel="noopener">
-              {tr('art.buy')}
-            </a>
-          )}
-          {art.printLink && (
-            <a class="button quiet" href={art.printLink} target="_blank" rel="noopener">
-              {tr('art.prints')}
-            </a>
-          )}
-        </span>
-      )
-    }
   </figcaption>
 </figure>
 
@@ -70,8 +59,7 @@ const statusLabel =
   .open img { transition: filter 0.15s; }
   .open:hover img { filter: brightness(1.08); }
   .meta { color: var(--muted); }
-  .status { font-size: 0.875rem; color: var(--muted); }
+  .status { font-size: 0.875rem; color: var(--muted); margin-top: 0.15rem; }
   .status.available { color: var(--cobalt); font-weight: 600; }
   .status.sold { color: var(--sold); }
-  .actions { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.75rem; }
 </style>
