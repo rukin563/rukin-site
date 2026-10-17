@@ -171,6 +171,7 @@ const tiles = site.coverTiles as { page: PageKey; image: string }[];
 
   /* Obras: 12-column grid like the old site. Each cell's columns come from obras.json. */
   .obras, .wide { max-width: 80rem; margin: 0 auto; }
+  .wide .layout { row-gap: 4rem; } /* Sobre and Bio: a bit more air between photo and text */
   .layout { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: clamp(1rem, 2.5vw, 2rem); row-gap: 3rem; align-items: start; }
   .cell { grid-column: var(--col); }
   .chapter { text-align: center; font-size: clamp(1.6rem, 3.5vw, 2.25rem); margin: 3rem 0 0.5rem; padding-top: 2.5rem; border-top: 1px solid var(--line); }
@@ -179,8 +180,9 @@ const tiles = site.coverTiles as { page: PageKey; image: string }[];
   .essay { max-width: none; text-align: justify; hyphens: auto; margin: 0; }
   .essays { display: grid; gap: 1.1em; }
   .person { margin: 0; }
-  .quote { font-style: italic; font-weight: 300; color: var(--muted); }
-  .cv { margin: 0.5rem 0 0; }
+  /* Extra margin doubles the space above and below the quote (on top of the 1.1em gap). */
+  .quote { font-style: italic; font-weight: 300; color: var(--muted); margin: 1.1em 0; }
+  .cv { margin: 1.6em 0 0; } /* set apart from the bio text */
   .cv a { color: inherit; }
   .view { margin: 0; }
   .view img { width: 100%; box-shadow: 0 1px 0 var(--line); }
