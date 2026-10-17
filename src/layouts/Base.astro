@@ -51,12 +51,7 @@ const banner = page === 'home' ? site.bannerImage : null;
   </head>
   <body>
     <div id="app" data-page={page}>
-      <!-- The banner photo is set in site.json ("bannerImage") and shows on the cover only.
-           Set it to null to go back to plain grey. -->
-      <header
-        class:list={['masthead', { 'has-banner': banner, minimal }]}
-        style={banner ? `--banner: url('${banner}')` : undefined}
-      >
+      <header class:list={['masthead', { minimal }]}>
         <a class="name" href={routes.home[lang]}>{site.artistName}</a>
         {!minimal && (
           <nav aria-label="Principal">
@@ -80,6 +75,14 @@ const banner = page === 'home' ? site.bannerImage : null;
           <span class:list={{ on: lang === 'en' }}>EN</span>
         </a>
       </header>
+
+      <!-- Cover only: full-width banner photo under the menu, with the name on it, like the old site.
+           The photo is "bannerImage" in site.json; set it to null to remove the banner. -->
+      {banner && (
+        <div class="banner" style={`--banner: url('${banner}')`}>
+          <p class="banner-name">{site.artistName}</p>
+        </div>
+      )}
 
       <main>
         <slot />
@@ -193,26 +196,26 @@ const banner = page === 'home' ? site.bannerImage : null;
   #app.swapping { opacity: 0.4; }
   @media (prefers-reduced-motion: reduce) { #app { transition: none; } }
 
-  /* Masthead: the artist's name set huge and compressed is the page's one bold gesture. */
+  /* Masthead: one row. Menu on the left; the name and the PT/EN switch on the right.
+     On phones the menu wraps onto its own row below. */
   .masthead {
     display: grid;
-    grid-template-columns: 1fr auto;
-    grid-template-areas: 'name lang' 'nav nav';
-    align-items: end;
-    gap: 0.75rem 1rem;
-    padding: var(--gutter) var(--gutter) 1.25rem;
+    grid-template-columns: 1fr auto auto;
+    grid-template-areas: 'nav name lang';
+    align-items: center;
+    gap: 0.75rem 1.25rem;
+    padding: 1.25rem var(--gutter);
     border-bottom: 1px solid var(--line);
+  }
+  @media (max-width: 40rem) {
+    .masthead { grid-template-columns: 1fr auto; grid-template-areas: 'name lang' 'nav nav'; }
   }
   .name {
     grid-area: name;
     color: var(--ink);
     text-decoration: none;
-    font-weight: 800;
-    font-variation-settings: 'wdth' 62;
-    font-stretch: 62%;
-    font-size: clamp(3.5rem, 14vw, 9rem);
-    line-height: 0.82;
-    letter-spacing: -0.02em;
+    font-weight: 700;
+    padding: 0.25rem 0;
   }
   .masthead nav { grid-area: nav; display: flex; flex-wrap: wrap; gap: 0.25rem 1.5rem; }
   .masthead nav a { color: var(--ink); text-decoration: none; font-weight: 500; padding: 0.25rem 0; }
@@ -221,7 +224,6 @@ const banner = page === 'home' ? site.bannerImage : null;
 
   .lang {
     grid-area: lang;
-    align-self: start;
     display: inline-flex;
     border: 1.5px solid var(--ink);
     border-radius: 999px;
@@ -233,26 +235,38 @@ const banner = page === 'home' ? site.bannerImage : null;
   .lang span { padding: 0.3rem 0.7rem; border-radius: 999px; color: var(--ink); }
   .lang span.on { background: var(--ink); color: var(--wall); }
 
-  /* Banner: a photo behind the name and menu. The dark layer on top keeps the white text
-     readable whatever the photo looks like; raise 0.45 if a bright photo makes it hard to read. */
-  .masthead.minimal { grid-template-areas: 'name lang'; align-items: center; padding-bottom: var(--gutter); }
-  .masthead.minimal .name { font-size: clamp(2.25rem, 7vw, 3.5rem); }
+  /* Landing pages: no menu, just the name and the switch on the right. */
+  .masthead.minimal { grid-template-areas: '. name lang'; }
 
-  .masthead.has-banner {
-    --ink: #fff;
-    --wall: #17191c;
-    background: linear-gradient(rgb(0 0 0 / 0.45), rgb(0 0 0 / 0.45)), var(--banner) center / cover no-repeat, #3a3d40;
-    border-bottom: 0;
-    padding-top: clamp(4rem, 12vw, 9rem);
+  /* Cover banner: 430px tall like the old site (250px on phones). The light dark layer
+     keeps the white name readable on bright photos; raise 0.3 if it gets hard to read. */
+  .banner {
+    display: grid;
+    place-items: center;
+    height: 430px;
+    background: linear-gradient(rgb(0 0 0 / 0.3), rgb(0 0 0 / 0.3)), var(--banner) center / cover no-repeat, #3a3d40;
   }
-  .masthead.has-banner nav a:hover,
-  .masthead.has-banner nav a[aria-current='page'] { color: #fff; text-decoration: underline; text-decoration-thickness: 2px; }
+  @media (max-width: 30rem) { .banner { height: 250px; } }
+  .banner-name {
+    margin: 0;
+    color: #fff;
+    font-weight: 800;
+    font-variation-settings: 'wdth' 62;
+    font-stretch: 62%;
+    font-size: clamp(3.5rem, 12vw, 8rem);
+    line-height: 1;
+    text-transform: lowercase;
+    text-shadow: 0 2px 16px rgb(0 0 0 / 0.35);
+  }
 
   main { flex: 1; padding: clamp(2rem, 5vw, 4rem) var(--gutter); }
 
   footer { border-top: 1px solid var(--line); padding: 2.5rem var(--gutter); display: grid; gap: 2rem; }
   .newsletter h2 { margin-bottom: 0.25rem; }
   .newsletter p { color: var(--muted); margin: 0 0 1rem; }
+  /* Darker grey at rest, lightening to the cover's hover grey, so the hover is easy to see. */
+  .newsletter button { background: #5a5d62; color: #fff; transition: background 0.15s; }
+  .newsletter button:hover { background: #8a8d91; filter: none; }
   .row { display: flex; gap: 0.5rem; flex-wrap: wrap; max-width: 30rem; }
   input, textarea {
     font: inherit; color: var(--ink); background: var(--paper);

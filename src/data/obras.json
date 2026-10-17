@@ -1,5 +1,5 @@
 {
-  "_note": "Order of the Obras page, top to bottom. Block types: section (big title), subheading, text, view (exhibition/context photo with caption), work (an artwork from artworks.json; optional image shows another photo of it).",
+  "_note": "Order of the Obras page, top to bottom, on a 12-column grid. Block types: section (chapter title), subheading, text, view (exhibition photo with caption), work (an artwork from artworks.json; optional image = another photo of it; optional note = extra first caption line). Optional col = columns it spans, as 'start / end' with lines 1 to 13: '2 / 12' is 10 columns centred, '3 / 7' + '7 / 11' is a centred pair. Defaults: section 1 / 13, subheading 3 / 11, everything else 2 / 12.",
   "blocks": [
     {
       "type": "section",
@@ -82,19 +82,23 @@
     },
     {
       "type": "work",
-      "slug": "forever-iii"
+      "slug": "forever-iii",
+      "col": "3 / 7"
     },
     {
       "type": "work",
-      "slug": "forever-i"
+      "slug": "forever-i",
+      "col": "7 / 11"
     },
     {
       "type": "work",
-      "slug": "a-new-cultural-virus"
+      "slug": "a-new-cultural-virus",
+      "col": "3 / 7"
     },
     {
       "type": "work",
-      "slug": "time-capsule"
+      "slug": "time-capsule",
+      "col": "7 / 11"
     },
     {
       "type": "section",
@@ -113,7 +117,8 @@
     },
     {
       "type": "work",
-      "slug": "mural-2225"
+      "slug": "mural-2225",
+      "col": "3 / 11"
     },
     {
       "type": "subheading",
@@ -124,12 +129,14 @@
     },
     {
       "type": "work",
-      "slug": "after-the-brain-storm"
+      "slug": "after-the-brain-storm",
+      "col": "3 / 7"
     },
     {
       "type": "work",
       "slug": "after-the-brain-storm",
-      "image": "/images/obras_Brain2.jpg"
+      "image": "/images/obras_Brain2.jpg",
+      "col": "7 / 11"
     },
     {
       "type": "subheading",
@@ -140,11 +147,13 @@
     },
     {
       "type": "work",
-      "slug": "cavalo-de-fogo"
+      "slug": "cavalo-de-fogo",
+      "col": "3 / 7"
     },
     {
       "type": "work",
-      "slug": "cobra-de-madeira"
+      "slug": "cobra-de-madeira",
+      "col": "7 / 11"
     },
     {
       "type": "subheading",
@@ -155,12 +164,14 @@
     },
     {
       "type": "work",
-      "slug": "daruma"
+      "slug": "daruma",
+      "col": "3 / 7"
     },
     {
       "type": "work",
       "slug": "daruma",
-      "image": "/images/obras_Daruma02.jpg"
+      "image": "/images/obras_Daruma02.jpg",
+      "col": "7 / 11"
     },
     {
       "type": "section",
@@ -186,42 +197,46 @@
     },
     {
       "type": "work",
-      "slug": "astro-jazz"
+      "slug": "astro-jazz",
+      "col": "2 / 7"
     },
     {
       "type": "work",
-      "slug": "all-in-jazz"
+      "slug": "all-in-jazz",
+      "col": "7 / 12"
     },
     {
       "type": "work",
-      "slug": "oga-san"
+      "slug": "oga-san",
+      "col": "1 / 5"
     },
     {
       "type": "work",
-      "slug": "hit-idea"
+      "slug": "hit-idea",
+      "col": "5 / 10"
     },
     {
       "type": "work",
-      "slug": "builder"
+      "slug": "builder",
+      "col": "10 / 13"
     },
     {
       "type": "work",
-      "slug": "arquitetura-do-abstrato"
+      "slug": "arquitetura-do-abstrato",
+      "col": "1 / 7"
     },
     {
       "type": "work",
-      "slug": "abstracao-amarela"
+      "slug": "abstracao-amarela",
+      "col": "7 / 13"
     },
     {
-      "type": "subheading",
-      "text": {
+      "type": "work",
+      "slug": "pizza-pizza",
+      "note": {
         "pt": "Mural DesignFesta – Tóquio – Japão",
         "en": "DesignFesta Mural – Tokyo – Japan"
       }
-    },
-    {
-      "type": "work",
-      "slug": "pizza-pizza"
     }
   ]
 }

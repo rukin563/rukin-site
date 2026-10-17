@@ -15,9 +15,10 @@ interface Props {
   };
   href?: string; // when set, the photo and title link to this page (the work's shop page)
   image?: string; // show another photo of the same work instead of its main one
+  note?: string; // extra first caption line, e.g. where a mural was made
 }
 
-const { lang, art, href, image } = Astro.props;
+const { lang, art, href, image, note } = Astro.props;
 const tr = t(lang);
 const statusLabels: Record<string, string> = {
   available: tr('art.available'),
@@ -38,6 +39,7 @@ const heading = `${art.title[lang]}, ${art.year}`;
     <img src={image ?? art.image} alt={heading} loading="lazy" decoding="async" />
   )}
   <figcaption>
+    {note && <span class="note">{note}</span>}
     <span class="title">{href ? <a href={href}>{heading}</a> : heading}</span>
     <span class="meta">{art.medium[lang]}</span>
     <span class="meta">{art.size[lang]}</span>
@@ -58,7 +60,7 @@ const heading = `${art.title[lang]}, ${art.year}`;
   .title a:hover, .open:hover + figcaption .title a { color: var(--cobalt); }
   .open img { transition: filter 0.15s; }
   .open:hover img { filter: brightness(1.08); }
-  .meta { color: var(--muted); }
+  .meta, .note { color: var(--muted); }
   .status { font-size: 0.875rem; color: var(--muted); margin-top: 0.15rem; }
   .status.available { color: var(--cobalt); font-weight: 600; }
   .status.sold { color: var(--sold); }

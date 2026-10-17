@@ -37,16 +37,18 @@
   "bio": {
     "pt": [
       "Rukin vive e trabalha em São Paulo. Seu processo criativo parte do descarte — de objetos e de pessoas — e se apoia num rigor formal que vem de trinta anos de design gráfico, rigor que foi se soltando até o erro virar material.",
-      "Trabalho com o que se joga fora — objetos e pessoas.",
       "Em 2024 apresentou a individual Multiplicidades na Passagem Literária da Consolação, São Paulo, investigação que se desdobrou na coletiva Sociedade do Descarte, no mesmo espaço (setembro de 2025 – março de 2026). Sua primeira individual, Voodoo é pra jacú, foi em 2019 (Porão da Cerveja, São Paulo).",
       "Antes disso viveu treze anos no Japão (2004–2018), onde sustentou a prática do desenho e da pintura em paralelo ao trabalho em fábrica e participou de feiras de arte em Tóquio. Formou-se pela FAAP em 1993 em Programação Visual."
     ],
     "en": [
       "Rukin lives and works in São Paulo. His creative process begins with what gets thrown away — objects and people alike — and carries a formal rigor drawn from thirty years in graphic design, a rigor that loosened over time until error became material.",
-      "I work with what gets thrown away — objects and people alike.",
       "In 2024 he presented the solo exhibition Multiplicidades at Passagem Literária da Consolação, São Paulo, Brazil — an inquiry that carried over into the group exhibition Sociedade do Descarte at the same venue (September 2025 – March 2026). His first solo show, Voodoo é pra jacú, opened in 2019 at Porão da Cerveja, São Paulo, Brazil.",
       "He spent thirteen years in Japan (2004–2018), sustaining a practice in drawing and painting alongside factory work and exhibiting at art fairs in Tokyo. He graduated in Graphic Design from FAAP, São Paulo, Brazil in 1993."
     ]
+  },
+  "bioQuote": {
+    "pt": "Trabalho com o que se joga fora — objetos e pessoas.",
+    "en": "I work with what gets thrown away — objects and people alike."
   },
   "aboutPhoto": {
     "image": "/images/sobre_rukinJazz.jpg",

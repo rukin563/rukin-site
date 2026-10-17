@@ -84,7 +84,8 @@ export const ui = {
     'about.title': 'Sobre',
 
     'bio.title': 'Bio',
-    'bio.cv': 'Curriculum Vitae (download)',
+    'bio.cv': 'Curriculum Vitae',
+    'bio.cvNote': '(download)',
 
     'contact.title': 'Contato',
     'contact.intro': 'Encomendas, exposições, parcerias ou só um oi.',
@@ -168,7 +169,8 @@ export const ui = {
     'about.title': 'About',
 
     'bio.title': 'Bio',
-    'bio.cv': 'Curriculum Vitae (download)',
+    'bio.cv': 'Curriculum Vitae',
+    'bio.cvNote': '(download)',
 
     'contact.title': 'Contact',
     'contact.intro': 'Commissions, exhibitions, collaborations, or just to say hi.',

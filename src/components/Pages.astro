@@ -17,16 +17,10 @@ const tr = t(lang);
 const sorted = [...artworks].sort((a, b) => parseInt(b.year) - parseInt(a.year));
 const forSale = sorted.filter((a) => a.status === 'available' && a.paymentLink);
 const artBySlug = Object.fromEntries(artworks.map((a) => [a.slug, a]));
-// The Obras page follows obras.json block by block. Works that follow each other
-// are grouped so they sit side by side in a grid.
-type Block = (typeof obras.blocks)[number];
-const obrasGroups: (Block | { type: 'works'; items: Block[] })[] = [];
-for (const block of obras.blocks) {
-  const last = obrasGroups.at(-1);
-  if (block.type === 'work' && last?.type === 'works') last.items.push(block);
-  else if (block.type === 'work') obrasGroups.push({ type: 'works', items: [block] });
-  else obrasGroups.push(block);
-}
+// The Obras page follows obras.json block by block, on the same 12-column grid as
+// the old Google Sites page. "col" says which columns a block covers (lines 1 to 13).
+const defaultCol: Record<string, string> = { section: '1 / 13', subheading: '3 / 11' };
+const colOf = (block: { type: string; col?: string }) => block.col ?? defaultCol[block.type] ?? '2 / 12';
 // Section ids for the "Originais / Produtos" jump links at the top of the shop.
 const anchors = lang === 'pt' ? { originals: 'originais', products: 'produtos' } : { originals: 'originals', products: 'products' };
 // The cover's four picture buttons come from "coverTiles" in site.json:
@@ -53,35 +47,32 @@ const tiles = site.coverTiles as { page: PageKey; image: string }[];
 
 {page === 'gallery' && (
   <section class="obras">
-    <h1>{tr('gallery.title')}</h1>
-    {obrasGroups.map((group) => {
-      if (group.type === 'works') {
-        return (
-          <div class="grid">
-            {group.items.map((block) => {
-              const art = artBySlug[block.slug];
-              return (
-                <ArtworkCard
-                  lang={lang}
-                  art={art}
-                  image={block.image}
-                  href={hasItemPage(art.slug) ? itemPaths(art.slug)[lang] : undefined}
-                />
-              );
-            })}
-          </div>
-        );
-      }
-      if (group.type === 'section') return <h2 class="chapter">{group.text[lang]}</h2>;
-      if (group.type === 'subheading') return <h3>{group.text[lang]}</h3>;
-      if (group.type === 'text') return <p class="essay">{group.text[lang]}</p>;
-      return (
-        <figure class="view">
-          <img src={group.image} alt={group.caption[lang]} loading="lazy" decoding="async" />
-          <figcaption>{group.caption[lang]}</figcaption>
-        </figure>
-      );
-    })}
+    <!-- Hidden title: invisible, but Google and screen readers still know this is the Obras page. -->
+    <h1 class="sr-only">{tr('gallery.title')}</h1>
+    <div class="layout">
+      {obras.blocks.map((block) => (
+        <div class="cell" style={`--col: ${colOf(block)}`}>
+          {block.type === 'section' && <h2 class="chapter">{block.text[lang]}</h2>}
+          {block.type === 'subheading' && <h3>{block.text[lang]}</h3>}
+          {block.type === 'text' && <p class="essay">{block.text[lang]}</p>}
+          {block.type === 'view' && (
+            <figure class="view">
+              <img src={block.image} alt={block.caption[lang]} loading="lazy" decoding="async" />
+              <figcaption>{block.caption[lang]}</figcaption>
+            </figure>
+          )}
+          {block.type === 'work' && (
+            <ArtworkCard
+              lang={lang}
+              art={artBySlug[block.slug]}
+              image={block.image}
+              note={block.note?.[lang]}
+              href={hasItemPage(block.slug) ? itemPaths(block.slug)[lang] : undefined}
+            />
+          )}
+        </div>
+      ))}
+    </div>
   </section>
 )}
 
@@ -114,24 +105,47 @@ const tiles = site.coverTiles as { page: PageKey; image: string }[];
 )}
 
 {page === 'about' && (
-  <section class="prose">
-    <h1>{tr('about.title')}</h1>
-    <figure class="view">
-      <img src={site.aboutPhoto.image} alt={site.aboutPhoto.caption[lang]} decoding="async" />
-      <figcaption>{site.aboutPhoto.caption[lang]}</figcaption>
-    </figure>
-    {site.about[lang].map((para) => <p>{para}</p>)}
+  <section class="wide">
+    <h1 class="sr-only">{tr('about.title')}</h1>
+    <!-- Same layout as the old site: photo 10/12 columns, text 8/12, justified. -->
+    <div class="layout">
+      <div class="cell" style="--col: 2 / 12">
+        <figure class="view">
+          <img src={site.aboutPhoto.image} alt={site.aboutPhoto.caption[lang]} decoding="async" />
+          <figcaption>{site.aboutPhoto.caption[lang]}</figcaption>
+        </figure>
+      </div>
+      <div class="cell essays" style="--col: 3 / 11">
+        {site.about[lang].map((para) => <p class="essay">{para}</p>)}
+      </div>
+    </div>
   </section>
 )}
 
 {page === 'bio' && (
-  <section class="prose">
-    <h1>{tr('bio.title')}</h1>
-    <figure class="view">
-      <img src={site.bioPhoto} alt={site.artistName} decoding="async" />
-    </figure>
-    {site.bio[lang].map((para) => <p>{para}</p>)}
-    <p><a class="button quiet" href={site.cv[lang]} target="_blank" rel="noopener">{tr('bio.cv')}</a></p>
+  <section class="wide">
+    <h1 class="sr-only">{tr('bio.title')}</h1>
+    <!-- Same layout as the old site: photo 10/12 columns, text 8/12, justified,
+         the quote in light italic after the first paragraph, CV as a plain link. -->
+    <div class="layout">
+      <div class="cell" style="--col: 2 / 12">
+        <figure class="view">
+          <img src={site.bioPhoto} alt={site.artistName} decoding="async" />
+        </figure>
+      </div>
+      <div class="cell essays" style="--col: 3 / 11">
+        <h2 class="person">{site.artistName}</h2>
+        {site.bio[lang].map((para, i) => (
+          <>
+            <p class="essay">{para}</p>
+            {i === 0 && <p class="essay quote">{site.bioQuote[lang]}</p>}
+          </>
+        ))}
+        <p class="cv">
+          <a href={site.cv[lang]} target="_blank" rel="noopener">{tr('bio.cv')}</a> {tr('bio.cvNote')}
+        </p>
+      </div>
+    </div>
   </section>
 )}
 
@@ -155,14 +169,27 @@ const tiles = site.coverTiles as { page: PageKey; image: string }[];
   .grid { columns: 3 18rem; column-gap: 2rem; margin-bottom: 1.5rem; }
   .prose { max-width: 40rem; }
 
-  /* Obras: chapters, essays, exhibition views and works, in the order of obras.json. */
-  .chapter { font-size: clamp(1.6rem, 3.5vw, 2.25rem); margin: 4rem 0 1.5rem; padding-top: 2rem; border-top: 1px solid var(--line); }
-  .obras h1 + .chapter { margin-top: 1rem; padding-top: 0; border-top: 0; }
-  .obras h3 { font-size: 1.15rem; margin: 2.5rem 0 1rem; }
-  .essay { margin: 0 0 2rem; }
-  .view { margin: 0 0 2rem; max-width: 56rem; }
+  /* Obras: 12-column grid like the old site. Each cell's columns come from obras.json. */
+  .obras, .wide { max-width: 80rem; margin: 0 auto; }
+  .layout { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: clamp(1rem, 2.5vw, 2rem); row-gap: 3rem; align-items: start; }
+  .cell { grid-column: var(--col); }
+  .chapter { text-align: center; font-size: clamp(1.6rem, 3.5vw, 2.25rem); margin: 3rem 0 0.5rem; padding-top: 2.5rem; border-top: 1px solid var(--line); }
+  .cell:first-child .chapter { margin-top: 0; padding-top: 0; border-top: 0; }
+  .obras h3 { text-align: center; font-size: 1.15rem; margin: 1.5rem 0 0; }
+  .essay { max-width: none; text-align: justify; hyphens: auto; margin: 0; }
+  .essays { display: grid; gap: 1.1em; }
+  .person { margin: 0; }
+  .quote { font-style: italic; font-weight: 300; color: var(--muted); }
+  .cv { margin: 0.5rem 0 0; }
+  .cv a { color: inherit; }
+  .view { margin: 0; }
   .view img { width: 100%; box-shadow: 0 1px 0 var(--line); }
   .view figcaption { padding-top: 0.6rem; font-size: 0.9rem; color: var(--muted); }
+  .obras .cell :global(.art) { margin: 0; }
+  /* Phones: one column, everything full width, in the same order. */
+  @media (max-width: 40rem) {
+    .cell { grid-column: 1 / -1; }
+  }
   .contact { display: grid; gap: 1rem; }
   .contact label { display: grid; gap: 0.35rem; font-weight: 500; }
   .contact button { justify-self: start; }
@@ -180,8 +207,11 @@ const tiles = site.coverTiles as { page: PageKey; image: string }[];
   .f1 { grid-area: f1; } .f2 { grid-area: f2; } .f3 { grid-area: f3; } .f4 { grid-area: f4; }
   .statement { grid-area: text; padding: 1rem 0; text-align: center; }
   .statement .lede { margin-left: auto; margin-right: auto; }
+  /* Same darker grey as Assinar, lightening on hover like it. */
+  .statement .button.quiet { color: #5a5d62; transition: color 0.15s; }
+  .statement .button.quiet:hover { color: #8a8d91; filter: none; }
   .statement h1 {
-    font-size: clamp(2.25rem, 4.6vw, 4.25rem);
+    font-size: clamp(1.8rem, 3.68vw, 3.4rem); /* 20% smaller than the first version */
     font-weight: 800;
     font-variation-settings: 'wdth' 75;
     font-stretch: 75%;
@@ -201,7 +231,7 @@ const tiles = site.coverTiles as { page: PageKey; image: string }[];
     transform: translateY(-50%);
     padding: 0.55em 0;
     background: rgb(255 255 255 / 0.78);
-    color: #17191c;
+    color: #5a5d62; /* same darker grey as the Assinar button */
     text-align: center;
     font-size: clamp(1rem, 2.6vw, 1.75rem);
     font-weight: 600;
