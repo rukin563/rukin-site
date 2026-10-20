@@ -241,6 +241,20 @@ const banner = page === 'home' ? site.bannerImage : null;
     z-index: 10;
     background: var(--wall);
   }
+  .name {
+    grid-area: name;
+    color: var(--ink);
+    text-decoration: none;
+    font-weight: 700;
+    padding: 0.25rem 0;
+  }
+  .masthead nav { grid-area: nav; display: flex; flex-wrap: wrap; gap: 0.25rem 1.5rem; }
+  .masthead nav a { color: var(--ink); text-decoration: none; font-weight: 500; padding: 0.25rem 0; }
+  .masthead nav a:hover { color: var(--link-hover); }
+  a:hover { color: var(--link-hover); }
+  .masthead nav a[aria-current='page'] { color: var(--link); text-decoration: underline; text-decoration-thickness: 2px; }
+
+  /* Phone rules come after the general menu rules above, so they win. */
   .burger { display: none; }
   /* Phones: the menu folds into a ☰ button on the left; tapping it opens the menu as a list under the bar. */
   @media (max-width: 40rem) {
@@ -290,18 +304,6 @@ const banner = page === 'home' ? site.bannerImage : null;
     .masthead nav a:last-child { border-bottom: 0; }
     .masthead.minimal { grid-template-columns: 1fr auto auto; } /* landing pages: no ☰, name and switch on the right */
   }
-  .name {
-    grid-area: name;
-    color: var(--ink);
-    text-decoration: none;
-    font-weight: 700;
-    padding: 0.25rem 0;
-  }
-  .masthead nav { grid-area: nav; display: flex; flex-wrap: wrap; gap: 0.25rem 1.5rem; }
-  .masthead nav a { color: var(--ink); text-decoration: none; font-weight: 500; padding: 0.25rem 0; }
-  .masthead nav a:hover { color: var(--link-hover); }
-  a:hover { color: var(--link-hover); }
-  .masthead nav a[aria-current='page'] { color: var(--link); text-decoration: underline; text-decoration-thickness: 2px; }
 
   .lang {
     grid-area: lang;
