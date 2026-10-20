@@ -54,7 +54,13 @@ const banner = page === 'home' ? site.bannerImage : null;
       <header class:list={['masthead', { minimal }]}>
         <a class="name" href={routes.home[lang]}>{site.artistName}</a>
         {!minimal && (
-          <nav aria-label="Principal">
+          <button class="burger" type="button" aria-expanded="false" aria-controls="site-menu" data-burger>
+            <span class="sr-only">{tr('nav.menu')}</span>
+            <span class="bars" aria-hidden="true"></span>
+          </button>
+        )}
+        {!minimal && (
+          <nav id="site-menu" aria-label="Principal">
             {nav.map((key) => (
               <a href={routes[key][lang]} aria-current={key === page ? 'page' : undefined}>
                 {tr(`nav.${key}`)}
@@ -143,6 +149,22 @@ const banner = page === 'home' ? site.bannerImage : null;
       });
 
       window.addEventListener('popstate', () => swapTo(location.href, false));
+
+      // Phone menu (☰): open and close. Listens on the document so it keeps
+      // working after the PT/EN switch swaps the page.
+      function setMenu(open: boolean) {
+        document.querySelector('[data-burger]')?.setAttribute('aria-expanded', String(open));
+        document.getElementById('site-menu')?.classList.toggle('open', open);
+      }
+      document.addEventListener('click', (e) => {
+        const target = e.target as Element;
+        const burger = target.closest('[data-burger]');
+        if (burger) return setMenu(burger.getAttribute('aria-expanded') !== 'true');
+        if (!target.closest('#site-menu')) setMenu(false); // tap outside closes it
+      });
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') setMenu(false);
+      });
     </script>
   </body>
 </html>
@@ -180,7 +202,7 @@ const banner = page === 'home' ? site.bannerImage : null;
   @media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
   /* Links that jump down the page land below the sticky menu bar, not under it. */
   html { scroll-padding-top: 6rem; }
-  @media (max-width: 40rem) { html { scroll-padding-top: 8rem; } }
+  @media (max-width: 40rem) { html { scroll-padding-top: 5rem; } }
   body {
     margin: 0;
     background: var(--wall);
@@ -219,8 +241,54 @@ const banner = page === 'home' ? site.bannerImage : null;
     z-index: 10;
     background: var(--wall);
   }
+  .burger { display: none; }
+  /* Phones: the menu folds into a ☰ button on the left; tapping it opens the menu as a list under the bar. */
   @media (max-width: 40rem) {
-    .masthead { grid-template-columns: 1fr auto; grid-template-areas: 'name lang' 'nav nav'; }
+    .masthead { grid-template-columns: auto 1fr auto auto; grid-template-areas: 'burger . name lang'; }
+    .burger {
+      grid-area: burger;
+      display: grid;
+      place-items: center;
+      width: 2.5rem;
+      height: 2.5rem;
+      margin-left: -0.5rem;
+      padding: 0;
+      background: none;
+      color: var(--ink);
+    }
+    .burger:hover { background: none; color: var(--link-hover); }
+    .bars, .bars::before, .bars::after {
+      display: block;
+      width: 1.4rem;
+      height: 2px;
+      background: currentColor;
+      transition: transform 0.2s, opacity 0.2s;
+    }
+    .bars { position: relative; }
+    .bars::before, .bars::after { content: ''; position: absolute; left: 0; }
+    .bars::before { top: -7px; }
+    .bars::after { top: 7px; }
+    /* Open: the three bars turn into an X. */
+    .burger[aria-expanded='true'] .bars { background: transparent; }
+    .burger[aria-expanded='true'] .bars::before { transform: translateY(7px) rotate(45deg); }
+    .burger[aria-expanded='true'] .bars::after { transform: translateY(-7px) rotate(-45deg); }
+
+    .masthead nav {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      flex-direction: column;
+      gap: 0;
+      padding: 0.5rem var(--gutter) 1rem;
+      background: var(--wall);
+      border-bottom: 1px solid var(--line);
+    }
+    .masthead nav.open { display: flex; }
+    .masthead nav a { padding: 0.7rem 0; border-bottom: 1px solid var(--line); }
+    .masthead nav a:last-child { border-bottom: 0; }
+    .masthead.minimal { grid-template-columns: 1fr auto auto; } /* landing pages: no ☰, name and switch on the right */
   }
   .name {
     grid-area: name;

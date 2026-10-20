@@ -207,6 +207,11 @@ const tiles = site.coverTiles as { page: PageKey; image: string }[];
     align-items: center;
   }
   .f1 { grid-area: f1; } .f2 { grid-area: f2; } .f3 { grid-area: f3; } .f4 { grid-area: f4; }
+  /* Phones: each picture button takes the full width: OBRAS, SOBRE, quote, BIO, LOJA. */
+  @media (max-width: 40rem) {
+    .cover { grid-template-columns: 1fr; grid-template-areas: 'f1' 'f2' 'text' 'f3' 'f4'; }
+    .tile span { font-size: 1.35rem; }
+  }
   .statement { grid-area: text; padding: 1rem 0; text-align: center; }
   .statement .lede { margin-left: auto; margin-right: auto; }
   .statement h1 {

@@ -24,6 +24,7 @@ export const ui = {
     'nav.about': 'Sobre',
     'nav.bio': 'Bio',
     'nav.contact': 'Contato',
+    'nav.menu': 'Menu',
     'lang.switch': 'Ver em inglês',
 
     'home.statement': 'Trabalho com o que se joga fora — objetos e pessoas.',
@@ -109,6 +110,7 @@ export const ui = {
     'nav.about': 'About',
     'nav.bio': 'Bio',
     'nav.contact': 'Contact',
+    'nav.menu': 'Menu',
     'lang.switch': 'Ver em português',
 
     'home.statement': 'I work with what gets thrown away — objects and people alike.',
