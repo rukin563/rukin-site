@@ -9,7 +9,7 @@ Rebuild of rukin563.com (artist portfolio, currently on Google Sites) as an Astr
 - **Images:** full-quality masters go in `image-originals/` (git-ignored, never published). `npm run images` writes compressed copies to `public/images/` (JPG, or WebP when transparent; max 1600px wide, banner 2400, btn_ 600; metadata stripped). Never put uncompressed photos straight into `public/images/`. File names: lowercase first letter, no spaces or accents (Cloudflare is case-sensitive).
 - **Shop:** originals sold through individual Mercado Pago payment links (Pix matters for Brazilian buyers). Prints through Colab55 (print-on-demand, Brazil). Digital products later, probably via Hotmart. Nuvemshop is the upgrade path once order volume justifies it.
 - **Forms:** Formspree for contact, Brevo or Buttondown for newsletter.
-- **Design:** concrete-grey "gallery wall" background, one cobalt accent, Archivo variable font. Header is one row: menu left, the name (menu-sized, by Rukin's choice, Oct 2026) and the PT/EN switch right. The cover carries the visual weight instead: banner photo, picture buttons, statement. Dark mode supported.
+- **Design:** concrete-grey "gallery wall" background (#e4e5e1), all buttons dark grey (--button #5a5d62, hover --button-hover #8a8d91), cobalt kept only for text links and the active menu item, Archivo variable font. Header is one row: menu left, the name (menu-sized, by Rukin's choice, Oct 2026) and the PT/EN switch right. The cover carries the visual weight instead: banner photo, picture buttons, statement. Dark mode supported.
 
 ## Business setup (confirmed by Rukin)
 - Registered as **ME** (microempresa, not MEI) with CNPJ and state registration, working with an accountant.

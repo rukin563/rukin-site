@@ -1,18 +1,26 @@
 ---
-// Big photo with up to 4 thumbnails on its left (below it on phones).
+// Big photo with a thumbnail for every photo on its left (below it on phones).
 // Used by the shop item pages and the calendar landing page.
 import { t, type Lang } from '../i18n/ui';
 
-interface Props { lang: Lang; photos: string[]; alt: string }
-const { lang, photos, alt } = Astro.props;
+interface Props {
+  lang: Lang;
+  photos: string[];
+  alt: string;
+  thumbRatio?: string; // thumbnail shape, e.g. '2 / 3' for tall photos; default square
+  // Thumbnail column exactly as tall as the main photo (thumbnails share that height).
+  // Good when all photos have the same shape, like the calendar.
+  fitHeight?: boolean;
+}
+const { lang, photos, alt, thumbRatio = '1 / 1', fitHeight = false } = Astro.props;
 const tr = t(lang);
 ---
 
-<div class="gallery">
+<div class:list={['gallery', { fit: fitHeight }]}>
   <img class="main" src={photos[0]} alt={alt} decoding="async" data-main />
   {photos.length > 1 && (
-    <div class="thumbs">
-      {photos.slice(0, 4).map((src, i) => (
+    <div class="thumbs" style={`--thumb-ratio: ${thumbRatio}`}>
+      {photos.map((src, i) => (
         <button
           type="button"
           data-thumb={src}
@@ -52,8 +60,7 @@ const tr = t(lang);
     grid-area: main;
     width: 100%;
     max-height: 80vh;
-    object-fit: contain;
-    background: var(--paper);
+    object-fit: contain; /* whole photo always visible; any leftover space shows the page colour */
     box-shadow: 0 1px 0 var(--line);
   }
   .thumbs { grid-area: thumbs; display: grid; gap: 0.75rem; }
@@ -66,10 +73,20 @@ const tr = t(lang);
     transition: opacity 0.15s;
   }
   .thumbs button:hover { opacity: 1; filter: none; }
-  .thumbs button[aria-pressed='true'] { opacity: 1; border-color: var(--cobalt); }
-  .thumbs img { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; }
+  .thumbs button[aria-pressed='true'] { opacity: 1; border-color: var(--button); }
+  .thumbs img { width: 100%; aspect-ratio: var(--thumb-ratio); object-fit: cover; }
+
+  /* fitHeight: the column takes the main photo's height (contain: size stops the
+     thumbnails from pushing it taller), and the thumbnails split it equally. */
+  @media (min-width: 40.01rem) {
+    .fit .thumbs { align-self: stretch; contain: size; display: flex; flex-direction: column; gap: 0.4rem; }
+    .fit .thumbs button { flex: 1 1 0; min-height: 0; overflow: hidden; }
+    .fit .thumbs img { height: 100%; aspect-ratio: auto; }
+  }
+
   @media (max-width: 40rem) {
     .gallery { grid-template-columns: 1fr; grid-template-areas: 'main' 'thumbs'; }
-    .thumbs { grid-template-columns: repeat(4, 1fr); }
+    .fit .thumbs { gap: 0.4rem; }
+    .thumbs { grid-auto-flow: column; grid-auto-columns: 1fr; } /* one row, however many photos */
   }
 </style>

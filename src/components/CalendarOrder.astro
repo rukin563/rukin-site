@@ -154,8 +154,8 @@ const errorText = tr('order.error').replace('{email}', site.email);
     background: var(--paper);
     cursor: pointer;
   }
-  .pick:has(input:checked) { border-color: var(--cobalt); }
-  .pick input { width: auto; accent-color: var(--cobalt); }
+  .pick:has(input:checked) { border-color: var(--button); }
+  .pick input { width: auto; accent-color: var(--button); }
   .pick span { flex: 1; }
   .note { margin: 0.25rem 0 0; font-size: 0.95rem; color: var(--muted); }
 
@@ -165,7 +165,7 @@ const errorText = tr('order.error').replace('{email}', site.email);
   @media (max-width: 30rem) { .fields { grid-template-columns: 1fr; } }
 
   .news { display: flex; align-items: center; gap: 0.6rem; margin-bottom: 0.5rem; cursor: pointer; }
-  .news input { width: auto; accent-color: var(--cobalt); }
+  .news input { width: auto; accent-color: var(--button); }
   .privacy { font-size: 0.875rem; color: var(--muted); margin: 0 0 1.25rem; }
   button { font-size: 1.05rem; padding: 0.8rem 1.6rem; }
   button:disabled { opacity: 0.6; cursor: wait; }

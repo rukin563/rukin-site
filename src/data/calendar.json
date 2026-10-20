@@ -3,11 +3,13 @@
   "paths": { "pt": "/calendario-2027", "en": "/en/calendar-2027" },
   "unitPrice": 65,
   "orderFormAction": "https://formspree.io/f/mdeawppz",
+  "shareImage": "/images/cal27_share.jpg",
   "photos": [
-    "/images/placeholder-1.svg",
-    "/images/placeholder-2.svg",
-    "/images/placeholder-3.svg",
-    "/images/placeholder-4.svg"
+    "/images/cal27_01.webp",
+    "/images/cal27_02.jpg",
+    "/images/cal27_03.jpg",
+    "/images/cal27_04.jpg",
+    "/images/cal27_05.jpg"
   ],
   "options": [
     { "qty": 1, "price": 65, "link": "https://mpago.la/SEU_LINK_CALENDARIO_1" },

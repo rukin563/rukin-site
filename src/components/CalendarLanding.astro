@@ -14,7 +14,8 @@ const text = calendar[lang];
 ---
 
 <article class="landing">
-  <ProductGallery lang={lang} photos={calendar.photos} alt={text.title} />
+  <!-- Calendar photos are 2:3 (800 × 1200), so thumbnails use that shape and show the whole sheet. -->
+  <ProductGallery lang={lang} photos={calendar.photos} alt={text.title} thumbRatio="2 / 3" fitHeight />
 
   <div class="info">
     <p class="kicker">{text.subtitle}</p>
@@ -36,7 +37,7 @@ const text = calendar[lang];
 </article>
 
 <style>
-  .landing { max-width: 52rem; }
+  .landing { max-width: 52rem; margin: 0 auto; } /* centred on the page */
   /* Text lines up under the photo, not under the thumbnails (same as shop item pages). */
   .info, .goat, .again { margin-left: 6.5rem; max-width: 36rem; }
   @media (max-width: 40rem) { .info, .goat, .again { margin-left: 0; } }

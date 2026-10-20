@@ -47,16 +47,15 @@ const tr = t(lang);
     align-items: center;
     gap: 1rem;
     padding: 0.9rem 1.1rem;
-    border: 1.5px solid var(--cobalt);
+    border: 1.5px solid var(--button);
     border-radius: 6px;
-    color: var(--cobalt);
+    color: var(--button);
     text-decoration: none;
     font-weight: 600;
   }
   .option:hover { background: var(--paper); }
-  .option.first { background: var(--cobalt); color: #fff; }
-  .option.first:hover { filter: brightness(1.1); }
-  @media (prefers-color-scheme: dark) { .option.first { color: #10132e; } }
+  .option.first { background: var(--button); color: #fff; }
+  .option.first:hover { background: var(--button-hover); border-color: var(--button-hover); }
   .label { display: grid; gap: 0.1rem; }
   small { font-weight: 400; font-size: 0.85rem; color: var(--muted); }
   .price { font-size: 1.15rem; white-space: nowrap; }

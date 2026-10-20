@@ -154,7 +154,9 @@ const banner = page === 'home' ? site.bannerImage : null;
     --ink: #17191c;
     --muted: #5e636b;
     --line: #c4c6c1;
-    --cobalt: #2338c9;    /* the one accent: links, active state, buttons */
+    --cobalt: #2338c9;    /* the accent for links and the active menu item */
+    --button: #5a5d62;    /* all buttons: dark grey... */
+    --button-hover: #8a8d91; /* ...lightening on hover */
     --sold: #9a3b2e;
     --gutter: clamp(16px, 4vw, 48px);
     --font: 'Archivo', system-ui, sans-serif;
@@ -265,8 +267,6 @@ const banner = page === 'home' ? site.bannerImage : null;
   .newsletter h2 { margin-bottom: 0.25rem; }
   .newsletter p { color: var(--muted); margin: 0 0 1rem; }
   /* Darker grey at rest, lightening to the cover's hover grey, so the hover is easy to see. */
-  .newsletter button { background: #5a5d62; color: #fff; transition: background 0.15s; }
-  .newsletter button:hover { background: #8a8d91; filter: none; }
   .row { display: flex; gap: 0.5rem; flex-wrap: wrap; max-width: 30rem; }
   input, textarea {
     font: inherit; color: var(--ink); background: var(--paper);
@@ -275,12 +275,12 @@ const banner = page === 'home' ? site.bannerImage : null;
   .row input { flex: 1 1 14rem; width: auto; }
   button, .button {
     font: inherit; font-weight: 600; cursor: pointer;
-    background: var(--cobalt); color: #fff; border: 0; border-radius: 6px;
+    background: var(--button); color: #fff; border: 0; border-radius: 6px; transition: background 0.15s, color 0.15s;
     padding: 0.65rem 1.1rem; text-decoration: none; display: inline-block;
   }
-  @media (prefers-color-scheme: dark) { button, .button { color: #10132e; } }
-  button:hover, .button:hover { filter: brightness(1.1); }
-  .button.quiet { background: transparent; color: var(--cobalt); border: 1.5px solid currentColor; }
+  button:hover, .button:hover { background: var(--button-hover); }
+  .button.quiet { background: transparent; color: var(--button); border: 1.5px solid currentColor; }
+  .button.quiet:hover { background: transparent; color: var(--button-hover); }
   .fine { display: flex; flex-wrap: wrap; gap: 0.5rem 1.5rem; font-size: 0.875rem; color: var(--muted); }
   .fine a { color: var(--muted); }
 </style>

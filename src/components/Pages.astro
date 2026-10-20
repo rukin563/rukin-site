@@ -209,9 +209,6 @@ const tiles = site.coverTiles as { page: PageKey; image: string }[];
   .f1 { grid-area: f1; } .f2 { grid-area: f2; } .f3 { grid-area: f3; } .f4 { grid-area: f4; }
   .statement { grid-area: text; padding: 1rem 0; text-align: center; }
   .statement .lede { margin-left: auto; margin-right: auto; }
-  /* Same darker grey as Assinar, lightening on hover like it. */
-  .statement .button.quiet { color: #5a5d62; transition: color 0.15s; }
-  .statement .button.quiet:hover { color: #8a8d91; filter: none; }
   .statement h1 {
     font-size: clamp(1.8rem, 3.68vw, 3.4rem); /* 20% smaller than the first version */
     font-weight: 800;
@@ -221,7 +218,7 @@ const tiles = site.coverTiles as { page: PageKey; image: string }[];
     letter-spacing: -0.01em;
     margin-bottom: 1.25rem;
     font-style: italic; /* it's a quote */
-    color: #5a5d62; /* same dark grey as the cover buttons */
+    color: var(--button); /* same dark grey as the buttons */
   }
   .statement .lede { margin-bottom: 1.5rem; }
   /* Picture buttons: square photo with the section name on a white band across the middle. */
@@ -235,7 +232,7 @@ const tiles = site.coverTiles as { page: PageKey; image: string }[];
     transform: translateY(-50%);
     padding: 0.55em 0;
     background: rgb(255 255 255 / 0.78);
-    color: #5a5d62; /* same darker grey as the Assinar button */
+    color: var(--button); /* same dark grey as the buttons */
     text-align: center;
     font-size: clamp(1rem, 2.6vw, 1.75rem);
     font-weight: 600;
