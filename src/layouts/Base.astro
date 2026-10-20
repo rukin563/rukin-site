@@ -178,6 +178,9 @@ const banner = page === 'home' ? site.bannerImage : null;
   *, *::before, *::after { box-sizing: border-box; }
   html { -webkit-text-size-adjust: 100%; }
   @media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+  /* Links that jump down the page land below the sticky menu bar, not under it. */
+  html { scroll-padding-top: 6rem; }
+  @media (max-width: 40rem) { html { scroll-padding-top: 8rem; } }
   body {
     margin: 0;
     background: var(--wall);
@@ -210,6 +213,11 @@ const banner = page === 'home' ? site.bannerImage : null;
     gap: 0.75rem 1.25rem;
     padding: 1.25rem var(--gutter);
     border-bottom: 1px solid var(--line);
+    /* Stays at the top while scrolling; solid background so the page doesn't show through. */
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: var(--wall);
   }
   @media (max-width: 40rem) {
     .masthead { grid-template-columns: 1fr auto; grid-template-areas: 'name lang' 'nav nav'; }
