@@ -19,7 +19,12 @@ Rebuild of rukin563.com (artist portfolio, currently on Google Sites) as an Astr
 1. Replace placeholders (search for `SEU_`) with real links and IDs. Formspree is done (contact + calendar orders). Still open before launch: newsletter provider (Brevo or Buttondown) for `newsletterAction` in site.json; the newsletter promises one letter every three months.
 2. Add real artworks, photos and bio (PT and EN).
 3. ~~Fill `public/_redirects`~~ Done: only `/capa` needed one. When moving the domain, also redirect `www.rukin563.com/*` to `rukin563.com/*` in Cloudflare (Google indexed the www version).
-4. ~~Push to GitHub~~ Done (github.com/rukin563/rukin-site). Next: connect Cloudflare Pages, then move the domain. Domain is registered at Namecheap, which also forwards `contato@rukin563.com` (Namecheap email forwarding, MX `eforward*.registrar-servers.com`). Moving DNS to Cloudflare breaks that: recreate it with Cloudflare Email Routing in the same step.
+4. ~~Push to GitHub, connect Cloudflare Pages, move the domain~~ Done 2026-10-20. Live at https://rukin563.com.
+   - Cloudflare Pages project `rukin563` (test URL rukin563.pages.dev) builds every push to `main` (~40 s). Node pinned in `.nvmrc`.
+   - DNS is on Cloudflare (nameservers alberto/hadlee.ns.cloudflare.com, set at Namecheap; Namecheap DNS settings are no longer used). Change DNS only in Cloudflare.
+   - Email: Cloudflare Email Routing forwards contato@rukin563.com to Rukin's Gmail.
+   - Redirect rule: www.rukin563.com/* → rukin563.com/* (301). /capa → / in public/_redirects. Google verification TXT kept.
+   - Leftovers: unpublish or unlink the old Google Site; add a sitemap and resubmit in Google Search Console.
 5. Later: marketing plan (email list first, Instagram/TikTok process content, Pinterest, São Paulo art fairs), digital products, legal pages (privacy policy under LGPD, returns policy), and Mercado Pago links (business account under review, Oct 2026).
 
 ## How the user wants advice
