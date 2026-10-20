@@ -9,14 +9,14 @@ Rebuild of rukin563.com (artist portfolio, currently on Google Sites) as an Astr
 - **Images:** full-quality masters go in `image-originals/` (git-ignored, never published). `npm run images` writes compressed copies to `public/images/` (JPG, or WebP when transparent; max 1600px wide, banner 2400, btn_ 600; metadata stripped). Never put uncompressed photos straight into `public/images/`. File names: lowercase first letter, no spaces or accents (Cloudflare is case-sensitive).
 - **Shop:** originals sold through individual Mercado Pago payment links (Pix matters for Brazilian buyers). Prints through Colab55 (print-on-demand, Brazil). Digital products later, probably via Hotmart. Nuvemshop is the upgrade path once order volume justifies it.
 - **Forms:** Formspree for contact, Brevo or Buttondown for newsletter.
-- **Design:** concrete-grey "gallery wall" background (#e4e5e1), all buttons dark grey (--button #5a5d62, hover --button-hover #8a8d91), cobalt kept only for text links and the active menu item, Archivo variable font. Header is one row: menu left, the name (menu-sized, by Rukin's choice, Oct 2026) and the PT/EN switch right. The cover carries the visual weight instead: banner photo, picture buttons, statement. Dark mode supported.
+- **Design:** concrete-grey "gallery wall" background (#e4e5e1), all buttons dark grey (--button #5a5d62, hover --button-hover #8a8d91); no blue anywhere: links and text accents use --link (#5a5d62, lighter #b4b7bc in dark mode), hover --link-hover, Archivo variable font. Header is one row: menu left, the name (menu-sized, by Rukin's choice, Oct 2026) and the PT/EN switch right. The cover carries the visual weight instead: banner photo, picture buttons, statement. Dark mode supported.
 
 ## Business setup (confirmed by Rukin)
 - Registered as **ME** (microempresa, not MEI) with CNPJ and state registration, working with an accountant.
 - Issues a nota fiscal for every sale. CPF on the order form is optional: without it, the accountant has an alternative way to issue the invoice.
 
 ## Still to do
-1. Replace placeholders (search for `SEU_`) with real links and IDs.
+1. Replace placeholders (search for `SEU_`) with real links and IDs. Formspree is done (contact + calendar orders). Still open before launch: newsletter provider (Brevo or Buttondown) for `newsletterAction` in site.json; the newsletter promises one letter every three months.
 2. Add real artworks, photos and bio (PT and EN).
 3. ~~Fill `public/_redirects`~~ Done: only `/capa` needed one. When moving the domain, also redirect `www.rukin563.com/*` to `rukin563.com/*` in Cloudflare (Google indexed the www version).
 4. ~~Push to GitHub~~ Done (github.com/rukin563/rukin-site). Next: connect Cloudflare Pages, then move the domain. Domain is registered at Namecheap, which also forwards `contato@rukin563.com` (Namecheap email forwarding, MX `eforward*.registrar-servers.com`). Moving DNS to Cloudflare breaks that: recreate it with Cloudflare Email Routing in the same step.

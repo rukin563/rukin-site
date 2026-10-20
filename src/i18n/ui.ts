@@ -94,8 +94,8 @@ export const ui = {
     'contact.message': 'Mensagem',
     'contact.send': 'Enviar mensagem',
 
-    'news.title': 'Receba novas obras primeiro',
-    'news.text': 'Um e-mail quando uma peça nova ou um lote de prints sair. Nada além disso.',
+    'news.title': 'O que sai do ateliê, direto para você',
+    'news.text': 'Uma carta a cada três meses: obras novas, processo e onde me encontrar.',
     'news.placeholder': 'seu@email.com',
     'news.button': 'Assinar',
 
@@ -179,8 +179,8 @@ export const ui = {
     'contact.message': 'Message',
     'contact.send': 'Send message',
 
-    'news.title': 'See new work first',
-    'news.text': 'One email when a new piece or a batch of prints is released. Nothing else.',
+    'news.title': 'What leaves the studio, straight to you',
+    'news.text': 'One letter every three months: new work, process, and where to find me.',
     'news.placeholder': 'you@email.com',
     'news.button': 'Subscribe',
 

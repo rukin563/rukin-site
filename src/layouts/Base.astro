@@ -151,10 +151,11 @@ const banner = page === 'home' ? site.bannerImage : null;
   :root {
     --wall: #e4e5e1;      /* concrete grey, the "gallery wall" */
     --paper: #f3f3f0;     /* raised surfaces: forms, cards */
-    --ink: #17191c;
+    --ink: #333333;       /* text: dark grey, 80% black */
     --muted: #5e636b;
     --line: #c4c6c1;
-    --cobalt: #2338c9;    /* the accent for links and the active menu item */
+    --link: #5a5d62;      /* links and grey text accents (same grey as the buttons) */
+    --link-hover: #8a8d91;
     --button: #5a5d62;    /* all buttons: dark grey... */
     --button-hover: #8a8d91; /* ...lightening on hover */
     --sold: #9a3b2e;
@@ -168,7 +169,8 @@ const banner = page === 'home' ? site.bannerImage : null;
       --ink: #ecece8;
       --muted: #a2a6ad;
       --line: #3a3e44;
-      --cobalt: #8d9cff;
+      --link: #b4b7bc;      /* lighter in dark mode so links stay readable */
+      --link-hover: #e2e4e7;
       --sold: #e58a7b;
     }
   }
@@ -186,8 +188,8 @@ const banner = page === 'home' ? site.bannerImage : null;
     line-height: 1.55;
   }
   img { max-width: 100%; height: auto; display: block; }
-  a { color: var(--cobalt); text-underline-offset: 0.2em; }
-  :focus-visible { outline: 3px solid var(--cobalt); outline-offset: 3px; }
+  a { color: var(--link); text-underline-offset: 0.2em; }
+  :focus-visible { outline: 3px solid var(--link); outline-offset: 3px; }
   h1, h2, h3 { line-height: 1.1; margin: 0 0 0.5em; font-weight: 700; }
   h1 { font-size: clamp(2rem, 5vw, 3.25rem); font-variation-settings: 'wdth' 118; font-stretch: 118%; letter-spacing: -0.01em; }
   h2 { font-size: 1.5rem; font-variation-settings: 'wdth' 110; }
@@ -221,8 +223,9 @@ const banner = page === 'home' ? site.bannerImage : null;
   }
   .masthead nav { grid-area: nav; display: flex; flex-wrap: wrap; gap: 0.25rem 1.5rem; }
   .masthead nav a { color: var(--ink); text-decoration: none; font-weight: 500; padding: 0.25rem 0; }
-  .masthead nav a:hover { color: var(--cobalt); }
-  .masthead nav a[aria-current='page'] { color: var(--cobalt); text-decoration: underline; text-decoration-thickness: 2px; }
+  .masthead nav a:hover { color: var(--link-hover); }
+  a:hover { color: var(--link-hover); }
+  .masthead nav a[aria-current='page'] { color: var(--link); text-decoration: underline; text-decoration-thickness: 2px; }
 
   .lang {
     grid-area: lang;
@@ -264,7 +267,12 @@ const banner = page === 'home' ? site.bannerImage : null;
   main { flex: 1; padding: clamp(2rem, 5vw, 4rem) var(--gutter); }
 
   footer { border-top: 1px solid var(--line); padding: 2.5rem var(--gutter); display: grid; gap: 2rem; }
-  .newsletter h2 { margin-bottom: 0.25rem; }
+  .newsletter h2 { margin-bottom: 0.25rem; font-size: 1.35rem; } /* 10% smaller than other h2 */
+  /* Newsletter email field and Assinar button: 10% smaller than the standard ones. */
+  .newsletter .row { max-width: 27rem; }
+  .newsletter .row input, .newsletter .row button { font-size: 0.9em; }
+  .newsletter .row input { padding: 0.585rem 0.72rem; }
+  .newsletter .row button { padding: 0.585rem 0.99rem; }
   .newsletter p { color: var(--muted); margin: 0 0 1rem; }
   /* Darker grey at rest, lightening to the cover's hover grey, so the hover is easy to see. */
   .row { display: flex; gap: 0.5rem; flex-wrap: wrap; max-width: 30rem; }
@@ -278,9 +286,9 @@ const banner = page === 'home' ? site.bannerImage : null;
     background: var(--button); color: #fff; border: 0; border-radius: 6px; transition: background 0.15s, color 0.15s;
     padding: 0.65rem 1.1rem; text-decoration: none; display: inline-block;
   }
-  button:hover, .button:hover { background: var(--button-hover); }
-  .button.quiet { background: transparent; color: var(--button); border: 1.5px solid currentColor; }
-  .button.quiet:hover { background: transparent; color: var(--button-hover); }
+  button:hover, .button:hover { background: var(--button-hover); color: #fff; } /* white text stays white on hover */
+  .button.quiet { background: transparent; color: var(--link); border: 1.5px solid currentColor; }
+  .button.quiet:hover { background: transparent; color: var(--link-hover); }
   .fine { display: flex; flex-wrap: wrap; gap: 0.5rem 1.5rem; font-size: 0.875rem; color: var(--muted); }
   .fine a { color: var(--muted); }
 </style>
