@@ -1,0 +1,24 @@
+---
+// Shown for any address that doesn't exist. Cloudflare serves it with a real
+// "404 not found" status, so Google doesn't index broken links as pages.
+// Bilingual, because we can't tell which language the visitor was looking for.
+import Base from '../layouts/Base.astro';
+import { routes } from '../i18n/ui';
+---
+<Base lang="pt" page="home" title="Página não encontrada · Page not found">
+  <section class="notfound">
+    <h1>Página não encontrada</h1>
+    <p>Este endereço não existe, ou a página mudou de lugar.</p>
+    <p><a class="button" href={routes.home.pt}>Ir para a capa</a></p>
+    <hr />
+    <h2>Page not found</h2>
+    <p>This address doesn't exist, or the page has moved.</p>
+    <p><a class="button quiet" href={routes.home.en}>Go to the home page</a></p>
+  </section>
+</Base>
+
+<style>
+  .notfound { max-width: 36rem; margin: 2rem auto; text-align: center; }
+  .notfound p { margin-left: auto; margin-right: auto; }
+  hr { border: 0; border-top: 1px solid var(--line); margin: 3rem 0; }
+</style>
