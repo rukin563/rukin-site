@@ -38,8 +38,11 @@ const tiles = site.coverTiles as { page: PageKey; image: string }[];
       </a>
     ))}
     <div class="statement">
-      <h1>{tr('home.statement')}</h1>
-      <p class="lede">{tr('home.intro')}</p>
+      <!-- Quote and subtitle share one width, so the subtitle lines up with the quote's edges. -->
+      <div class="quote-block">
+        <h1>{tr('home.statement')}</h1>
+        <p class="lede">{tr('home.intro')}</p>
+      </div>
       <a class="button quiet" href={routes.gallery[lang]}>{tr('home.seeAll')}</a>
     </div>
   </section>
@@ -215,7 +218,7 @@ const tiles = site.coverTiles as { page: PageKey; image: string }[];
   .statement { grid-area: text; padding: 1rem 0; text-align: center; }
   .statement .lede { margin-left: auto; margin-right: auto; }
   .statement h1 {
-    font-size: clamp(1.8rem, 3.68vw, 3.4rem); /* 20% smaller than the first version */
+    font-size: clamp(1.44rem, 2.944vw, 2.72rem); /* reduced 20% twice from the first version */
     font-weight: 800;
     font-variation-settings: 'wdth' 75;
     font-stretch: 75%;
@@ -225,7 +228,10 @@ const tiles = site.coverTiles as { page: PageKey; image: string }[];
     font-style: italic; /* it's a quote */
     color: var(--link); /* grey, lighter in dark mode */
   }
-  .statement .lede { margin-bottom: 1.5rem; }
+  .quote-block { width: fit-content; max-width: 100%; margin: 0 auto 1.5rem; }
+  .statement h1 { text-wrap: balance; }
+  /* Subtitle stretched to the quote's width: justified, including its last (only) line. */
+  .statement .lede { max-width: none; margin: 0; text-align: justify; text-align-last: justify; }
   /* Picture buttons: square photo with the section name on a white band across the middle. */
   .tile { position: relative; display: block; text-decoration: none; }
   .tile img { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; box-shadow: 0 1px 0 var(--line); }
