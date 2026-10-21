@@ -237,7 +237,7 @@ const tiles = site.coverTiles as { page: PageKey; image: string }[];
   /* Cover: two works side by side, the statement across the full width, two more works. */
   .cover {
     display: grid;
-    gap: clamp(1.5rem, 3vw, 3rem);
+    gap: clamp(2.25rem, 4.5vw, 4.5rem); /* space between the cover pictures (and the quote) */
     grid-template-columns: 1fr 1fr;
     grid-template-areas: 'f1 f2' 'text text' 'f3 f4';
     align-items: center;
