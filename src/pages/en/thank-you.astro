@@ -11,7 +11,7 @@ const paths = { pt: '/obrigado', en: '/en/thank-you' };
   <section class="thanks">
     <h1>{tr('thanks.title')}</h1>
     <p>{tr('thanks.text')}</p>
-    <p class="muted">{tr('thanks.help').replace('{email}', site.email)}</p>
+    <p class="muted">{tr('thanks.helpQ')}<br />{tr('thanks.help').replace('{email}', site.email)}</p>
     <p><a href={site.instagram} rel="me">{tr('thanks.follow')}: @rukin563</a></p>
     <p><a class="button quiet" href={routes.home.en}>{tr('thanks.home')}</a></p>
   </section>
