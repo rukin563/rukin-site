@@ -64,6 +64,11 @@ export const ui = {
     'cal.bulk': 'Quer 4 ou mais? Tenho um preço especial.',
     'cal.bulkLink': 'Fale comigo',
     'cal.choose': 'Escolha a quantidade',
+    'thanks.title': 'Pagamento recebido. Obrigado!',
+    'thanks.text': 'Seu calendário 2027 já está a caminho da embalagem: envio em até 3 dias úteis pelos Correios. Você recebe o código de rastreio por e-mail.',
+    'thanks.help': 'Algo não saiu como esperado? Escreva para {email} com o nome usado no pedido.',
+    'thanks.follow': 'Enquanto isso, acompanhe o processo no Instagram',
+    'thanks.home': 'Voltar para a capa',
     'cal.box': 'O que você recebe',
 
     'order.title': 'Fazer pedido',
@@ -157,6 +162,11 @@ export const ui = {
     'cal.bulk': 'Want 4 or more? I have a special price.',
     'cal.bulkLink': 'Get in touch',
     'cal.choose': 'Choose how many',
+    'thanks.title': 'Payment received. Thank you!',
+    'thanks.text': 'Your 2027 calendar is on its way to being packed: it ships within 3 business days by Correios. You will get the tracking code by email.',
+    'thanks.help': 'Something not right? Write to {email} with the name on your order.',
+    'thanks.follow': 'Meanwhile, follow the process on Instagram',
+    'thanks.home': 'Back to the home page',
     'cal.box': 'What you get',
 
     'order.title': 'Order',

@@ -1,0 +1,24 @@
+---
+// Where Mercado Pago sends buyers after paying (set as the return URL in each payment link).
+// Not in the menu or sitemap, and hidden from search engines.
+import Base from '../layouts/Base.astro';
+import { t, routes } from '../i18n/ui';
+import site from '../data/site.json';
+const tr = t('pt');
+const paths = { pt: '/obrigado', en: '/en/thank-you' };
+---
+<Base lang="pt" page="shop" title={tr('thanks.title')} paths={paths} noindex>
+  <section class="thanks">
+    <h1>{tr('thanks.title')}</h1>
+    <p>{tr('thanks.text')}</p>
+    <p class="muted">{tr('thanks.help').replace('{email}', site.email)}</p>
+    <p><a href={site.instagram} rel="me">{tr('thanks.follow')}: @rukin563</a></p>
+    <p><a class="button quiet" href={routes.home.pt}>{tr('thanks.home')}</a></p>
+  </section>
+</Base>
+
+<style>
+  .thanks { max-width: 34rem; margin: 2rem auto; text-align: center; }
+  .thanks p { margin-left: auto; margin-right: auto; }
+  .muted { color: var(--muted); }
+</style>

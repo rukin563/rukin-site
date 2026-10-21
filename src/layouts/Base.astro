@@ -10,10 +10,11 @@ interface Props {
   paths?: Record<Lang, string>;
   description?: string;
   image?: string; // preview picture when the link is shared on WhatsApp, Instagram, etc.
+  noindex?: boolean; // pages search engines shouldn't list (e.g. the thank-you page)
   minimal?: boolean; // landing pages: no menu, small name, so nothing distracts from the offer
 }
 
-const { lang, page, title, paths = routes[page], description, image, minimal = false } = Astro.props;
+const { lang, page, title, paths = routes[page], description, image, minimal = false, noindex = false } = Astro.props;
 const tr = t(lang);
 const other: Lang = lang === 'pt' ? 'en' : 'pt';
 const pageTitle = title ? `${title} — ${site.artistName}` : site.artistName;
@@ -32,6 +33,7 @@ const banner = page === 'home' ? site.bannerImage : null;
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{pageTitle}</title>
     <meta name="description" content={metaDescription} />
+    {noindex && <meta name="robots" content="noindex" />}
     <link rel="canonical" href={canonical} />
     <!-- Tells Google both language versions exist, so each one gets indexed. -->
     <link rel="alternate" hreflang={lang === 'pt' ? 'pt-BR' : 'en'} href={canonical} />
