@@ -20,7 +20,8 @@
       ]
     },
     "price": 65,
-    "image": "/images/placeholder-1.svg",
+    "image": "/images/cal27_02.jpg",
+    "imageRatio": "2 / 3",
     "photos": [
       "/images/placeholder-2.svg",
       "/images/placeholder-3.svg",

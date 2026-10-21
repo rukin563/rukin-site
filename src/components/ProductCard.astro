@@ -9,6 +9,7 @@ interface Props {
     description: { pt: string; en: string };
     price: number;
     image: string;
+    imageRatio?: string; // shape of the card photo, e.g. '2 / 3' for tall photos; default 4 / 3
     status: string;
     paymentLink: string | null;
     category: string;
@@ -22,7 +23,7 @@ const tr = t(lang);
 
 <figure class="product" id={product.slug}>
   <a class="open" href={href} tabindex="-1" aria-hidden="true">
-    <img src={product.image} alt="" loading="lazy" decoding="async" />
+    <img src={product.image} alt="" loading="lazy" decoding="async" style={`--ratio: ${product.imageRatio ?? '4 / 3'}`} />
   </a>
   <figcaption>
     <span class="title"><a href={href}>{product.title[lang]}</a></span>
@@ -34,7 +35,7 @@ const tr = t(lang);
 
 <style>
   .product { margin: 0 0 2.5rem; break-inside: avoid; }
-  img { width: 100%; box-shadow: 0 1px 0 var(--line); aspect-ratio: 4 / 3; object-fit: cover; background: var(--paper); }
+  img { width: 100%; box-shadow: 0 1px 0 var(--line); aspect-ratio: var(--ratio); object-fit: cover; background: var(--paper); }
   figcaption { display: grid; gap: 0.35rem; padding-top: 0.75rem; }
   .title { font-weight: 600; font-size: 1.05rem; }
   .title a { color: inherit; text-decoration: none; }
