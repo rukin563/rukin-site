@@ -28,7 +28,8 @@ const text = calendar[lang];
 
   <section class="goat">
     <h2>{text.goatTitle}</h2>
-    {text.goat.map((para) => <p>{para}</p>)}
+    {/* Paragraphs still marked SEU_ (not written yet) are hidden. */}
+    {text.goat.filter((para) => !para.includes('SEU_')).map((para) => <p>{para}</p>)}
   </section>
 
   <section class="again">

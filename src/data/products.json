@@ -59,7 +59,8 @@
     ],
     "status": "available",
     "paymentLink": "https://www.colab55.com/@SEU_USUARIO",
-    "category": "print"
+    "category": "print",
+    "hidden": true
   },
   {
     "slug": "adesivos-pack",
@@ -90,7 +91,8 @@
     ],
     "status": "coming_soon",
     "paymentLink": null,
-    "category": "sticker"
+    "category": "sticker",
+    "hidden": true
   },
   {
     "slug": "zine-exemplo",
@@ -121,6 +123,7 @@
     ],
     "status": "coming_soon",
     "paymentLink": null,
-    "category": "zine"
+    "category": "zine",
+    "hidden": true
   }
 ]

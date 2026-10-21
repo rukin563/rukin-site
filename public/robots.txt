@@ -1,0 +1,5 @@
+# All pages may be indexed. The sitemap lists every page in both languages.
+User-agent: *
+Allow: /
+
+Sitemap: https://rukin563.com/sitemap.xml

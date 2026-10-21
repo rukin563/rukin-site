@@ -95,6 +95,8 @@ const banner = page === 'home' ? site.bannerImage : null;
       </main>
 
       <footer>
+        {/* Hidden until "newsletterAction" in site.json is a real provider address (not a SEU_ placeholder). */}
+        {!site.newsletterAction.includes('SEU_') && (
         <form class="newsletter" action={site.newsletterAction} method="post">
           <h2>{tr('news.title')}</h2>
           <p>{tr('news.text')}</p>
@@ -104,6 +106,7 @@ const banner = page === 'home' ? site.bannerImage : null;
             <button type="submit">{tr('news.button')}</button>
           </div>
         </form>
+        )}
         <div class="fine">
           <span>© {year} {site.artistName}. {tr('footer.rights')}</span>
           <a href={site.instagram} rel="me">Instagram</a>

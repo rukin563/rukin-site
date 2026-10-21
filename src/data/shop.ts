@@ -44,7 +44,7 @@ const originals: ShopItem[] = artworks
 const landingPages: Record<string, Record<Lang, string>> = { [calendar.slug]: calendar.paths };
 
 const goods: ShopItem[] = products
-  .filter((p) => !landingPages[p.slug])
+  .filter((p) => !p.hidden && !landingPages[p.slug]) // "hidden": true = not shown anywhere yet
   .map((p) => ({
     kind: 'product',
     slug: p.slug,

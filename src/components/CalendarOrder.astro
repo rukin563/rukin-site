@@ -9,6 +9,9 @@ import site from '../data/site.json';
 interface Props { lang: Lang }
 const { lang } = Astro.props;
 const tr = t(lang);
+// Options whose Mercado Pago link is still a placeholder (SEU_…) are hidden,
+// so nobody can pick an option that can't be paid yet.
+const options = calendar.options.filter((opt) => !opt.link.includes('SEU_'));
 const errorText = tr('order.error').replace('{email}', site.email);
 ---
 
@@ -26,7 +29,7 @@ const errorText = tr('order.error').replace('{email}', site.email);
 
   <fieldset class="qty">
     <legend>{tr('order.qty')}</legend>
-    {calendar.options.map((opt, i) => (
+    {options.map((opt, i) => (
       <label class="pick">
         <input
           type="radio"
@@ -47,8 +50,10 @@ const errorText = tr('order.error').replace('{email}', site.email);
   <div class="fields">
     <label class="full">{tr('order.name')}<input name="nome" required autocomplete="name" /></label>
     <label class="full">{tr('order.email')}<input name="email" type="email" required autocomplete="email" /></label>
-    <label>{tr('order.whatsapp')}<input name="whatsapp" type="tel" autocomplete="tel" /></label>
-    <label>{tr('order.cpf')}<input name="cpf" inputmode="numeric" maxlength="14" /></label>
+    <!-- Phone and CPF are required: Correios needs them to ship. -->
+    <label>{tr('order.whatsapp')}<input name="telefone" type="tel" required autocomplete="tel" minlength="10" /></label>
+    <label>{tr('order.cpf')}<input name="cpf" required inputmode="numeric" maxlength="14"
+      pattern="\d{3}\.?\d{3}\.?\d{3}-?\d{2}" title={tr('order.cpfFormat')} /></label>
 
     <!-- Typing a full CEP fills street, neighbourhood, city and state (ViaCEP, free public service). -->
     <label>{tr('order.cep')}<input name="cep" required inputmode="numeric" maxlength="9" autocomplete="postal-code" data-cep /></label>

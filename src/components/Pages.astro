@@ -99,7 +99,7 @@ const tiles = site.coverTiles as { page: PageKey; image: string }[];
     <h2 id={anchors.products}>{tr('shop.prints')}</h2>
     <p class="lede">{tr('shop.printsIntro')}</p>
     <div class="grid">
-      {products.map((product) => (
+      {products.filter((product) => !product.hidden).map((product) => (
         <ProductCard lang={lang} product={product} href={itemPaths(product.slug)[lang]} />
       ))}
     </div>

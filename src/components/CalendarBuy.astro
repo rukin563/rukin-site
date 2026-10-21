@@ -8,12 +8,15 @@ import calendar from '../data/calendar.json';
 interface Props { lang: Lang }
 const { lang } = Astro.props;
 const tr = t(lang);
+// Options whose Mercado Pago link is still a placeholder (SEU_…) are hidden,
+// so nobody can pick an option that can't be paid yet.
+const options = calendar.options.filter((opt) => !opt.link.includes('SEU_'));
 ---
 
 <div class="buybox">
   <p class="choose">{tr('cal.choose')}</p>
   <ul>
-    {calendar.options.map((opt, i) => {
+    {options.map((opt, i) => {
       const saving = opt.qty * calendar.unitPrice - opt.price;
       return (
         <li>
