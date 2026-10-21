@@ -2,7 +2,7 @@
 // Calendar order form. The buyer picks a quantity and fills in delivery details;
 // the form is sent to you through Formspree, then the browser goes to the
 // Mercado Pago link for the chosen quantity. Links and prices: calendar.json.
-import { t, formatBRL, type Lang } from '../i18n/ui';
+import { t, formatBRL, routes, type Lang } from '../i18n/ui';
 import calendar from '../data/calendar.json';
 import site from '../data/site.json';
 
@@ -69,7 +69,7 @@ const errorText = tr('order.error').replace('{email}', site.email);
     <input type="checkbox" name="novidades" value="sim" />
     {tr('order.news')}
   </label>
-  <p class="privacy">{tr('order.privacy')}</p>
+  <p class="privacy">{tr('order.privacy')} <a href={routes.privacy[lang]} target="_blank">{tr('order.privacyLink')}</a></p>
 
   <input type="hidden" name="produto" value="Calendário 2027" />
   <input type="hidden" name="idioma" value={lang} />

@@ -2,7 +2,7 @@
 // To change a word on the site, change it here — never inside the page files.
 
 export type Lang = 'pt' | 'en';
-export type PageKey = 'home' | 'gallery' | 'shop' | 'about' | 'bio' | 'contact';
+export type PageKey = 'home' | 'gallery' | 'shop' | 'about' | 'bio' | 'contact' | 'privacy';
 
 // Each page has one URL per language. The PT/EN switch uses this map
 // to know which page to jump to, so keep both columns in sync.
@@ -13,6 +13,7 @@ export const routes: Record<PageKey, Record<Lang, string>> = {
   about: { pt: '/sobre', en: '/en/about' },
   bio: { pt: '/bio', en: '/en/bio' },
   contact: { pt: '/contato', en: '/en/contact' },
+  privacy: { pt: '/privacidade', en: '/en/privacy' },
 };
 
 export const ui = {
@@ -105,6 +106,9 @@ export const ui = {
     'news.error': 'Não foi possível assinar agora. Tente de novo em instantes.',
 
     'footer.rights': 'Todos os direitos reservados.',
+    'footer.privacy': 'Política de privacidade',
+    'privacy.title': 'Política de Privacidade',
+    'order.privacyLink': 'Leia a política de privacidade.',
   },
   en: {
     'site.description': 'Rukin — visual artist based in São Paulo. Original artworks and prints.',
@@ -195,6 +199,9 @@ export const ui = {
     'news.error': 'Could not subscribe right now. Please try again in a moment.',
 
     'footer.rights': 'All rights reserved.',
+    'footer.privacy': 'Privacy policy',
+    'privacy.title': 'Privacy Policy',
+    'order.privacyLink': 'Read the privacy policy.',
   },
 } as const;
 

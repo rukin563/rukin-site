@@ -1,5 +1,9 @@
 {
   "artistName": "Rukin",
+  "company": {
+    "name": "Creative Road Arte e Design Ltda",
+    "cnpj": "31.089.583/0001-00"
+  },
   "bannerImage": "/images/capa_banner.jpg",
   "coverTiles": [
     {

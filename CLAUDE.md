@@ -26,7 +26,8 @@ Rebuild of rukin563.com (artist portfolio, currently on Google Sites) as an Astr
    - Redirect rule: www.rukin563.com/* → rukin563.com/* (301). /capa → / in public/_redirects. Google verification TXT kept.
    - Old Google Site unpublished (2026-10-21). Keep the google-site-verification TXT: it belongs to Search Console.
    - Google Search Console: Domain property rukin563.com. sitemap.xml submitted 2026-10-21 (first status "Couldn't fetch", normal at first; recheck). "Request indexing" for / and /calendario-2027 failed on Google's side; retry later.
-5. Later: marketing plan (email list first, Instagram/TikTok process content, Pinterest, São Paulo art fairs), digital products, legal pages (privacy policy under LGPD, returns policy), and Mercado Pago links (business account under review, Oct 2026).
+5. ~~Privacy policy~~ Done 2026-10-21: /privacidade and /en/privacy (text in src/data/privacy.json, company in site.json). Linked in every footer and in the calendar order form. Update it whenever a new service starts handling visitor data. Still to do: returns/exchange policy page.
+6. Later: marketing plan (email list first, Instagram/TikTok process content, Pinterest, São Paulo art fairs), digital products, legal pages (privacy policy under LGPD, returns policy), and Mercado Pago links (business account under review, Oct 2026).
 
 ## How the user wants advice
 Direct and challenging, not agreeable. Lead with the uncomfortable truth, tag claims [Certain]/[Likely]/[Guessing], and hold positions unless given new information.

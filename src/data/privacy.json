@@ -1,0 +1,170 @@
+{
+  "pt": {
+    "title": "Política de Privacidade",
+    "updated": "Última atualização: 21 de outubro de 2026",
+    "sections": [
+      {
+        "h": "Quem somos",
+        "p": [
+          "Este site é de Rukin, artista visual, e é mantido pela empresa {company}, CNPJ {cnpj}, de São Paulo (SP). Somos os controladores dos dados pessoais descritos aqui, nos termos da Lei Geral de Proteção de Dados (Lei nº 13.709/2018, LGPD).",
+          "Para qualquer assunto sobre seus dados, escreva para {email}. Como agente de tratamento de pequeno porte, não indicamos encarregado (Resolução CD/ANPD nº 2/2022); este e-mail é o nosso canal de atendimento."
+        ]
+      },
+      {
+        "h": "Que dados coletamos e para quê",
+        "li": [
+          "Formulário de contato: nome, e-mail e mensagem, para responder você.",
+          "Pedido do calendário: nome, e-mail, telefone, CPF e endereço completo, para enviar o pedido pelos Correios, emitir a nota fiscal e falar com você sobre a entrega.",
+          "Newsletter: seu e-mail e o idioma da página, para enviar a carta trimestral. Você só entra na lista depois de confirmar a inscrição pelo e-mail que enviamos.",
+          "Pagamento: é feito no Mercado Pago. Os dados do seu cartão ou da sua conta ficam com o Mercado Pago; nós recebemos apenas a confirmação do pagamento.",
+          "Navegação: não usamos cookies de rastreamento nem ferramentas de análise de visitas. O site guarda no seu navegador apenas a sua escolha de idioma. Nossos fornecedores técnicos registram dados como o endereço IP para entregar o site e protegê-lo de abusos."
+        ]
+      },
+      {
+        "h": "Bases legais",
+        "li": [
+          "Execução de contrato: para processar e entregar o seu pedido (art. 7º, V, da LGPD).",
+          "Cumprimento de obrigação legal: para emitir a nota fiscal e guardar os registros fiscais (art. 7º, II).",
+          "Consentimento: para a newsletter, que você pode cancelar a qualquer momento (art. 7º, I).",
+          "Legítimo interesse: para responder mensagens de contato e manter o site seguro (art. 7º, IX)."
+        ]
+      },
+      {
+        "h": "Com quem compartilhamos",
+        "p": [
+          "Não vendemos nem alugamos dados pessoais. Usamos estes serviços, que tratam dados em nosso nome e apenas para as finalidades acima:"
+        ],
+        "li": [
+          "Cloudflare: hospedagem do site e encaminhamento de e-mail (Estados Unidos).",
+          "Formspree: recebe os formulários de contato e de pedido (Estados Unidos).",
+          "Brevo: envio da newsletter (França, União Europeia).",
+          "Mercado Pago: pagamentos (Brasil).",
+          "Correios: entrega do pedido (nome, endereço, telefone e CPF).",
+          "Nossa contabilidade: emissão da nota fiscal (nome, CPF e endereço).",
+          "Google Fonts: fornece as fontes do site; seu navegador se conecta ao Google para baixá-las (Estados Unidos).",
+          "ViaCEP: quando você digita o CEP no pedido, ele é consultado para preencher o endereço (Brasil)."
+        ],
+        "p2": [
+          "Alguns desses serviços ficam fora do Brasil. Essa transferência internacional segue o art. 33 da LGPD, com fornecedores que adotam garantias de proteção de dados."
+        ]
+      },
+      {
+        "h": "Por quanto tempo guardamos",
+        "li": [
+          "Pedidos e notas fiscais: pelo prazo exigido pela legislação fiscal, em geral 5 anos.",
+          "Mensagens de contato: até 2 anos depois da última conversa.",
+          "Newsletter: até você cancelar a inscrição. Todas as cartas têm um link para isso."
+        ]
+      },
+      {
+        "h": "Seus direitos",
+        "p": [
+          "A qualquer momento, você pode pedir: confirmação de que tratamos seus dados; acesso a eles; correção de dados incompletos ou errados; anonimização, bloqueio ou eliminação de dados desnecessários; portabilidade; eliminação dos dados tratados com o seu consentimento; informação sobre com quem os compartilhamos; e revogação do consentimento (art. 18 da LGPD).",
+          "Escreva para {email} e responderemos em até 15 dias. Você também pode apresentar reclamação à Autoridade Nacional de Proteção de Dados (ANPD)."
+        ]
+      },
+      {
+        "h": "Segurança",
+        "p": [
+          "O site usa conexão criptografada (https), e escolhemos fornecedores com medidas de segurança reconhecidas. Nenhum sistema é totalmente seguro: se ocorrer um incidente que possa trazer risco a você, avisaremos e comunicaremos a ANPD."
+        ]
+      },
+      {
+        "h": "Menores de idade",
+        "p": [
+          "O site não é dirigido a menores de 18 anos, e não coletamos conscientemente dados de menores."
+        ]
+      },
+      {
+        "h": "Mudanças nesta política",
+        "p": [
+          "Podemos atualizar esta política. A data no topo indica a versão em vigor; mudanças importantes serão avisadas no site."
+        ]
+      }
+    ]
+  },
+  "en": {
+    "title": "Privacy Policy",
+    "updated": "Last updated: 21 October 2026",
+    "sections": [
+      {
+        "h": "Who we are",
+        "p": [
+          "This website belongs to Rukin, visual artist, and is run by {company}, CNPJ {cnpj}, based in São Paulo, Brazil. We are the controller of the personal data described here, under Brazil's General Data Protection Law (Law 13,709/2018, LGPD).",
+          "For anything about your data, write to {email}. As a small processing agent, we have not appointed a data protection officer (ANPD Resolution 2/2022); this email is our contact channel."
+        ]
+      },
+      {
+        "h": "What we collect and why",
+        "li": [
+          "Contact form: name, email and message, to reply to you.",
+          "Calendar order: name, email, phone, CPF and full address, to ship your order by Correios, issue the invoice and talk to you about delivery.",
+          "Newsletter: your email and the page language, to send the quarterly letter. You are only added after confirming through the email we send.",
+          "Payment: handled by Mercado Pago. Your card or account details stay with Mercado Pago; we only receive the payment confirmation.",
+          "Browsing: we use no tracking cookies and no visitor analytics. The site only stores your language choice in your browser. Our technical providers log data such as your IP address to deliver the site and protect it from abuse."
+        ]
+      },
+      {
+        "h": "Legal bases",
+        "li": [
+          "Performance of a contract: to process and deliver your order (LGPD art. 7, V).",
+          "Legal obligation: to issue the invoice and keep tax records (art. 7, II).",
+          "Consent: for the newsletter, which you can cancel at any time (art. 7, I).",
+          "Legitimate interest: to answer contact messages and keep the site secure (art. 7, IX)."
+        ]
+      },
+      {
+        "h": "Who we share data with",
+        "p": [
+          "We never sell or rent personal data. We use these services, which process data on our behalf and only for the purposes above:"
+        ],
+        "li": [
+          "Cloudflare: website hosting and email forwarding (United States).",
+          "Formspree: receives the contact and order forms (United States).",
+          "Brevo: newsletter delivery (France, European Union).",
+          "Mercado Pago: payments (Brazil).",
+          "Correios: delivery of your order (name, address, phone and CPF).",
+          "Our accountant: issuing the invoice (name, CPF and address).",
+          "Google Fonts: provides the site's fonts; your browser connects to Google to load them (United States).",
+          "ViaCEP: when you type your CEP in the order form, it is looked up to fill in your address (Brazil)."
+        ],
+        "p2": [
+          "Some of these services are outside Brazil. This international transfer follows LGPD art. 33, with providers that apply data protection safeguards."
+        ]
+      },
+      {
+        "h": "How long we keep data",
+        "li": [
+          "Orders and invoices: for the period required by tax law, usually 5 years.",
+          "Contact messages: up to 2 years after our last conversation.",
+          "Newsletter: until you unsubscribe. Every letter has a link to do so."
+        ]
+      },
+      {
+        "h": "Your rights",
+        "p": [
+          "At any time you can ask for: confirmation that we process your data; access to it; correction of incomplete or wrong data; anonymisation, blocking or deletion of unnecessary data; portability; deletion of data processed with your consent; information about who we share it with; and withdrawal of consent (LGPD art. 18).",
+          "Write to {email} and we will reply within 15 days. You can also file a complaint with Brazil's National Data Protection Authority (ANPD)."
+        ]
+      },
+      {
+        "h": "Security",
+        "p": [
+          "The site uses an encrypted connection (https), and we choose providers with recognised security measures. No system is completely secure: if an incident could put you at risk, we will tell you and notify the ANPD."
+        ]
+      },
+      {
+        "h": "Minors",
+        "p": [
+          "The site is not aimed at people under 18, and we do not knowingly collect data from minors."
+        ]
+      },
+      {
+        "h": "Changes to this policy",
+        "p": [
+          "We may update this policy. The date at the top shows the version in force; important changes will be announced on the site."
+        ]
+      }
+    ]
+  }
+}

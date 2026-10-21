@@ -8,6 +8,7 @@ import artworks from '../data/artworks.json';
 import products from '../data/products.json';
 import site from '../data/site.json';
 import obras from '../data/obras.json';
+import privacy from '../data/privacy.json';
 import { itemPaths, hasItemPage } from '../data/shop';
 
 interface Props { lang: Lang; page: PageKey }
@@ -151,6 +152,31 @@ const tiles = site.coverTiles as { page: PageKey; image: string }[];
   </section>
 )}
 
+{page === 'privacy' && (() => {
+  // Fills in {company}, {cnpj} and {email} from site.json.
+  const fill = (text: string) =>
+    text.replaceAll('{company}', site.company.name).replaceAll('{cnpj}', site.company.cnpj).replaceAll('{email}', site.email);
+  const doc = privacy[lang];
+  return (
+    <section class="wide">
+      <div class="layout">
+        <div class="cell legal" style="--col: 3 / 11">
+          <h1>{doc.title}</h1>
+          <p class="updated">{doc.updated}</p>
+          {doc.sections.map((section) => (
+            <>
+              <h2>{section.h}</h2>
+              {section.p?.map((para) => <p>{fill(para)}</p>)}
+              {section.li && <ul>{section.li.map((item) => <li>{fill(item)}</li>)}</ul>}
+              {section.p2?.map((para) => <p>{fill(para)}</p>)}
+            </>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+})()}
+
 {page === 'contact' && (
   <section class="prose">
     <h1>{tr('contact.title')}</h1>
@@ -184,7 +210,14 @@ const tiles = site.coverTiles as { page: PageKey; image: string }[];
   .person { margin: 0; }
   /* Extra margin doubles the space above and below the quote (on top of the 1.1em gap). */
   .quote { font-style: italic; font-weight: 300; color: var(--muted); margin: 1.1em 0; }
-  .cv { margin: 1.6em 0 0; } /* set apart from the bio text */
+  .cv { margin: 1.6em 0 0; }
+  /* Privacy policy: readable column, plain lists. */
+  .legal h1 { margin-bottom: 0.25rem; }
+  .legal .updated { color: var(--muted); font-size: 0.9rem; margin: 0 0 2rem; }
+  .legal h2 { font-size: 1.2rem; margin: 2.25rem 0 0.75rem; }
+  .legal p, .legal li { max-width: none; }
+  .legal ul { padding-left: 1.2rem; margin: 0 0 1rem; }
+  .legal li { margin-bottom: 0.5rem; } /* set apart from the bio text */
   .cv a { color: inherit; }
   .view { margin: 0; }
   .view img { width: 100%; box-shadow: 0 1px 0 var(--line); }
