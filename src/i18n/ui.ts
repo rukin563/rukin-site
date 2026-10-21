@@ -101,6 +101,8 @@ export const ui = {
     'news.text': 'Uma carta a cada três meses: obras novas, processo e onde me encontrar.',
     'news.placeholder': 'seu@email.com',
     'news.button': 'Assinar',
+    'news.thanks': 'Quase lá! Enviamos um e-mail para você confirmar a inscrição.',
+    'news.error': 'Não foi possível assinar agora. Tente de novo em instantes.',
 
     'footer.rights': 'Todos os direitos reservados.',
   },
@@ -189,6 +191,8 @@ export const ui = {
     'news.text': 'One letter every three months: new work, process, and where to find me.',
     'news.placeholder': 'you@email.com',
     'news.button': 'Subscribe',
+    'news.thanks': 'Almost there! We sent you an email to confirm your subscription.',
+    'news.error': 'Could not subscribe right now. Please try again in a moment.',
 
     'footer.rights': 'All rights reserved.',
   },
