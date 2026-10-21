@@ -63,7 +63,7 @@
   },
   "bioPhoto": "/images/bio_move.jpg",
   "cv": {
-    "pt": "https://drive.google.com/file/d/1QMSvFFuWKD6JV7lus79df6yDhxhrQrWJ/view?usp=sharing",
-    "en": "https://drive.google.com/file/d/1Oy4kKAj56koJphI0cHwKOSB8kChtegb4/view?usp=sharing"
+    "pt": "/cv/rukin-curriculo.pdf",
+    "en": "/cv/rukin-cv-en.pdf"
   }
 }
