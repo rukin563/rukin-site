@@ -37,6 +37,7 @@ const errorText = tr('order.error').replace('{email}', site.email);
           value={`${opt.qty} (${formatBRL(opt.price)})`}
           data-qty={opt.qty}
           data-link={opt.link}
+          data-price={formatBRL(opt.price)}
           checked={i === 0}
           required
         />
@@ -51,12 +52,13 @@ const errorText = tr('order.error').replace('{email}', site.email);
     <label class="full">{tr('order.name')}<input name="nome" required autocomplete="name" /></label>
     <label class="full">{tr('order.email')}<input name="email" type="email" required autocomplete="email" /></label>
     <!-- Phone and CPF are required: Correios needs them to ship. -->
-    <label>{tr('order.whatsapp')}<input name="telefone" type="tel" required autocomplete="tel" minlength="10" /></label>
-    <label>{tr('order.cpf')}<input name="cpf" required inputmode="numeric" maxlength="14"
+    <label>{tr('order.whatsapp')}<input name="telefone" type="tel" required autocomplete="tel"
+      placeholder="(11) 91234-5678" pattern="(\+?55\s?)?\(?\d{2}\)?\s?9?\d{4}-?\d{4}" title={tr('order.phoneFormat')} /></label>
+    <label>{tr('order.cpf')}<input name="cpf" required inputmode="numeric" maxlength="14" placeholder="123.456.789-09"
       pattern="\d{3}\.?\d{3}\.?\d{3}-?\d{2}" title={tr('order.cpfFormat')} /></label>
 
     <!-- Typing a full CEP fills street, neighbourhood, city and state (ViaCEP, free public service). -->
-    <label>{tr('order.cep')}<input name="cep" required inputmode="numeric" maxlength="9" autocomplete="postal-code" data-cep /></label>
+    <label>{tr('order.cep')}<input name="cep" required inputmode="numeric" maxlength="9" autocomplete="postal-code" placeholder="01310-100" data-cep /></label>
     <label>{tr('order.number')}<input name="numero" required autocomplete="address-line2" /></label>
     <label class="full">{tr('order.street')}<input name="rua" required autocomplete="address-line1" data-cep-street /></label>
     <label class="full">{tr('order.complement')}<input name="complemento" /></label>
@@ -82,6 +84,20 @@ const errorText = tr('order.error').replace('{email}', site.email);
   <p class="status" role="status" data-order-status></p>
 </form>
 
+<!-- Shown instead of the form once the order is sent: the buyer pays in a new tab,
+     and this page keeps the confirmation for when they come back. -->
+<div class="order-done" hidden data-order-done tabindex="-1">
+  <h2>{tr('order.doneTitle')}</h2>
+  <p>{tr('order.doneText')}</p>
+  <a class="button pay" href="#" target="_blank" rel="noopener" data-pay data-label={tr('order.payButton')}></a>
+  <div class="after-pay" hidden data-after-pay>
+    <h3>{tr('order.afterPayTitle')}</h3>
+    <p>{tr('thanks.text')}</p>
+    <p class="muted">{tr('thanks.helpQ')}<br />{tr('thanks.help').replace('{email}', site.email)}</p>
+    <p><a href={site.instagram} rel="me">{tr('thanks.follow')}: @rukin563</a></p>
+  </div>
+</div>
+
 <script>
   // All listeners are on the document so they keep working after the PT/EN switch swaps the page.
 
@@ -91,6 +107,13 @@ const errorText = tr('order.error').replace('{email}', site.email);
     if (!pick) return;
     const radio = document.querySelector<HTMLInputElement>(`input[name="quantidade"][data-qty="${pick.dataset.pick}"]`);
     if (radio) radio.checked = true;
+  });
+
+  // After the buyer opens the payment, show the thank-you text for when they come back.
+  document.addEventListener('click', (e) => {
+    const pay = (e.target as Element).closest('[data-pay]');
+    if (!pay) return;
+    pay.closest('[data-order-done]')?.querySelector<HTMLElement>('[data-after-pay]')?.removeAttribute('hidden');
   });
 
   // CEP autofill.
@@ -135,7 +158,15 @@ const errorText = tr('order.error').replace('{email}', site.email);
         headers: { Accept: 'application/json' },
       });
       if (!res.ok) throw new Error(String(res.status));
-      location.href = picked!.dataset.link!;
+      // Order saved: swap the form for the payment step.
+      const done = form.nextElementSibling as HTMLElement;
+      const pay = done.querySelector<HTMLAnchorElement>('[data-pay]')!;
+      pay.href = picked!.dataset.link!;
+      pay.textContent = pay.dataset.label!.replace('{price}', picked!.dataset.price!);
+      form.hidden = true;
+      done.hidden = false;
+      done.focus();
+      done.scrollIntoView({ block: 'start' });
     } catch {
       status.textContent = form.dataset.error!;
       button.disabled = false;
@@ -177,4 +208,10 @@ const errorText = tr('order.error').replace('{email}', site.email);
   button:disabled { opacity: 0.6; cursor: wait; }
   .status { min-height: 1.5em; margin: 0.75rem 0 0; }
   .trap { position: absolute; left: -9999px; width: 1px; height: 1px; }
+  .order-done { max-width: 36rem; padding: 1.5rem; border: 1.5px solid var(--line); border-radius: 6px; background: var(--paper); outline: none; }
+  .order-done h2 { margin-top: 0; }
+  .order-done .pay { display: inline-block; font-size: 1.05rem; padding: 0.9rem 1.6rem; margin: 0.5rem 0 0; }
+  .after-pay { margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid var(--line); }
+  .after-pay h3 { margin: 0 0 0.5rem; font-size: 1.2rem; }
+  .muted { color: var(--muted); }
 </style>
