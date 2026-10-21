@@ -23,6 +23,8 @@ const text = calendar[lang];
     <p class="pitch">{text.pitch}</p>
     <h2 class="small">{tr('shop.specs')}</h2>
     <ul class="specs">{text.specs.map((line) => <li>{line}</li>)}</ul>
+    <h2 class="small">{tr('cal.box')}</h2>
+    <ul class="specs">{text.box.map((line) => <li>{line}</li>)}</ul>
     <CalendarBuy lang={lang} />
   </div>
 

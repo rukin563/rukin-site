@@ -61,6 +61,7 @@ export const ui = {
     'cal.bulk': 'Quer 4 ou mais? Tenho um preço especial.',
     'cal.bulkLink': 'Fale comigo',
     'cal.choose': 'Escolha a quantidade',
+    'cal.box': 'O que você recebe',
 
     'order.title': 'Fazer pedido',
     'order.intro': 'Preencha seus dados de entrega. Depois você segue para o pagamento no Mercado Pago: Pix, cartão ou boleto.',
@@ -148,6 +149,7 @@ export const ui = {
     'cal.bulk': 'Want 4 or more? I have a special price.',
     'cal.bulkLink': 'Get in touch',
     'cal.choose': 'Choose how many',
+    'cal.box': 'What you get',
 
     'order.title': 'Order',
     'order.intro': 'Fill in your delivery details, then continue to payment on Mercado Pago: Pix, card or boleto.',

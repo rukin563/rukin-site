@@ -35,12 +35,19 @@
       "Papel: Pólen",
       "Envio em até 3 dias úteis"
     ],
+    "box": [
+      "Calendário A3 em papel Pólen",
+      "Embalagem em papel Paraná com a marca do artista",
+      "Fixação por ímã: vai para a parede sem furar e sem moldura",
+      "Envelope plástico com fecho adesivo, que protege da umidade e da poeira",
+      "Envios pelos Correios seguem em envelope reforçado"
+    ],
     "goatTitle": "2027, o Ano da Cabra",
     "goat": [
       "No zodíaco chinês, 2027 é o Ano da Cabra de Fogo. Ele começa em 6 de fevereiro de 2027, com o Ano Novo Lunar.",
       "A Cabra é o signo da calma, da gentileza e da criatividade: prefere construir com as mãos a disputar espaço. O fogo traz energia e coragem, uma cabra que não fica parada.",
       "No Japão, onde vivi de 2004 a 2018, o mesmo signo é a ovelha, hitsuji. Lá é tradição começar o ano com cartões e calendários do animal do ano.",
-      "SEU_TEXTO: por que a cabra neste calendário, e como ela se liga ao seu trabalho com o descarte."
+      "Este calendário faz parte de uma série inspirada no zodíaco chinês, que chega agora ao terceiro ano: começou com a Cobra de Madeira (2025), seguiu com o Cavalo de Fogo (2026) e continua com a Cabra de Fogo. O projeto só termina quando os doze animais estiverem completos."
     ]
   },
   "en": {
@@ -52,12 +59,19 @@
       "Paper: Pólen",
       "Ships within 3 business days"
     ],
+    "box": [
+      "A3 calendar on Pólen paper",
+      "Paraná board packaging with the artist's mark",
+      "Magnetic hanging: goes on the wall with no drilling and no frame",
+      "Plastic sleeve with adhesive seal, against moisture and dust",
+      "Orders shipped by Correios travel in a reinforced envelope"
+    ],
     "goatTitle": "2027, the Year of the Goat",
     "goat": [
       "In the Chinese zodiac, 2027 is the Year of the Fire Goat. It begins on 6 February 2027, with the Lunar New Year.",
       "The Goat is the sign of calm, kindness and creativity: it would rather build with its hands than fight for space. Fire adds energy and courage, a goat that doesn't stand still.",
       "In Japan, where I lived from 2004 to 2018, the same sign is the sheep, hitsuji. There, the year traditionally starts with cards and calendars of the year's animal.",
-      "SEU_TEXTO: why the goat for this calendar, and how it connects to your work with discard."
+      "This calendar is part of a series inspired by the Chinese zodiac, now in its third year: it began with the Wood Snake (2025), continued with the Fire Horse (2026) and goes on with the Fire Goat. The project ends only when all twelve animals are complete."
     ]
   }
 }
