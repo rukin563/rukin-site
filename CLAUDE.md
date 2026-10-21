@@ -16,7 +16,7 @@ Rebuild of rukin563.com (artist portfolio, currently on Google Sites) as an Astr
 - Issues a nota fiscal for every sale. CPF on the order form is optional: without it, the accountant has an alternative way to issue the invoice.
 
 ## Still to do
-1. Replace placeholders (search for `SEU_`) with real links and IDs. Formspree is done (contact + calendar orders). Still open before launch: newsletter provider (Brevo or Buttondown) for `newsletterAction` in site.json; the newsletter promises one letter every three months.
+1. Replace placeholders (search for `SEU_`) with real links and IDs. Formspree is done (contact + calendar orders). Newsletter: **Brevo chosen** (2026-10-20), not set up yet. Steps: account (Creative Road / CNPJ) → authenticate rukin563.com in Brevo (DNS records go in Cloudflare; keep a single SPF record that includes both Cloudflare and Brevo) → sign-up form with double opt-in → put its address in `newsletterAction` in site.json (the footer block reappears automatically once it's not a SEU_ placeholder). The newsletter promises one letter every three months.
 2. Add real artworks, photos and bio (PT and EN).
 3. ~~Fill `public/_redirects`~~ Done: only `/capa` needed one. When moving the domain, also redirect `www.rukin563.com/*` to `rukin563.com/*` in Cloudflare (Google indexed the www version).
 4. ~~Push to GitHub, connect Cloudflare Pages, move the domain~~ Done 2026-10-20. Live at https://rukin563.com.
