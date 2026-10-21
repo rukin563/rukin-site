@@ -1,0 +1,94 @@
+{
+  "pt": {
+    "title": "Trocas e devoluções",
+    "updated": "Última atualização: 21 de outubro de 2026",
+    "sections": [
+      {
+        "h": "Arrependimento: 7 dias para desistir",
+        "p": [
+          "Comprou pelo site e mudou de ideia? Você tem 7 dias, contados a partir do recebimento, para desistir da compra, sem precisar explicar o motivo (art. 49 do Código de Defesa do Consumidor).",
+          "Devolvemos todo o valor pago, incluindo o frete de envio, e também pagamos o frete da devolução."
+        ]
+      },
+      {
+        "h": "Produto com defeito ou danificado no transporte",
+        "p": [
+          "Se o calendário chegar amassado, rasgado, molhado ou com defeito de impressão, escreva para {email} em até 7 dias após o recebimento, com fotos do produto e da embalagem. Enviamos um calendário novo, sem custo e sem você precisar devolver o danificado.",
+          "Defeitos percebidos depois disso podem ser reclamados nos prazos do Código de Defesa do Consumidor (art. 26): 30 dias para produtos não duráveis e 90 dias para duráveis."
+        ]
+      },
+      {
+        "h": "Como pedir",
+        "li": [
+          "Escreva para {email} com o nome usado no pedido e o que aconteceu (fotos, no caso de dano ou defeito).",
+          "Respondemos em até 3 dias úteis com as instruções. Na devolução por arrependimento, mandamos o código de postagem ou reembolsamos o frete que você pagar nos Correios.",
+          "Devolva o produto na embalagem recebida, ou bem protegido."
+        ]
+      },
+      {
+        "h": "Reembolso",
+        "p": [
+          "O reembolso é feito pelo Mercado Pago, no mesmo meio de pagamento da compra (Pix ou cartão), assim que a devolução for confirmada. No cartão de crédito, o estorno pode aparecer na fatura seguinte, conforme a administradora."
+        ]
+      },
+      {
+        "h": "Obras originais",
+        "p": [
+          "Para obras originais compradas pelo site, vale o mesmo direito de 7 dias. Como cada obra é única, combinamos com você o transporte de volta, com embalagem adequada e seguro, por nossa conta. A obra precisa voltar nas mesmas condições em que foi enviada."
+        ]
+      },
+      {
+        "h": "Dúvidas",
+        "p": [
+          "Fale com a gente em {email}. Esta política não limita nenhum direito que o Código de Defesa do Consumidor garante a você. Loja de {company}, CNPJ {cnpj}."
+        ]
+      }
+    ]
+  },
+  "en": {
+    "title": "Returns and exchanges",
+    "updated": "Last updated: 21 October 2026",
+    "sections": [
+      {
+        "h": "Changed your mind: 7 days to withdraw",
+        "p": [
+          "Bought through the site and changed your mind? You have 7 days from delivery to withdraw from the purchase, without giving a reason (art. 49 of Brazil's Consumer Protection Code).",
+          "We refund the full amount paid, including the original shipping, and we also pay for the return shipping."
+        ]
+      },
+      {
+        "h": "Defective or damaged in transit",
+        "p": [
+          "If the calendar arrives creased, torn, wet or with a printing defect, write to {email} within 7 days of delivery, with photos of the product and the packaging. We send you a new calendar at no cost, and you don't need to return the damaged one.",
+          "Defects noticed later can be reported within the periods of the Consumer Protection Code (art. 26): 30 days for non-durable products and 90 days for durable ones."
+        ]
+      },
+      {
+        "h": "How to request",
+        "li": [
+          "Write to {email} with the name on the order and what happened (photos, for damage or defects).",
+          "We reply within 3 business days with instructions. For returns after withdrawal, we send a prepaid postage code or refund the postage you pay at Correios.",
+          "Return the product in the packaging it came in, or well protected."
+        ]
+      },
+      {
+        "h": "Refunds",
+        "p": [
+          "Refunds are made through Mercado Pago, to the payment method used for the purchase (Pix or card), as soon as the return is confirmed. On credit cards, the refund may show on the next statement, depending on the card issuer."
+        ]
+      },
+      {
+        "h": "Original works",
+        "p": [
+          "Original works bought through the site have the same 7-day right. Since each work is unique, we arrange the return transport with you, properly packed and insured, at our cost. The work must come back in the condition it was sent."
+        ]
+      },
+      {
+        "h": "Questions",
+        "p": [
+          "Write to {email}. This policy does not limit any right Brazil's Consumer Protection Code gives you. Shop run by {company}, CNPJ {cnpj}."
+        ]
+      }
+    ]
+  }
+}

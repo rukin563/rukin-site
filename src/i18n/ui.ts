@@ -2,7 +2,7 @@
 // To change a word on the site, change it here — never inside the page files.
 
 export type Lang = 'pt' | 'en';
-export type PageKey = 'home' | 'gallery' | 'shop' | 'about' | 'bio' | 'contact' | 'privacy';
+export type PageKey = 'home' | 'gallery' | 'shop' | 'about' | 'bio' | 'contact' | 'privacy' | 'returns';
 
 // Each page has one URL per language. The PT/EN switch uses this map
 // to know which page to jump to, so keep both columns in sync.
@@ -14,6 +14,7 @@ export const routes: Record<PageKey, Record<Lang, string>> = {
   bio: { pt: '/bio', en: '/en/bio' },
   contact: { pt: '/contato', en: '/en/contact' },
   privacy: { pt: '/privacidade', en: '/en/privacy' },
+  returns: { pt: '/trocas-e-devolucoes', en: '/en/returns' },
 };
 
 export const ui = {
@@ -59,6 +60,7 @@ export const ui = {
     'cal.each': 'cada',
     'cal.save': 'economize',
     'cal.shipping': 'Frete incluso para todo o Brasil.',
+    'cal.returns': '7 dias para desistir da compra.',
     'cal.bulk': 'Quer 4 ou mais? Tenho um preço especial.',
     'cal.bulkLink': 'Fale comigo',
     'cal.choose': 'Escolha a quantidade',
@@ -152,6 +154,7 @@ export const ui = {
     'cal.each': 'each',
     'cal.save': 'save',
     'cal.shipping': 'Shipping included anywhere in Brazil.',
+    'cal.returns': '7 days to change your mind.',
     'cal.bulk': 'Want 4 or more? I have a special price.',
     'cal.bulkLink': 'Get in touch',
     'cal.choose': 'Choose how many',

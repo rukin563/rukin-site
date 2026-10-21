@@ -36,7 +36,7 @@ const options = calendar.options.filter((opt) => !opt.link.includes('SEU_'));
       );
     })}
   </ul>
-  <p class="note">{tr('cal.shipping')}</p>
+  <p class="note">{tr('cal.shipping')} <a href={routes.returns[lang]}>{tr('cal.returns')}</a></p>
   <p class="note">{tr('cal.bulk')} <a href={routes.contact[lang]}>{tr('cal.bulkLink')}</a></p>
 </div>
 

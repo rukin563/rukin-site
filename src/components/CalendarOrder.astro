@@ -69,7 +69,8 @@ const errorText = tr('order.error').replace('{email}', site.email);
     <input type="checkbox" name="novidades" value="sim" />
     {tr('order.news')}
   </label>
-  <p class="privacy">{tr('order.privacy')} <a href={routes.privacy[lang]} target="_blank">{tr('order.privacyLink')}</a></p>
+  <p class="privacy">{tr('order.privacy')} <a href={routes.privacy[lang]} target="_blank">{tr('order.privacyLink')}</a>
+    <a href={routes.returns[lang]} target="_blank">{tr('shop.policy')}</a>.</p>
 
   <input type="hidden" name="produto" value="Calendário 2027" />
   <input type="hidden" name="idioma" value={lang} />

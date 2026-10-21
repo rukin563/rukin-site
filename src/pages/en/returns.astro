@@ -1,0 +1,9 @@
+---
+import Base from '../../layouts/Base.astro';
+import Pages from '../../components/Pages.astro';
+import { t } from '../../i18n/ui';
+const tr = t('en');
+---
+<Base lang="en" page="returns" title={tr('shop.policy')}>
+  <Pages lang="en" page="returns" />
+</Base>
