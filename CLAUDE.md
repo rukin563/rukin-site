@@ -24,7 +24,8 @@ Rebuild of rukin563.com (artist portfolio, currently on Google Sites) as an Astr
    - DNS is on Cloudflare (nameservers alberto/hadlee.ns.cloudflare.com, set at Namecheap; Namecheap DNS settings are no longer used). Change DNS only in Cloudflare.
    - Email: Cloudflare Email Routing forwards contato@rukin563.com to Rukin's Gmail.
    - Redirect rule: www.rukin563.com/* → rukin563.com/* (301). /capa → / in public/_redirects. Google verification TXT kept.
-   - Leftovers: unpublish or unlink the old Google Site; add a sitemap and resubmit in Google Search Console.
+   - Old Google Site unpublished (2026-10-21). Keep the google-site-verification TXT: it belongs to Search Console.
+   - Google Search Console: Domain property rukin563.com. sitemap.xml submitted 2026-10-21 (first status "Couldn't fetch", normal at first; recheck). "Request indexing" for / and /calendario-2027 failed on Google's side; retry later.
 5. Later: marketing plan (email list first, Instagram/TikTok process content, Pinterest, São Paulo art fairs), digital products, legal pages (privacy policy under LGPD, returns policy), and Mercado Pago links (business account under review, Oct 2026).
 
 ## How the user wants advice
