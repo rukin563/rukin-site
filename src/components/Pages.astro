@@ -81,7 +81,7 @@ const tiles = site.coverTiles as { page: PageKey; image: string }[];
 )}
 
 {page === 'shop' && (
-  <section>
+  <section class="centered">
     <h1>{tr('shop.title')}</h1>
     <nav class="jump" aria-label={tr('shop.title')}>
       <a class="button quiet" href={`#${anchors.originals}`}>{tr('shop.originals')}</a>
@@ -89,7 +89,11 @@ const tiles = site.coverTiles as { page: PageKey; image: string }[];
     </nav>
 
     <h2 id={anchors.originals}>{tr('shop.originals')}</h2>
-    <p class="lede">{tr('shop.originalsIntro')} <a href={routes.returns[lang]}>{tr('shop.policy')}</a></p>
+    {/* One sentence per line, then the returns link. */}
+    <p class="lede">
+      {tr('shop.originalsIntro').split(/(?<=\.)\s+/).map((line) => <>{line}<br /></>)}
+      <a href={routes.returns[lang]}>{tr('shop.policy')}</a>
+    </p>
     {forSale.length ? (
       <div class="grid">
         {forSale.map((art) => <ArtworkCard lang={lang} art={art} href={itemPaths(art.slug)[lang]} />)}
@@ -179,7 +183,7 @@ const tiles = site.coverTiles as { page: PageKey; image: string }[];
 })()}
 
 {page === 'contact' && (
-  <section class="prose">
+  <section class="prose centered">
     <h1>{tr('contact.title')}</h1>
     <p class="lede">{tr('contact.intro')}</p>
     <form class="contact" action={site.contactFormAction} method="post">
@@ -232,6 +236,14 @@ const tiles = site.coverTiles as { page: PageKey; image: string }[];
   .contact label { display: grid; gap: 0.35rem; font-weight: 500; }
   .contact button { justify-self: start; }
   .jump { display: flex; flex-wrap: wrap; gap: 0.75rem; margin: 0.5rem 0 1rem; }
+  /* Loja and Contato: centred page, centred titles and intros.
+     Product cards and form fields keep their own left alignment, which reads better. */
+  .centered { margin-left: auto; margin-right: auto; max-width: 80rem; }
+  .centered > h1, .centered > h2, .centered > .lede, .centered > p { text-align: center; margin-left: auto; margin-right: auto; }
+  .centered .jump { justify-content: center; }
+  .prose.centered { max-width: 40rem; }
+  /* Loja cards: a centred row (one card sits in the middle; more spread out evenly). */
+  .centered .grid { columns: auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(16rem, 22rem)); justify-content: center; column-gap: 2rem; }
   h2[id] { scroll-margin-top: 1.5rem; }
 
   /* Cover: two works side by side, the statement across the full width, two more works. */
