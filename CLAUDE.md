@@ -31,7 +31,7 @@ Rebuild of rukin563.com (artist portfolio, currently on Google Sites) as an Astr
 6. Later: marketing plan (email list first, Instagram/TikTok process content, Pinterest, São Paulo art fairs), digital products, legal pages (privacy policy under LGPD, returns policy), and Mercado Pago links (business account under review, Oct 2026).
 
 ## Security checklist (accounts that control the site; never store passwords or codes here)
-2FA with an authenticator app + recovery codes saved offline, in this order: Gmail (receives all password resets) → Mercado Pago → Namecheap (also keep Domain/Registrar Lock on) → Cloudflare → GitHub → Brevo → Formspree. Done by 2026-10-25: Gmail, GitHub, Namecheap. Still to do: Mercado Pago, Cloudflare, Brevo, Formspree. The site itself is static (no server code, no PHP, no database, no login), so account takeover and phishing are the main risks.
+2FA with an authenticator app + recovery codes saved offline, in this order: Gmail (receives all password resets) → Mercado Pago → Namecheap (also keep Domain/Registrar Lock on) → Cloudflare → GitHub → Brevo → Formspree. All seven have 2FA (done by Rukin, Oct 2026). When adding a new service that touches the site, money or customer data, turn on 2FA there too and add it to this list. The site itself is static (no server code, no PHP, no database, no login), so account takeover and phishing are the main risks.
 
 ## How the user wants advice
 Direct and challenging, not agreeable. Lead with the uncomfortable truth, tag claims [Certain]/[Likely]/[Guessing], and hold positions unless given new information.
