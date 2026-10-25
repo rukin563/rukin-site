@@ -5,23 +5,9 @@
     "cnpj": "31.089.583/0001-00"
   },
   "bannerImage": "/images/capa_banner.jpg",
-  "coverTiles": [
-    {
-      "page": "gallery",
-      "image": "/images/capa_img01.jpg"
-    },
-    {
-      "page": "about",
-      "image": "/images/capa_img02.jpg"
-    },
-    {
-      "page": "bio",
-      "image": "/images/capa_img03.jpg"
-    },
-    {
-      "page": "shop",
-      "image": "/images/capa_img04.jpg"
-    }
+  "coverImages": [
+    "/images/capa_img01.jpg",
+    "/images/capa_img04.jpg"
   ],
   "email": "contato@rukin563.com",
   "instagram": "https://www.instagram.com/rukin563/",

@@ -25,19 +25,13 @@ const defaultCol: Record<string, string> = { section: '1 / 13', subheading: '3 /
 const colOf = (block: { type: string; col?: string }) => block.col ?? defaultCol[block.type] ?? '2 / 12';
 // Section ids for the "Originais / Produtos" jump links at the top of the shop.
 const anchors = lang === 'pt' ? { originals: 'originais', products: 'produtos' } : { originals: 'originals', products: 'products' };
-// The cover's four picture buttons come from "coverTiles" in site.json:
-// the first two above the statement, the next two below. Labels are the menu
-// words in ui.ts, so they switch language with the page.
-const tiles = site.coverTiles as { page: PageKey; image: string }[];
+// The cover's two pictures come from "coverImages" in site.json: side by side, the quote below.
 ---
 
 {page === 'home' && (
   <section class="cover">
-    {tiles.map((tile, i) => (
-      <a class={`tile f${i + 1}`} href={routes[tile.page][lang]}>
-        <img src={tile.image} alt="" decoding="async" />
-        <span>{tr(`nav.${tile.page}`)}</span>
-      </a>
+    {site.coverImages.map((src) => (
+      <img class="cover-img" src={src} alt="" decoding="async" />
     ))}
     <div class="statement">
       <div class="quote-block">
@@ -246,21 +240,19 @@ const tiles = site.coverTiles as { page: PageKey; image: string }[];
   .centered .grid { columns: auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(16rem, 22rem)); justify-content: center; column-gap: 2rem; }
   h2[id] { scroll-margin-top: 1.5rem; }
 
-  /* Cover: two works side by side, the statement across the full width, two more works. */
+  /* Cover: two pictures side by side, the quote below them across the full width.
+     Phones: picture, picture, quote. */
   .cover {
     display: grid;
-    gap: clamp(3rem, 6vw, 6rem); /* space between the cover pictures (and the quote) */
+    gap: clamp(3rem, 6vw, 6rem); /* space between the pictures and the quote */
     grid-template-columns: 1fr 1fr;
-    grid-template-areas: 'f1 f2' 'text text' 'f3 f4';
     align-items: center;
   }
-  .f1 { grid-area: f1; } .f2 { grid-area: f2; } .f3 { grid-area: f3; } .f4 { grid-area: f4; }
-  /* Phones: each picture button takes the full width: OBRAS, SOBRE, quote, BIO, LOJA. */
+  .cover-img { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; box-shadow: 0 1px 0 var(--line); }
   @media (max-width: 40rem) {
-    .cover { grid-template-columns: 1fr; grid-template-areas: 'f1' 'f2' 'text' 'f3' 'f4'; }
-    .tile span { font-size: 1.35rem; }
+    .cover { grid-template-columns: 1fr; }
   }
-  .statement { grid-area: text; padding: 1rem 0; text-align: center; }
+  .statement { grid-column: 1 / -1; padding: 1rem 0; text-align: center; }
   .statement .lede { margin-left: auto; margin-right: auto; }
   .statement h1 {
     font-size: clamp(1.44rem, 2.944vw, 2.72rem); /* reduced 20% twice from the first version */
@@ -281,27 +273,4 @@ const tiles = site.coverTiles as { page: PageKey; image: string }[];
   @media (max-width: 40rem) {
     .statement .lede { max-width: 17em; text-wrap: balance; }
   }
-  /* Picture buttons: square photo with the section name on a white band across the middle. */
-  .tile { position: relative; display: block; text-decoration: none; }
-  .tile img { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; box-shadow: 0 1px 0 var(--line); }
-  .tile span {
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    padding: 0.55em 0;
-    background: rgb(255 255 255 / 0.78);
-    color: var(--button); /* same dark grey as the buttons */
-    text-align: center;
-    font-size: clamp(1rem, 2.6vw, 1.75rem);
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.25em;
-    text-indent: 0.25em; /* balances the letter-spacing so the word stays centred */
-    transition: background 0.15s, color 0.15s;
-  }
-  /* Hover: see-through medium grey band, white text. Lower 0.8 for more see-through,
-     but below about 0.7 the white text gets hard to read over bright pictures. */
-  .tile:hover span, .tile:focus-visible span { background: rgb(138 141 145 / 0.8); color: #fff; }
 </style>
