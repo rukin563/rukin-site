@@ -100,7 +100,8 @@ const banner = page === 'home' ? site.bannerImage : null;
         {/* Hidden until "newsletterAction" in site.json is a real provider address (not a SEU_ placeholder). */}
         {/* Sends to the Brevo form "Site rukin563.com" (list "Newsletter site", double opt-in).
              With JavaScript the visitor stays on the page; without it, Brevo's own page opens. */}
-        {!site.newsletterAction.includes('SEU_') && (
+        {/* Not shown on the cover (page "home"), by Rukin's choice: the cover stays clean. */}
+        {page !== 'home' && !site.newsletterAction.includes('SEU_') && (
         <form
           class="newsletter"
           action={site.newsletterAction}
