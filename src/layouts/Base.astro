@@ -215,28 +215,28 @@ const banner = page === 'home' ? site.bannerImage : null;
 
 <style is:global>
   :root {
-    --wall: #e4e5e1;      /* concrete grey, the "gallery wall" */
-    --paper: #f3f3f0;     /* raised surfaces: forms, cards */
+    --wall: #e9e5de;      /* warm concrete grey, the "gallery wall" (was cool #e4e5e1) */
+    --paper: #f6f3ee;     /* raised surfaces: forms, cards */
     --ink: #333333;       /* text: dark grey, 80% black */
-    --muted: #5e636b;
-    --line: #c4c6c1;
-    --link: #5a5d62;      /* links and grey text accents (same grey as the buttons) */
-    --link-hover: #8a8d91;
-    --button: #5a5d62;    /* all buttons: dark grey... */
-    --button-hover: #8a8d91; /* ...lightening on hover */
+    --muted: #645f58;
+    --line: #cdc7bd;
+    --link: #5e5a54;      /* links and grey text accents (same grey as the buttons) */
+    --link-hover: #918b83;
+    --button: #5e5a54;    /* all buttons: warm dark grey... */
+    --button-hover: #918b83; /* ...lightening on hover */
     --sold: #9a3b2e;
     --gutter: clamp(16px, 4vw, 48px);
     --font: 'Archivo', system-ui, sans-serif;
   }
   @media (prefers-color-scheme: dark) {
     :root {
-      --wall: #1d1f22;
-      --paper: #26292d;
+      --wall: #23201c;
+      --paper: #2d2a25;
       --ink: #ecece8;
-      --muted: #a2a6ad;
-      --line: #3a3e44;
-      --link: #b4b7bc;      /* lighter in dark mode so links stay readable */
-      --link-hover: #e2e4e7;
+      --muted: #ada79f;
+      --line: #443e37;
+      --link: #bcb6ad;      /* lighter in dark mode so links stay readable */
+      --link-hover: #e8e3db;
       --sold: #e58a7b;
     }
   }
