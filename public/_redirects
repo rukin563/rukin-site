@@ -3,3 +3,7 @@
 # (/obras, /sobre, /bio, /en, /en/works, /en/about, /en/bio) has the same address here.
 /capa    /    301
 # Format: /old-path  /new-path  301
+
+# Short address handwritten on the thank-you note inside the calendar envelope.
+# 302 (temporary) so it can point to next year's calendar later.
+/fixar   /calendario-2027#como-fixar   302
