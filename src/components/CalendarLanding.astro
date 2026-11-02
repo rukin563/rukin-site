@@ -1,10 +1,9 @@
 ---
 // Calendar landing page: one product, one goal. No site menu (see Base "minimal").
 // Content, prices and payment links all come from src/data/calendar.json.
-import { t, type Lang } from '../i18n/ui';
+import { t, formatBRL, type Lang } from '../i18n/ui';
 import calendar from '../data/calendar.json';
 import ProductGallery from './ProductGallery.astro';
-import CalendarBuy from './CalendarBuy.astro';
 import CalendarOrder from './CalendarOrder.astro';
 
 interface Props { lang: Lang }
@@ -21,17 +20,27 @@ const text = calendar[lang];
     <p class="kicker">{text.subtitle}</p>
     <h1>{text.title}</h1>
     <p class="pitch">{text.pitch}</p>
+    <!-- Price near the top, so nobody has to scroll to the form to find it. -->
+    <p class="price-line">
+      <span><strong>{formatBRL(calendar.unitPrice)}</strong> · {tr('cal.priceNote')}</span>
+      <a class="button quiet" href="#pedido">{tr('order.title')}</a>
+    </p>
     <h2 class="small">{tr('shop.specs')}</h2>
     <ul class="specs">{text.specs.map((line) => <li>{line}</li>)}</ul>
     <h2 class="small">{tr('cal.box')}</h2>
     <ul class="specs">{text.box.map((line) => <li>{line}</li>)}</ul>
-    <CalendarBuy lang={lang} />
   </div>
 
   <section class="goat">
     <h2>{text.goatTitle}</h2>
     {/* Paragraphs still marked SEU_ (not written yet) are hidden. */}
     {text.goat.filter((para) => !para.includes('SEU_')).map((para) => <p>{para}</p>)}
+  </section>
+
+  <!-- Hanging steps answer "will it damage my wall?" right before the order form. -->
+  <section class="howto">
+    <h2>{text.howToTitle}</h2>
+    <ol>{text.howTo.map((step) => <li>{step}</li>)}</ol>
   </section>
 
   <section class="again">
@@ -42,13 +51,19 @@ const text = calendar[lang];
 <style>
   .landing { max-width: 52rem; margin: 0 auto; } /* centred on the page */
   /* Text lines up under the photo, not under the thumbnails (same as shop item pages). */
-  .info, .goat, .again { margin-left: 6.5rem; max-width: 36rem; }
-  @media (max-width: 40rem) { .info, .goat, .again { margin-left: 0; } }
+  .info, .goat, .howto, .again { margin-left: 6.5rem; max-width: 36rem; }
+  @media (max-width: 40rem) { .info, .goat, .howto, .again { margin-left: 0; } }
   .info { margin-top: 2rem; }
   .kicker { margin: 0 0 0.25rem; color: var(--link); font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; font-size: 0.875rem; }
-  .pitch { font-size: 1.15rem; margin: 0 0 1.75rem; }
+  .pitch { font-size: 1.15rem; margin: 0 0 1.25rem; }
+  .price-line { display: flex; flex-wrap: wrap; align-items: center; gap: 0.75rem 1.25rem; margin: 0 0 2rem; color: var(--muted); }
+  .price-line strong { font-size: 1.35rem; color: var(--ink); }
+  .price-line .button { padding: 0.45rem 1.1rem; font-size: 0.95rem; }
   .small { font-size: 0.875rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); margin: 0 0 0.5rem; }
   .specs { list-style: none; padding: 0; margin: 0 0 2rem; }
   .specs li { padding: 0.4rem 0; border-bottom: 1px solid var(--line); }
-  .goat, .again { margin-top: 4rem; padding-top: 2.5rem; border-top: 1px solid var(--line); }
+  .goat, .howto, .again { margin-top: 4rem; padding-top: 2.5rem; border-top: 1px solid var(--line); }
+  .howto ol { padding-left: 1.5rem; margin: 0; }
+  .howto li { padding-left: 0.35rem; margin-bottom: 0.6rem; }
+  .howto li::marker { color: var(--muted); font-weight: 600; }
 </style>

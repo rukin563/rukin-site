@@ -41,11 +41,21 @@ const errorText = tr('order.error').replace('{email}', site.email);
           checked={i === 0}
           required
         />
-        <span>{opt.qty === 1 ? tr('cal.buyOne') : tr('cal.kit').replace('{n}', String(opt.qty))}</span>
+        <span class="label">
+          {opt.qty === 1 ? tr('cal.buyOne') : tr('cal.kit').replace('{n}', String(opt.qty))}
+          {/* Kits show the price per calendar and the saving against buying one by one. */}
+          {opt.qty > 1 && (
+            <small>
+              {formatBRL(opt.price / opt.qty)} {tr('cal.each')}
+              {opt.qty * calendar.unitPrice - opt.price > 0 && <> · {tr('cal.save')} {formatBRL(opt.qty * calendar.unitPrice - opt.price)}</>}
+            </small>
+          )}
+        </span>
         <strong>{formatBRL(opt.price)}</strong>
       </label>
     ))}
-    <p class="note">{tr('cal.shipping')}</p>
+    <p class="note">{tr('cal.shipping')} <a href={routes.returns[lang]}>{tr('cal.returns')}</a></p>
+    <p class="note">{tr('cal.bulk')} <a href={routes.contact[lang]}>{tr('cal.bulkLink')}</a></p>
   </fieldset>
 
   <div class="fields">
@@ -67,12 +77,12 @@ const errorText = tr('order.error').replace('{email}', site.email);
     <label>{tr('order.state')}<input name="uf" required maxlength="2" autocomplete="address-level1" data-cep-state /></label>
   </div>
 
+  <p class="privacy">{tr('order.privacy')}</p>
   <label class="news">
     <input type="checkbox" name="novidades" value="sim" />
     {tr('order.news')}
   </label>
-  <p class="privacy">{tr('order.privacy')} <a href={routes.privacy[lang]} target="_blank">{tr('order.privacyLink')}</a>
-    <a href={routes.returns[lang]} target="_blank">{tr('shop.policy')}</a>.</p>
+  <p class="privacy">{tr('order.newsNote')}</p>
 
   <input type="hidden" name="produto" value="Calendário 2027" />
   <input type="hidden" name="idioma" value={lang} />
@@ -100,14 +110,6 @@ const errorText = tr('order.error').replace('{email}', site.email);
 
 <script>
   // All listeners are on the document so they keep working after the PT/EN switch swaps the page.
-
-  // Buy buttons at the top of the page pre-select the quantity here.
-  document.addEventListener('click', (e) => {
-    const pick = (e.target as Element).closest<HTMLElement>('[data-pick]');
-    if (!pick) return;
-    const radio = document.querySelector<HTMLInputElement>(`input[name="quantidade"][data-qty="${pick.dataset.pick}"]`);
-    if (radio) radio.checked = true;
-  });
 
   // After the buyer opens the payment, show the thank-you text for when they come back.
   document.addEventListener('click', (e) => {
@@ -193,7 +195,8 @@ const errorText = tr('order.error').replace('{email}', site.email);
   }
   .pick:has(input:checked) { border-color: var(--button); }
   .pick input { width: auto; accent-color: var(--button); }
-  .pick span { flex: 1; }
+  .pick .label { flex: 1; display: grid; gap: 0.1rem; }
+  .pick small { font-weight: 400; font-size: 0.85rem; color: var(--muted); }
   .note { margin: 0.25rem 0 0; font-size: 0.95rem; color: var(--muted); }
 
   .fields { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.25rem; }
@@ -201,9 +204,10 @@ const errorText = tr('order.error').replace('{email}', site.email);
   .fields .full { grid-column: 1 / -1; }
   @media (max-width: 30rem) { .fields { grid-template-columns: 1fr; } }
 
-  .news { display: flex; align-items: center; gap: 0.6rem; margin-bottom: 0.5rem; cursor: pointer; }
+  .news { display: flex; align-items: center; gap: 0.6rem; margin-bottom: 0.25rem; cursor: pointer; }
   .news input { width: auto; accent-color: var(--button); }
-  .privacy { font-size: 0.875rem; color: var(--muted); margin: 0 0 1.25rem; }
+  .privacy { font-size: 0.875rem; color: var(--muted); margin: 0 0 0.75rem; }
+  .news + .privacy { margin-bottom: 1.25rem; }
   button { font-size: 1.05rem; padding: 0.8rem 1.6rem; }
   button:disabled { opacity: 0.6; cursor: wait; }
   .status { min-height: 1.5em; margin: 0.75rem 0 0; }
