@@ -56,6 +56,8 @@ const errorText = tr('order.error').replace('{email}', site.email);
     ))}
     <p class="note">{tr('cal.shipping')} <a href={routes.returns[lang]}>{tr('cal.returns')}</a></p>
     <p class="note">{tr('cal.bulk')} <a href={routes.contact[lang]}>{tr('cal.bulkLink')}</a></p>
+    {/* The form only takes Brazilian addresses (CPF, CEP), so buyers abroad write instead and get a postage quote. */}
+    {lang === 'en' && <p class="note">{tr('cal.abroad')} <a href={routes.contact[lang]}>{tr('cal.bulkLink')}</a></p>}
   </fieldset>
 
   <div class="fields">
